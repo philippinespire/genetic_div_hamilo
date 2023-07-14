@@ -1,1 +1,1 @@
-# genetic_div_hamilo
+# genetic_div_hamilo project
