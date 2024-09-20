@@ -1,12 +1,13 @@
 # .gitignore
 
 #temp data to ignore
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
+*.Rproj.user
+Scripts/*.Rhistory
+*.Rhistory
+*.RData
+*.Ruserdata
 *Rproj
-
+Scripts/*.Rhistory
 
 #scripts to ignore
 Scripts/OutFLANK.R
@@ -17,3 +18,4 @@ Scripts/diploid_filter.R #for polyploid filtering for Aen & already in CSSL repo
 #extra stuff to ignore
 PCA_ADMIXTURE_Plots.pptx
 sequencing_statistics.xlsx
+.Rproj.user
