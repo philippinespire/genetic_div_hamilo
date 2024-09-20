@@ -13,11 +13,11 @@ getwd()
 remove(list = ls()) #clear working env
 
 ##### load libraries ####
-#library(devtools)
+#library(devtools) #v.2.4.5
 #devtools::install_github('royfrancis/pophelper') #to install pophelper the first time
-library(tidyverse)
-library(gridExtra)
-library(pophelper)
+library(tidyverse) #v.2.0.0
+library(gridExtra) #2.3
+library(pophelper) #v.2.3.1
 
 #### import PCA data ####
 #read in data

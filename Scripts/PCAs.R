@@ -19,33 +19,30 @@ eigenvec_names <- c("Population", "Individual", "PC1", "PC2", "PC3", "PC4", "PC5
 ######## Gmi PCAs ########
   
 #read in data
-preHWE_Gmi_Ham_eigenval <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.preHWE.eigenval"), header = FALSE, sep = " ")
-  preHWE_Gmi_Ham_data <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.preHWE.eigenvec"), header = FALSE, sep = " ")
+preHWE_Gmi_Ham_eigenval <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.rescaled.preHWE.eigenval"), header = FALSE, sep = " ")
+  preHWE_Gmi_Ham_data <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.rescaled.preHWE.eigenvec"), header = FALSE, sep = " ")
   colnames(preHWE_Gmi_Ham_data) <- eigenvec_names
 Gmi_Ham_eigenval <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.eigenval"), header = FALSE, sep = " ") #noLD
   Gmi_Ham_data <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.eigenvec"), header = FALSE, sep = " ")
   colnames(Gmi_Ham_data) <- eigenvec_names
-Gmi_Ham_Ham_eigenval <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.Ham.eigenval"), header = FALSE, sep = " ")
-  Gmi_Ham_Ham_data <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.eigenvec"), header = FALSE, sep = " ")
+Gmi_Ham_Ham_eigenval <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.Ham.eigenval"), header = FALSE, sep = " ") #noLD
+  Gmi_Ham_Ham_data <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.Ham.eigenvec"), header = FALSE, sep = " ")
   colnames(Gmi_Ham_Ham_data) <- eigenvec_names
 Gmi_Ham_A_eigenval <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.eigenval"), header = FALSE, sep = " ")
   Gmi_Ham_A_data <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.eigenvec"), header = FALSE, sep = " ")
   colnames(Gmi_Ham_A_data) <- eigenvec_names
-Gmi_Ham_A_Ham_eigenval <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.Ham.eigenval"), header = FALSE, sep = " ")
-  Gmi_Ham_A_Ham_data <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.Ham.eigenvec"), header = FALSE, sep = " ")
-  colnames(Gmi_Ham_A_Ham_data) <- eigenvec_names
-Gmi_Ham_A_nohighhet_eigenval <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.nohighhet.eigenval"), header = FALSE, sep = " ")
-  Gmi_Ham_A_nohighhet_data <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.nohighhet.eigenvec"), header = FALSE, sep = " ")
-  colnames(Gmi_Ham_A_nohighhet_data) <- eigenvec_names
 Gmi_Ham_B_eigenval <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.B.eigenval"), header = FALSE, sep = " ")
   Gmi_Ham_B_data <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.B.eigenvec"), header = FALSE, sep = " ")
   colnames(Gmi_Ham_B_data) <- eigenvec_names
-Gmi_Ham_A_Ham_nohighhet_eigenval <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.Ham.nohighhet.eigenval"), header = FALSE, sep = " ")
-  Gmi_Ham_A_Ham_nohighhet_data <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.Ham.nohighhet.eigenvec"), header = FALSE, sep = " ")
+Gmi_Ham_A_nohighhet_eigenval <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.nohighhet.eigenval"), header = FALSE, sep = " ")
+  Gmi_Ham_A_nohighhet_data <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.nohighhet.eigenvec"), header = FALSE, sep = " ")
+  colnames(Gmi_Ham_A_nohighhet_data) <- eigenvec_names
+Gmi_Ham_A_Ham_nohighhet_eigenval <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.nohighhet.Ham.eigenval"), header = FALSE, sep = " ")
+  Gmi_Ham_A_Ham_nohighhet_data <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.nohighhet.Ham.eigenvec"), header = FALSE, sep = " ")
   colnames(Gmi_Ham_A_Ham_nohighhet_data) <- eigenvec_names
-Gmi_Ham_A_Bas_eigenval <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.Bas.eigenval"), header = FALSE, sep = " ")
-  Gmi_Ham_A_Bas_data <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.Bas.eigenvec"), header = FALSE, sep = " ")
-  colnames(Gmi_Ham_A_Bas_data) <- eigenvec_names
+Gmi_Ham_A_Ham_eigenval <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.Ham.eigenval"), header = FALSE, sep = " ")
+  Gmi_Ham_A_Ham_data <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.Ham.eigenvec"), header = FALSE, sep = " ")
+  colnames(Gmi_Ham_A_Ham_data) <- eigenvec_names
   
 #### preHWE PCA ####    
     
@@ -72,7 +69,7 @@ preHWE_PCA_12 <- ggplot(data = preHWE_Gmi_Ham_data, aes(x = PC1, y = PC2, color 
   geom_point(size = 16) + ggtitle("PC1 v. PC2") + 
     scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Basud River", "Hamilo Cove")) + 
-  labs(x = "PC1 (explains 79.44% of total variance)", y = "PC2 (explains 9.23% of total variance)") + 
+  labs(x = "PC1 (explains 79.49% of total variance)", y = "PC2 (explains 9.24% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -109,7 +106,7 @@ PCA_12 <- ggplot(data = Gmi_Ham_data, aes(x = PC1, y = PC2, color = Era, shape =
   geom_point(size = 16) + ggtitle("PC1 v. PC2") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Basud River", "Hamilo Cove")) + 
-  labs(x = "PC1 (explains 66.42% of total variance)", y = "PC2 (explains 13.47% of total variance)") + 
+  labs(x = "PC1 (explains 66.69% of total variance)", y = "PC2 (explains 13.41% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -123,7 +120,7 @@ PCA_13 <- ggplot(data = Gmi_Ham_data, aes(x = PC1, y = PC3, color = Era, shape =
   geom_point(size = 16) + ggtitle("PC1 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Basud River", "Hamilo Cove")) + 
-  labs(x = "PC1 (explains 66.42% of total variance)", y = "PC3 (explains 1.95% of total variance)") + 
+  labs(x = "PC1 (explains 66.69% of total variance)", y = "PC3 (explains 1.94% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -137,7 +134,7 @@ PCA_23 <- ggplot(data = Gmi_Ham_data, aes(x = PC2, y = PC3, color = Era, shape =
   geom_point(size = 16) + ggtitle("PC2 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Basud River", "Hamilo Cove")) + 
-  labs(x = "PC2 (explains 13.47% of total variance)", y = "PC3 (explains 1.95% of total variance)") + 
+  labs(x = "PC2 (explains 13.41% of total variance)", y = "PC3 (explains 1.94% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -172,7 +169,7 @@ PCA_12 <- ggplot(data = Gmi_Ham_Ham_data,
   geom_point(size = 18) +
   scale_color_manual(values = c("#afc8a4", "#1c3b0e"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
-  labs(x = "PC1 (explains 60.88% of total variance)", y = "PC2 (explains 13.19% of total variance)") + 
+  labs(x = "PC1 (explains 61.17% of total variance)", y = "PC2 (explains 13.14% of total variance)") + 
   scale_size(guide = "none") + 
   theme_bw() + 
   theme(panel.border = element_blank(), 
@@ -188,6 +185,36 @@ PCA_12 <- ggplot(data = Gmi_Ham_Ham_data,
         legend.position = "none", 
         plot.margin = unit(c(0.5,1.5,1,1), "cm"))
 PCA_12
+
+PCA_13 <- ggplot(data = Gmi_Ham_Ham_data, 
+                 aes(x = PC1, y = PC3, color = Era, shape = Era)) + 
+  geom_point(size = 16) + ggtitle("PC1 v. PC3") + 
+  scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
+  scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
+  labs(x = "PC1 (explains 61.17% of total variance)", y = "PC3 (explains 2.47% of total variance)") + 
+  scale_size(guide = "none") + theme_bw() + 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
+        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
+        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
+        axis.title = element_text(size = 26)) + 
+  guides(color = guide_legend(override.aes = list(size = 16)))
+PCA_13
+
+PCA_23 <- ggplot(data = Gmi_Ham_A_Ham_nohighhet_unrelated_data, 
+                 aes(x = PC2, y = PC3, color = Era, shape = Era)) + 
+  geom_point(size = 16) + ggtitle("PC2 v. PC3") + 
+  scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
+  scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
+  labs(x = "PC2 (explains 13.14% of total variance)", y = "PC3 (explains 2.47% of total variance)") + 
+  scale_size(guide = "none") + theme_bw() + 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
+        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
+        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
+        axis.title = element_text(size = 26)) + 
+  guides(color = guide_legend(override.aes = list(size = 16)))
+PCA_23
 
 #### Species A PCA ####    
 #noLD
@@ -216,7 +243,7 @@ PCA_12 <- ggplot(data = Gmi_Ham_A_data, aes(x = PC1, y = PC2, color = Era, shape
   geom_point(size = 16) + ggtitle("PC1 v. PC2") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Basud River", "Hamilo Cove")) + 
-  labs(x = "PC1 (explains 17.39% of total variance)", y = "PC2 (explains 6.55% of total variance)") + 
+  labs(x = "PC1 (explains 24.43% of total variance)", y = "PC2 (explains 5.81% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -230,7 +257,7 @@ PCA_13 <- ggplot(data = Gmi_Ham_A_data, aes(x = PC1, y = PC3, color = Era, shape
   geom_point(size = 16) + ggtitle("PC1 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Basud River", "Hamilo Cove")) + 
-  labs(x = "PC1 (explains 17.39% of total variance)", y = "PC3 (explains 6.35% of total variance)") + 
+  labs(x = "PC1 (explains 24.43% of total variance)", y = "PC3 (explains 5.40% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -244,117 +271,7 @@ PCA_23 <- ggplot(data = Gmi_Ham_A_data, aes(x = PC2, y = PC3, color = Era, shape
   geom_point(size = 16) + ggtitle("PC2 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Basud River", "Hamilo Cove")) + 
-  labs(x = "PC2 (explains 6.55% of total variance)", y = "PC3 (explains 6.35% of total variance)") + 
-  scale_size(guide = "none") + theme_bw() + 
-  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
-        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
-        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
-        axis.title = element_text(size = 26)) + 
-  guides(color = guide_legend(override.aes = list(size = 16)))
-PCA_23
-
-#### Species A Ham PCA ####    
-#noLD
-
-#add columns for Location & Era
-Gmi_Ham_A_Ham_data <- Gmi_Ham_A_Ham_data %>%
-  mutate(Location =
-           case_when(endsWith(Population, "Ham") ~ "Hamilo",
-                     endsWith(Population, "Bat") ~ "Hamilo")) %>% 
-  mutate(Era =
-           case_when(endsWith(Population, "AHam") ~ "Historical",
-                     endsWith(Population,"CBat") ~ "Contemporary")) %>%
-  relocate(Location, .before = Population) %>%
-  relocate(Era, .before = Location)
-
-#calculate % variance each PC explains by adding up all eigenvalues in *.eigenval file
-varPC1 <- (Gmi_Ham_A_Ham_eigenval[1,1] / sum(Gmi_Ham_A_Ham_eigenval$V1))*100
-varPC2 <- (Gmi_Ham_A_Ham_eigenval[2,1] / sum(Gmi_Ham_A_Ham_eigenval$V1))*100
-varPC3 <- (Gmi_Ham_A_Ham_eigenval[3,1] / sum(Gmi_Ham_A_Ham_eigenval$V1))*100
-
-#PCA
-PCA_12 <- ggplot(data = Gmi_Ham_A_Ham_data, 
-                 aes(x = PC1, y = PC2, color = Era, shape = Era)) + 
-  geom_point(size = 18) +
-  scale_color_manual(values = c("#afc8a4", "#1c3b0e"), labels = c("Contemporary", "Historical")) + 
-  scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
-  labs(x = "PC1 (explains 14.63% of total variance)", y = "PC2 (explains 6.73% of total variance)") + 
-  scale_size(guide = "none") + 
-  theme_bw() + 
-  theme(panel.border = element_blank(), 
-        panel.grid.major = element_blank(), 
-        panel.grid.minor = element_blank(), 
-        axis.line = element_line(linewidth = 4), 
-        plot.title = element_blank(), 
-        axis.ticks = element_line(color = "black", linewidth = 4), 
-        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
-        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1), 
-        legend.position = "none", 
-        plot.margin = unit(c(0.5,1.5,1,1), "cm"))
-PCA_12
-
-#### Species A nohighhet PCA ####    
-#noLD
-
-#add columns for Location & Era
-Gmi_Ham_A_nohighhet_data <- Gmi_Ham_A_nohighhet_data %>%
-  mutate(Location =
-           case_when(endsWith(Population, "Bas") ~ "Basud",
-                     endsWith(Population, "Ham") ~ "Hamilo",
-                     endsWith(Population, "Bat") ~ "Hamilo")) %>% 
-  mutate(Era =
-           case_when(endsWith(Population, "ABas") ~ "Historical",
-                     endsWith(Population, "AHam") ~ "Historical",
-                     endsWith(Population,"CBat") ~ "Contemporary",
-                     endsWith(Population, "CBas") ~ "Contemporary")) %>%
-  relocate(Location, .before = Population) %>%
-  relocate(Era, .before = Location)
-
-#calculate % variance each PC explains by adding up all eigenvalues in *.eigenval file
-varPC1 <- (Gmi_Ham_A_nohighhet_eigenval[1,1] / sum(Gmi_Ham_A_nohighhet_eigenval$V1))*100
-varPC2 <- (Gmi_Ham_A_nohighhet_eigenval[2,1] / sum(Gmi_Ham_A_nohighhet_eigenval$V1))*100
-varPC3 <- (Gmi_Ham_A_nohighhet_eigenval[3,1] / sum(Gmi_Ham_A_nohighhet_eigenval$V1))*100
-
-#PCA
-PCA_12 <- ggplot(data = Gmi_Ham_A_nohighhet_data, 
-                 aes(x = PC1, y = PC2, color = Era, shape = Location)) + 
-  geom_point(size = 16) + ggtitle("PC1 v. PC2") + 
-  scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
-  scale_shape_manual(values = c(16, 17), labels = c("Basud River", "Hamilo Cove")) + 
-  labs(x = "PC1 (explains 8.84% of total variance)", y = "PC2 (explains 6.65% of total variance)") + 
-  scale_size(guide = "none") + theme_bw() + 
-  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
-        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
-        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
-        axis.title = element_text(size = 26)) + 
-  guides(color = guide_legend(override.aes = list(size = 16)))
-PCA_12
-
-PCA_13 <- ggplot(data = Gmi_Ham_A_nohighhet_data, 
-                 aes(x = PC1, y = PC3, color = Era, shape = Location)) + 
-  geom_point(size = 16) + ggtitle("PC1 v. PC3") + 
-  scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
-  scale_shape_manual(values = c(16, 17), labels = c("Basud River", "Hamilo Cove")) + 
-  labs(x = "PC1 (explains 8.84% of total variance)", y = "PC3 (explains 5.98% of total variance)") + 
-  scale_size(guide = "none") + theme_bw() + 
-  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
-        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
-        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
-        axis.title = element_text(size = 26)) + 
-  guides(color = guide_legend(override.aes = list(size = 16)))
-PCA_13
-
-PCA_23 <- ggplot(data = Gmi_Ham_A_nohighhet_data, 
-                 aes(x = PC2, y = PC3, color = Era, shape = Location)) + 
-  geom_point(size = 16) + ggtitle("PC2 v. PC3") + 
-  scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
-  scale_shape_manual(values = c(16, 17), labels = c("Basud River", "Hamilo Cove")) + 
-  labs(x = "PC2 (explains 6.65% of total variance)", y = "PC3 (explains 5.98% of total variance)") + 
+  labs(x = "PC2 (explains 5.81% of total variance)", y = "PC3 (explains 5.40% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -388,7 +305,7 @@ PCA_12 <- ggplot(data = Gmi_Ham_B_data, aes(x = PC1, y = PC2, color = Era, shape
   geom_point(size = 16) + ggtitle("PC1 v. PC2") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
-  labs(x = "PC1 (explains 32.67% of total variance)", y = "PC2 (explains 22.93% of total variance)") + 
+  labs(x = "PC1 (explains 28.96% of total variance)", y = "PC2 (explains 16.37% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -402,7 +319,7 @@ PCA_13 <- ggplot(data = Gmi_Ham_B_data, aes(x = PC1, y = PC3, color = Era, shape
   geom_point(size = 16) + ggtitle("PC1 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
-  labs(x = "PC1 (explains 32.67% of total variance)", y = "PC3 (explains 7.62% of total variance)") + 
+  labs(x = "PC1 (explains 28.96% of total variance)", y = "PC3 (explains 7.74% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -416,7 +333,75 @@ PCA_23 <- ggplot(data = Gmi_Ham_B_data, aes(x = PC2, y = PC3, color = Era, shape
   geom_point(size = 16) + ggtitle("PC2 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
-  labs(x = "PC2 (explains 22.93% of total variance)", y = "PC3 (explains 7.62% of total variance)") + 
+  labs(x = "PC2 (explains 16.37% of total variance)", y = "PC3 (explains 7.74% of total variance)") + 
+  scale_size(guide = "none") + theme_bw() + 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
+        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
+        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
+        axis.title = element_text(size = 26)) + 
+  guides(color = guide_legend(override.aes = list(size = 16)))
+PCA_23
+
+#### Species A nohighhet PCA ####    
+#noLD
+
+#add columns for Location & Era
+Gmi_Ham_A_nohighhet_data <- Gmi_Ham_A_nohighhet_data %>%
+  mutate(Location =
+           case_when(endsWith(Population, "Bas") ~ "Basud",
+                     endsWith(Population, "Ham") ~ "Hamilo",
+                     endsWith(Population, "Bat") ~ "Hamilo")) %>% 
+  mutate(Era =
+           case_when(endsWith(Population, "ABas") ~ "Historical",
+                     endsWith(Population, "AHam") ~ "Historical",
+                     endsWith(Population,"CBat") ~ "Contemporary",
+                     endsWith(Population, "CBas") ~ "Contemporary")) %>%
+  relocate(Location, .before = Population) %>%
+  relocate(Era, .before = Location)
+
+#calculate % variance each PC explains by adding up all eigenvalues in *.eigenval file
+varPC1 <- (Gmi_Ham_A_nohighhet_eigenval[1,1] / sum(Gmi_Ham_A_nohighhet_eigenval$V1))*100
+varPC2 <- (Gmi_Ham_A_nohighhet_eigenval[2,1] / sum(Gmi_Ham_A_nohighhet_eigenval$V1))*100
+varPC3 <- (Gmi_Ham_A_nohighhet_eigenval[3,1] / sum(Gmi_Ham_A_nohighhet_eigenval$V1))*100
+
+#PCA
+PCA_12 <- ggplot(data = Gmi_Ham_A_nohighhet_data, 
+                 aes(x = PC1, y = PC2, color = Era, shape = Location)) + 
+  geom_point(size = 16) + ggtitle("PC1 v. PC2") + 
+  scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
+  scale_shape_manual(values = c(16, 17), labels = c("Basud River", "Hamilo Cove")) + 
+  labs(x = "PC1 (explains 12.69% of total variance)", y = "PC2 (explains 7.17% of total variance)") + 
+  scale_size(guide = "none") + theme_bw() + 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
+        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
+        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
+        axis.title = element_text(size = 26)) + 
+  guides(color = guide_legend(override.aes = list(size = 16)))
+PCA_12
+
+PCA_13 <- ggplot(data = Gmi_Ham_A_nohighhet_data, 
+                 aes(x = PC1, y = PC3, color = Era, shape = Location)) + 
+  geom_point(size = 16) + ggtitle("PC1 v. PC3") + 
+  scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
+  scale_shape_manual(values = c(16, 17), labels = c("Basud River", "Hamilo Cove")) + 
+  labs(x = "PC1 (explains 12.69% of total variance)", y = "PC3 (explains 5.92% of total variance)") + 
+  scale_size(guide = "none") + theme_bw() + 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
+        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
+        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
+        axis.title = element_text(size = 26)) + 
+  guides(color = guide_legend(override.aes = list(size = 16)))
+PCA_13
+
+PCA_23 <- ggplot(data = Gmi_Ham_A_nohighhet_data, 
+                 aes(x = PC2, y = PC3, color = Era, shape = Location)) + 
+  geom_point(size = 16) + ggtitle("PC2 v. PC3") + 
+  scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
+  scale_shape_manual(values = c(16, 17), labels = c("Basud River", "Hamilo Cove")) + 
+  labs(x = "PC2 (explains 7.17% of total variance)", y = "PC3 (explains 5.92% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -451,7 +436,7 @@ PCA_12 <- ggplot(data = Gmi_Ham_A_Ham_nohighhet_data,
   geom_point(size = 18) +
   scale_color_manual(values = c("#afc8a4", "#1c3b0e"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
-  labs(x = "PC1 (explains 7.06% of total variance)", y = "PC2 (explains 6.10% of total variance)") + 
+  labs(x = "PC1 (explains 11.16% of total variance)", y = "PC2 (explains 7.17% of total variance)") + 
   scale_size(guide = "none") + 
   theme_bw() + 
   theme(panel.border = element_blank(), 
@@ -473,7 +458,7 @@ PCA_13 <- ggplot(data = Gmi_Ham_A_Ham_nohighhet_data,
   geom_point(size = 16) + ggtitle("PC1 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
-  labs(x = "PC1 (explains 7.06% of total variance)", y = "PC3 (explains 6.05% of total variance)") + 
+  labs(x = "PC1 (explains 11.16% of total variance)", y = "PC3 (explains 5.67% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -488,7 +473,7 @@ PCA_23 <- ggplot(data = Gmi_Ham_A_Ham_nohighhet_data,
   geom_point(size = 16) + ggtitle("PC2 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
-  labs(x = "PC2 (explains 6.10% of total variance)", y = "PC3 (explains 6.05% of total variance)") + 
+  labs(x = "PC2 (explains 7.17% of total variance)", y = "PC3 (explains 5.67% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -498,47 +483,54 @@ PCA_23 <- ggplot(data = Gmi_Ham_A_Ham_nohighhet_data,
   guides(color = guide_legend(override.aes = list(size = 16)))
 PCA_23
 
-#### Species A Bas PCA ####    
+#### Species A Ham PCA ####    
 #noLD
-#no highhet individuals here
 
 #add columns for Location & Era
-Gmi_Ham_A_Bas_data <- Gmi_Ham_A_Bas_data %>%
+Gmi_Ham_A_Ham_data <- Gmi_Ham_A_Ham_data %>%
   mutate(Location =
-           case_when(endsWith(Population, "Bas") ~ "Basud River")) %>% 
+           case_when(endsWith(Population, "Ham") ~ "Hamilo",
+                     endsWith(Population, "Bat") ~ "Hamilo")) %>% 
   mutate(Era =
-           case_when(endsWith(Population, "ABas") ~ "Historical",
-                     endsWith(Population,"CBas") ~ "Contemporary")) %>%
+           case_when(endsWith(Population, "AHam") ~ "Historical",
+                     endsWith(Population,"CBat") ~ "Contemporary")) %>%
   relocate(Location, .before = Population) %>%
   relocate(Era, .before = Location)
 
 #calculate % variance each PC explains by adding up all eigenvalues in *.eigenval file
-varPC1 <- (Gmi_Ham_A_Bas_eigenval[1,1] / sum(Gmi_Ham_A_Bas_eigenval$V1))*100
-varPC2 <- (Gmi_Ham_A_Bas_eigenval[2,1] / sum(Gmi_Ham_A_Bas_eigenval$V1))*100
-varPC3 <- (Gmi_Ham_A_Bas_eigenval[3,1] / sum(Gmi_Ham_A_Bas_eigenval$V1))*100
+varPC1 <- (Gmi_Ham_A_Ham_eigenval[1,1] / sum(Gmi_Ham_A_Ham_eigenval$V1))*100
+varPC2 <- (Gmi_Ham_A_Ham_eigenval[2,1] / sum(Gmi_Ham_A_Ham_eigenval$V1))*100
+varPC3 <- (Gmi_Ham_A_Ham_eigenval[3,1] / sum(Gmi_Ham_A_Ham_eigenval$V1))*100
 
 #PCA
-PCA_12 <- ggplot(data = Gmi_Ham_A_Bas_data, 
+PCA_12 <- ggplot(data = Gmi_Ham_A_Ham_data, 
                  aes(x = PC1, y = PC2, color = Era, shape = Era)) + 
-  geom_point(size = 16) + ggtitle("PC1 v. PC2") + 
-  scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
-  scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
-  labs(x = "PC1 (explains 11.24% of total variance)", y = "PC2 (explains 9.42% of total variance)") + 
-  scale_size(guide = "none") + theme_bw() + 
-  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
-        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
-        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
-        axis.title = element_text(size = 26)) + 
-  guides(color = guide_legend(override.aes = list(size = 16)))
+  geom_point(size = 18) +
+  scale_color_manual(values = c("#afc8a4", "#1c3b0e"), labels = c("Contemporary", "Historical")) + 
+  scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
+  labs(x = "PC1 (explains 20.40% of total variance)", y = "PC2 (explains 5.76% of total variance)") + 
+  scale_size(guide = "none") + 
+  theme_bw() + 
+  theme(panel.border = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(linewidth = 4), 
+        plot.title = element_blank(), 
+        axis.ticks = element_line(color = "black", linewidth = 4), 
+        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
+        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
+        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
+        axis.title.x = element_text(size = 55, color = "black", vjust = -1), 
+        legend.position = "none", 
+        plot.margin = unit(c(0.5,1.5,1,1), "cm"))
 PCA_12
 
-PCA_13 <- ggplot(data = Gmi_Ham_A_Bas_data, 
+PCA_13 <- ggplot(data = Gmi_Ham_A_Ham_data, 
                  aes(x = PC1, y = PC3, color = Era, shape = Era)) + 
   geom_point(size = 16) + ggtitle("PC1 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
-  labs(x = "PC1 (explains 11.24% of total variance)", y = "PC3 (explains 6.17% of total variance)") + 
+  labs(x = "PC1 (explains 20.40% of total variance)", y = "PC3 (explains 5.49% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -548,12 +540,12 @@ PCA_13 <- ggplot(data = Gmi_Ham_A_Bas_data,
   guides(color = guide_legend(override.aes = list(size = 16)))
 PCA_13
 
-PCA_23 <- ggplot(data = Gmi_Ham_A_Bas_data, 
+PCA_23 <- ggplot(data = Gmi_Ham_A_Ham_nohighhet_data, 
                  aes(x = PC2, y = PC3, color = Era, shape = Era)) + 
   geom_point(size = 16) + ggtitle("PC2 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
-  labs(x = "PC2 (explains 9.42% of total variance)", y = "PC3 (explains 6.17% of total variance)") + 
+  labs(x = "PC2 (explains 5.76% of total variance)", y = "PC3 (explains 5.49% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -568,8 +560,8 @@ PCA_23
 ######## Ela PCAs ########
 
 #read in data
-preHWE_Ela_Ham_eigenval <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.preHWE.eigenval"), header = FALSE, sep = " ")
-  preHWE_Ela_Ham_data <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.preHWE.eigenvec"), header = FALSE, sep = " ")
+preHWE_Ela_Ham_eigenval <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.rescaled.preHWE.eigenval"), header = FALSE, sep = " ")
+  preHWE_Ela_Ham_data <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.rescaled.preHWE.eigenvec"), header = FALSE, sep = " ")
   colnames(preHWE_Ela_Ham_data) <- eigenvec_names
 Ela_Ham_eigenval <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.eigenval"), header = FALSE, sep = " ") #noLD
   Ela_Ham_data <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.eigenvec"), header = FALSE, sep = " ")
@@ -577,12 +569,12 @@ Ela_Ham_eigenval <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.eigenval"),
 Ela_Ham_Ela_eigenval <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.Ela.eigenval"), header = FALSE, sep = " ")
   Ela_Ham_Ela_data <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.Ela.eigenvec"), header = FALSE, sep = " ")
   colnames(Ela_Ham_Ela_data) <- eigenvec_names
-Ela_Ham_Ela_nohighhet_eigenval <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.Ela.nohighhet.eigenval"), header = FALSE, sep = " ")
-  Ela_Ham_Ela_nohighhet_data <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.Ela.nohighhet.eigenvec"), header = FALSE, sep = " ")
-  colnames(Ela_Ham_Ela_nohighhet_data) <- eigenvec_names
 Ela_Ham_Lle_eigenval <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.Lle.eigenval"), header = FALSE, sep = " ")
   Ela_Ham_Lle_data <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.Lle.eigenvec"), header = FALSE, sep = " ")
   colnames(Ela_Ham_Lle_data) <- eigenvec_names
+Ela_Ham_Ela_nohighhet_eigenval <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.Ela.nohighhet.eigenval"), header = FALSE, sep = " ")
+  Ela_Ham_Ela_nohighhet_data <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.Ela.nohighhet.eigenvec"), header = FALSE, sep = " ")
+  colnames(Ela_Ham_Ela_nohighhet_data) <- eigenvec_names
 
 #### preHWE PCA ####    
 
@@ -606,7 +598,7 @@ preHWE_PCA_12 <- ggplot(data = preHWE_Ela_Ham_data, aes(x = PC1, y = PC2, color 
   geom_point(size = 16) + ggtitle("PC1 v. PC2") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
-  labs(x = "PC1 (explains 56.18% of total variance)", y = "PC2 (explains 3.5% of total variance)") + 
+  labs(x = "PC1 (explains 55.83% of total variance)", y = "PC2 (explains 3.58% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -641,7 +633,7 @@ PCA_12 <- ggplot(data = Ela_Ham_data,
   geom_point(size = 18) +
   scale_color_manual(values = c("#8aa9be", "#16537e"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
-  labs(x = "PC1 (explains 46.15% of total variance)", y = "PC2 (explains 4.33% of total variance)") + 
+  labs(x = "PC1 (explains 45.55% of total variance)", y = "PC2 (explains 4.44% of total variance)") + 
   scale_size(guide = "none") + 
   theme_bw() + 
   theme(panel.border = element_blank(), 
@@ -662,7 +654,7 @@ PCA_13 <- ggplot(data = Ela_Ham_data, aes(x = PC1, y = PC3, color = Era, shape =
   geom_point(size = 16) + ggtitle("PC1 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
-  labs(x = "PC1 (explains 46.15% of total variance)", y = "PC3 (explains 3.67% of total variance)") + 
+  labs(x = "PC1 (explains 45.55% of total variance)", y = "PC3 (explains 3.76% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -676,7 +668,7 @@ PCA_23 <- ggplot(data = Ela_Ham_data, aes(x = PC2, y = PC3, color = Era, shape =
   geom_point(size = 16) + ggtitle("PC2 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
-  labs(x = "PC2 (explains 4.33% of total variance)", y = "PC3 (explains 3.67% of total variance)") + 
+  labs(x = "PC2 (explains 4.44% of total variance)", y = "PC3 (explains 3.76% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -711,7 +703,7 @@ PCA_12 <- ggplot(data = Ela_Ham_Ela_data,
   geom_point(size = 18) +
   scale_color_manual(values = c("#8aa9be", "#16537e"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
-  labs(x = "PC1 (explains 7.04% of total variance)", y = "PC2 (explains 6.21% of total variance)") + 
+  labs(x = "PC1 (explains 7.19% of total variance)", y = "PC2 (explains 6.11% of total variance)") + 
   scale_size(guide = "none") + 
   theme_bw() + 
   theme(panel.border = element_blank(), 
@@ -732,7 +724,7 @@ PCA_13 <- ggplot(data = Ela_Ham_Ela_data, aes(x = PC1, y = PC3, color = Era, sha
   geom_point(size = 16) + ggtitle("PC1 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
-  labs(x = "PC1 (explains 7.04% of total variance)", y = "PC3 (explains 5.97% of total variance)") + 
+  labs(x = "PC1 (explains 7.19% of total variance)", y = "PC3 (explains 5.94% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -746,7 +738,69 @@ PCA_23 <- ggplot(data = Ela_Ham_Ela_data, aes(x = PC2, y = PC3, color = Era, sha
   geom_point(size = 16) + ggtitle("PC2 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
-  labs(x = "PC2 (explains 6.21% of total variance)", y = "PC3 (explains 5.97% of total variance)") + 
+  labs(x = "PC2 (explains 6.11% of total variance)", y = "PC3 (explains 5.94% of total variance)") + 
+  scale_size(guide = "none") + theme_bw() + 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
+        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
+        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
+        axis.title = element_text(size = 26)) + 
+  guides(color = guide_legend(override.aes = list(size = 16)))
+PCA_23
+
+#### Lle PCA ####    
+#noLD
+
+#add columns for Location & Era
+Ela_Ham_Lle_data <- Ela_Ham_Lle_data %>%
+  mutate(Location =
+           case_when(endsWith(Population, "Ham") ~ "Hamilo",
+                     endsWith(Population, "Nas") ~ "Hamilo")) %>% 
+  mutate(Era =
+           case_when(endsWith(Population, "AHam") ~ "Historical",
+                     endsWith(Population, "CNas") ~ "Contemporary")) %>%
+  relocate(Location, .before = Population) %>%
+  relocate(Era, .before = Location)
+
+#calculate % variance each PC explains by adding up all eigenvalues in *.eigenval file
+varPC1 <- (Ela_Ham_Lle_eigenval[1,1] / sum(Ela_Ham_Lle_eigenval$V1))*100
+varPC2 <- (Ela_Ham_Lle_eigenval[2,1] / sum(Ela_Ham_Lle_eigenval$V1))*100
+varPC3 <- (Ela_Ham_Lle_eigenval[3,1] / sum(Ela_Ham_Lle_eigenval$V1))*100
+
+#PCA
+PCA_12 <- ggplot(data = Ela_Ham_Lle_data, aes(x = PC1, y = PC2, color = Era, shape = Era)) + 
+  geom_point(size = 16) + ggtitle("PC1 v. PC2") + 
+  scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
+  scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
+  labs(x = "PC1 (explains 9.46% of total variance)", y = "PC2 (explains 8.48% of total variance)") + 
+  scale_size(guide = "none") + theme_bw() + 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
+        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
+        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
+        axis.title = element_text(size = 26)) + 
+  guides(color = guide_legend(override.aes = list(size = 16)))
+PCA_12
+
+PCA_13 <- ggplot(data = Ela_Ham_Lle_data, aes(x = PC1, y = PC3, color = Era, shape = Era)) + 
+  geom_point(size = 16) + ggtitle("PC1 v. PC3") + 
+  scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
+  scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
+  labs(x = "PC1 (explains 9.46% of total variance)", y = "PC3 (explains 6.27% of total variance)") + 
+  scale_size(guide = "none") + theme_bw() + 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
+        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
+        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
+        axis.title = element_text(size = 26)) + 
+  guides(color = guide_legend(override.aes = list(size = 16)))
+PCA_13
+
+PCA_23 <- ggplot(data = Ela_Ham_Lle_data, aes(x = PC2, y = PC3, color = Era, shape = Era)) + 
+  geom_point(size = 16) + ggtitle("PC2 v. PC3") + 
+  scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
+  scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
+  labs(x = "PC2 (explains 8.48% of total variance)", y = "PC3 (explains 6.27% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -781,7 +835,7 @@ PCA_12 <- ggplot(data = Ela_Ham_Ela_nohighhet_data,
   geom_point(size = 18) +
   scale_color_manual(values = c("#8aa9be", "#16537e"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
-  labs(x = "PC1 (explains 6.41% of total variance)", y = "PC2 (explains 6.11% of total variance)") + 
+  labs(x = "PC1 (explains 6.25% of total variance)", y = "PC2 (explains 6.11% of total variance)") + 
   scale_size(guide = "none") + 
   theme_bw() + 
   theme(panel.border = element_blank(), 
@@ -803,7 +857,7 @@ PCA_13 <- ggplot(data = Ela_Ham_Ela_nohighhet_data,
   geom_point(size = 16) + ggtitle("PC1 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
-  labs(x = "PC1 (explains 6.41% of total variance)", y = "PC3 (explains 5.85% of total variance)") + 
+  labs(x = "PC1 (explains 6.25% of total variance)", y = "PC3 (explains 5.67% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -818,69 +872,7 @@ PCA_23 <- ggplot(data = Ela_Ham_Ela_nohighhet_data,
   geom_point(size = 16) + ggtitle("PC2 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
-  labs(x = "PC2 (explains 6.11% of total variance)", y = "PC3 (explains 5.85% of total variance)") + 
-  scale_size(guide = "none") + theme_bw() + 
-  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
-        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
-        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
-        axis.title = element_text(size = 26)) + 
-  guides(color = guide_legend(override.aes = list(size = 16)))
-PCA_23
-
-#### Lle PCA ####    
-#noLD
-
-#add columns for Location & Era
-Ela_Ham_Lle_data <- Ela_Ham_Lle_data %>%
-  mutate(Location =
-           case_when(endsWith(Population, "Ham") ~ "Hamilo",
-                     endsWith(Population, "Nas") ~ "Hamilo")) %>% 
-  mutate(Era =
-           case_when(endsWith(Population, "AHam") ~ "Historical",
-                     endsWith(Population, "CNas") ~ "Contemporary")) %>%
-  relocate(Location, .before = Population) %>%
-  relocate(Era, .before = Location)
-
-#calculate % variance each PC explains by adding up all eigenvalues in *.eigenval file
-varPC1 <- (Ela_Ham_Lle_eigenval[1,1] / sum(Ela_Ham_Lle_eigenval$V1))*100
-varPC2 <- (Ela_Ham_Lle_eigenval[2,1] / sum(Ela_Ham_Lle_eigenval$V1))*100
-varPC3 <- (Ela_Ham_Lle_eigenval[3,1] / sum(Ela_Ham_Lle_eigenval$V1))*100
-
-#PCA
-PCA_12 <- ggplot(data = Ela_Ham_Lle_data, aes(x = PC1, y = PC2, color = Era, shape = Era)) + 
-  geom_point(size = 16) + ggtitle("PC1 v. PC2") + 
-  scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
-  scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
-  labs(x = "PC1 (explains 9.17% of total variance)", y = "PC2 (explains 8.47% of total variance)") + 
-  scale_size(guide = "none") + theme_bw() + 
-  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
-        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
-        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
-        axis.title = element_text(size = 26)) + 
-  guides(color = guide_legend(override.aes = list(size = 16)))
-PCA_12
-
-PCA_13 <- ggplot(data = Ela_Ham_Lle_data, aes(x = PC1, y = PC3, color = Era, shape = Era)) + 
-  geom_point(size = 16) + ggtitle("PC1 v. PC3") + 
-  scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
-  scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
-  labs(x = "PC1 (explains 9.17% of total variance)", y = "PC3 (explains 6.42% of total variance)") + 
-  scale_size(guide = "none") + theme_bw() + 
-  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
-        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
-        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
-        axis.title = element_text(size = 26)) + 
-  guides(color = guide_legend(override.aes = list(size = 16)))
-PCA_13
-
-PCA_23 <- ggplot(data = Ela_Ham_Lle_data, aes(x = PC2, y = PC3, color = Era, shape = Era)) + 
-  geom_point(size = 16) + ggtitle("PC2 v. PC3") + 
-  scale_color_manual(values = c("#000000", "#999999"), labels = c("Historical", "Contemporary")) + 
-  scale_shape_manual(values = c(16, 17), labels = c("Historical", "Contemporary")) + 
-  labs(x = "PC2 (explains 8.47% of total variance)", y = "PC3 (explains 6.42% of total variance)") + 
+  labs(x = "PC2 (explains 6.11% of total variance)", y = "PC3 (explains 5.67% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -895,19 +887,22 @@ PCA_23
 ######## Aen PCAs ########
 
 #read in data
-preHWE_Aen_Ham_eigenval <- read.csv(here("PIRE_Aen_Ham/PCAs", "PIRE.Aen.Ham.preHWE.eigenval"), header = FALSE, sep = " ")
-  preHWE_Aen_Ham_data <- read.csv(here("PIRE_Aen_Ham/PCAs", "PIRE.Aen.Ham.preHWE.eigenvec"), header = FALSE, sep = " ")
+preHWE_Aen_Ham_eigenval <- read.csv(here("Data/Aen_Ham/PCAs", "PIRE.Aen.Ham.rescaled.preHWE.eigenval"), header = FALSE, sep = " ")
+  preHWE_Aen_Ham_data <- read.csv(here("Data/Aen_Ham/PCAs", "PIRE.Aen.Ham.rescaled.preHWE.eigenvec"), header = FALSE, sep = " ")
   colnames(preHWE_Aen_Ham_data) <- eigenvec_names
-Aen_Ham_eigenval <- read.csv(here("PIRE_Aen_Ham/PCAs", "PIRE.Aen.Ham.eigenval"), header = FALSE, sep = " ") #noLD
-  Aen_Ham_data <- read.csv(here("PIRE_Aen_Ham/PCAs", "PIRE.Aen.Ham.eigenvec"), header = FALSE, sep = " ")
+Aen_Ham_eigenval <- read.csv(here("Data/Aen_Ham/PCAs", "PIRE.Aen.Ham.eigenval"), header = FALSE, sep = " ") #noLD
+  Aen_Ham_data <- read.csv(here("Data/Aen_Ham/PCAs", "PIRE.Aen.Ham.eigenvec"), header = FALSE, sep = " ")
   colnames(Aen_Ham_data) <- eigenvec_names
-Aen_Ham_A_eigenval <- read.csv(here("PIRE_Aen_Ham/PCAs", "PIRE.Aen.Ham.A.eigenval"), header = FALSE, sep = " ") #noLD
-  Aen_Ham_A_data <- read.csv(here("PIRE_Aen_Ham/PCAs", "PIRE.Aen.Ham.A.eigenvec"), header = FALSE, sep = " ")
+Aen_Ham_A_eigenval <- read.csv(here("Data/Aen_Ham/PCAs", "PIRE.Aen.Ham.A.eigenval"), header = FALSE, sep = " ") #noLD
+  Aen_Ham_A_data <- read.csv(here("Data/Aen_Ham/PCAs", "PIRE.Aen.Ham.A.eigenvec"), header = FALSE, sep = " ")
   colnames(Aen_Ham_A_data) <- eigenvec_names
-Aen_Ham_B_eigenval <- read.csv(here("PIRE_Aen_Ham/PCAs", "PIRE.Aen.Ham.B.eigenval"), header = FALSE, sep = " ") #noLD
-  Aen_Ham_B_data <- read.csv(here("PIRE_Aen_Ham/PCAs", "PIRE.Aen.Ham.B.eigenvec"), header = FALSE, sep = " ")
-  colnames(Aen_Ham_B_data) <- c("Population", "Individual", "PC1", "PC2", "PC3", "PC4", "PC5") #only 5 individs, so only 5 PCs
-
+Aen_Ham_A_nohighhet_eigenval <- read.csv(here("Data/Aen_Ham/PCAs", "PIRE.Aen.Ham.A.nohighhet.eigenval"), header = FALSE, sep = " ") #noLD
+  Aen_Ham_A_nohighhet_data <- read.csv(here("Data/Aen_Ham/PCAs", "PIRE.Aen.Ham.A.nohighhet.eigenvec"), header = FALSE, sep = " ")
+  colnames(Aen_Ham_A_nohighhet_data) <- eigenvec_names
+Aen_Ham_A_nohighhet_unrelated_eigenval <- read.csv(here("Data/Aen_Ham/PCAs", "PIRE.Aen.Ham.A.nohighhet.unrelated.eigenval"), header = FALSE, sep = " ") #noLD
+  Aen_Ham_A_nohighhet_unrelated_data <- read.csv(here("Data/Aen_Ham/PCAs", "PIRE.Aen.Ham.A.nohighhet.unrelated.eigenvec"), header = FALSE, sep = " ")
+  colnames(Aen_Ham_A_nohighhet_unrelated_data) <- eigenvec_names
+  
 #### preHWE PCA ####    
 
 #add columns for Location & Era
@@ -930,7 +925,7 @@ preHWE_PCA_12 <- ggplot(data = preHWE_Aen_Ham_data, aes(x = PC1, y = PC2, color 
   geom_point(size = 16) + ggtitle("PC1 v. PC2") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Contemporary", "Historical")) + 
-  labs(x = "PC1 (explains 49.92% of total variance)", y = "PC2 (explains 31.32% of total variance)") + 
+  labs(x = "PC1 (explains 56.72% of total variance)", y = "PC2 (explains 31.62% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -960,33 +955,25 @@ varPC2 <- (Aen_Ham_eigenval[2,1] / sum(Aen_Ham_eigenval$V1))*100
 varPC3 <- (Aen_Ham_eigenval[3,1] / sum(Aen_Ham_eigenval$V1))*100
 
 #PCA
-PCA_12 <- ggplot(data = Aen_Ham_data, 
-                 aes(x = PC1, y = PC2, color = Era, shape = Era)) + 
-  geom_point(size = 18) +
-  scale_color_manual(values = c("#e3ccb4", "#a25505"), labels = c("Contemporary", "Historical")) + 
-  scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
-  labs(x = "PC1 (explains 43.07% of total variance)", y = "PC2 (explains 24.71% of total variance)") + 
-  scale_size(guide = "none") + 
-  theme_bw() + 
-  theme(panel.border = element_blank(), 
-        panel.grid.major = element_blank(), 
-        panel.grid.minor = element_blank(), 
-        axis.line = element_line(linewidth = 4), 
-        plot.title = element_blank(), 
-        axis.ticks = element_line(color = "black", linewidth = 4), 
-        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
-        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1), 
-        legend.position = "none", 
-        plot.margin = unit(c(0.5,2.2,1,1), "cm"))
+PCA_12 <- ggplot(data = Aen_Ham_data, aes(x = PC1, y = PC3, color = Era, shape = Era)) + 
+  geom_point(size = 16) + ggtitle("PC1 v. PC2") + 
+  scale_color_manual(values = c("#000000", "#999999"), labels = c("Contemporary", "Historical")) + 
+  scale_shape_manual(values = c(16, 17), labels = c("Contemporary", "Historical")) + 
+  labs(x = "PC1 (explains 54.77% of total variance)", y = "PC3 (explains 24.79% of total variance)") + 
+  scale_size(guide = "none") + theme_bw() + 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
+        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
+        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
+        axis.title = element_text(size = 26)) + 
+  guides(color = guide_legend(override.aes = list(size = 16)))
 PCA_12
 
 PCA_13 <- ggplot(data = Aen_Ham_data, aes(x = PC1, y = PC3, color = Era, shape = Era)) + 
   geom_point(size = 16) + ggtitle("PC1 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Contemporary", "Historical")) + 
-  labs(x = "PC1 (explains 43.07% of total variance)", y = "PC3 (explains 11.62% of total variance)") + 
+  labs(x = "PC1 (explains 54.77% of total variance)", y = "PC3 (explains 6.98% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -1000,7 +987,7 @@ PCA_23 <- ggplot(data = Aen_Ham_data, aes(x = PC2, y = PC3, color = Era, shape =
   geom_point(size = 16) + ggtitle("PC2 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Contemporary", "Historical")) + 
-  labs(x = "PC2 (explains 24.71% of total variance)", y = "PC3 (explains 11.62% of total variance)") + 
+  labs(x = "PC2 (explains 24.79% of total variance)", y = "PC3 (explains 6.98% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -1035,7 +1022,7 @@ PCA_12 <- ggplot(data = Aen_Ham_A_data,
   geom_point(size = 18) +
   scale_color_manual(values = c("#e3ccb4", "#a25505"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
-  labs(x = "PC1 (explains 11.01% of total variance)", y = "PC2 (explains 9.73% of total variance)") + 
+  labs(x = "PC1 (explains 8.64% of total variance)", y = "PC2 (explains 6.60% of total variance)") + 
   scale_size(guide = "none") + 
   theme_bw() + 
   theme(panel.border = element_blank(), 
@@ -1056,7 +1043,7 @@ PCA_13 <- ggplot(data = Aen_Ham_A_data, aes(x = PC1, y = PC3, color = Era, shape
   geom_point(size = 16) + ggtitle("PC1 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Contemporary", "Historical")) + 
-  labs(x = "PC1 (explains 11.01% of total variance)", y = "PC3 (explains 7.02% of total variance)") + 
+  labs(x = "PC1 (explains 8.64% of total variance)", y = "PC3 (explains 6.17% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -1070,7 +1057,7 @@ PCA_23 <- ggplot(data = Aen_Ham_A_data, aes(x = PC2, y = PC3, color = Era, shape
   geom_point(size = 16) + ggtitle("PC2 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Contemporary", "Historical")) + 
-  labs(x = "PC2 (explains 9.73% of total variance)", y = "PC3 (explains 7.02% of total variance)") + 
+  labs(x = "PC2 (explains 6.60% of total variance)", y = "PC3 (explains 6.17% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -1080,11 +1067,11 @@ PCA_23 <- ggplot(data = Aen_Ham_A_data, aes(x = PC2, y = PC3, color = Era, shape
   guides(color = guide_legend(override.aes = list(size = 16)))
 PCA_23
 
-#### pop B PCA ####    
+#### pop A nohighhet PCA ####    
 #noLD
 
 #add columns for Location & Era
-Aen_Ham_B_data <- Aen_Ham_B_data %>%
+Aen_Ham_A_nohighhet_data <- Aen_Ham_A_nohighhet_data %>%
   mutate(Location =
            case_when(endsWith(Population, "Ham") ~ "Hamilo",
                      endsWith(Population, "bat") ~ "Hamilo")) %>% 
@@ -1095,30 +1082,38 @@ Aen_Ham_B_data <- Aen_Ham_B_data %>%
   relocate(Era, .before = Location)
 
 #calculate % variance each PC explains by adding up all eigenvalues in *.eigenval file
-varPC1 <- (Aen_Ham_B_eigenval[1,1] / sum(Aen_Ham_B_eigenval$V1))*100
-varPC2 <- (Aen_Ham_B_eigenval[2,1] / sum(Aen_Ham_B_eigenval$V1))*100
-varPC3 <- (Aen_Ham_B_eigenval[3,1] / sum(Aen_Ham_B_eigenval$V1))*100
+varPC1 <- (Aen_Ham_A_nohighhet_eigenval[1,1] / sum(Aen_Ham_A_nohighhet_eigenval$V1))*100
+varPC2 <- (Aen_Ham_A_nohighhet_eigenval[2,1] / sum(Aen_Ham_A_nohighhet_eigenval$V1))*100
+varPC3 <- (Aen_Ham_A_nohighhet_eigenval[3,1] / sum(Aen_Ham_A_nohighhet_eigenval$V1))*100
 
 #PCA
-PCA_12 <- ggplot(data = Aen_Ham_B_data, aes(x = PC1, y = PC2, color = Era, shape = Era)) + 
-  geom_point(size = 16) + ggtitle("PC1 v. PC2") + 
-  scale_color_manual(values = c("#000000", "#999999"), labels = c("Contemporary", "Historical")) + 
-  scale_shape_manual(values = c(16, 17), labels = c("Contemporary", "Historical")) + 
-  labs(x = "PC1 (explains 51.74% of total variance)", y = "PC2 (explains 34.58% of total variance)") + 
-  scale_size(guide = "none") + theme_bw() + 
-  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
-        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
-        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
-        axis.title = element_text(size = 26)) + 
-  guides(color = guide_legend(override.aes = list(size = 16)))
+PCA_12 <- ggplot(data = Aen_Ham_A_nohighhet_data, 
+                 aes(x = PC1, y = PC2, color = Era, shape = Era)) + 
+  geom_point(size = 18) +
+  scale_color_manual(values = c("#e3ccb4", "#a25505"), labels = c("Contemporary", "Historical")) + 
+  scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
+  labs(x = "PC1 (explains 8.65% of total variance)", y = "PC2 (explains 6.88% of total variance)") + 
+  scale_size(guide = "none") + 
+  theme_bw() + 
+  theme(panel.border = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(linewidth = 4), 
+        plot.title = element_blank(), 
+        axis.ticks = element_line(color = "black", linewidth = 4), 
+        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
+        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
+        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
+        axis.title.x = element_text(size = 55, color = "black", vjust = -1), 
+        legend.position = "none", 
+        plot.margin = unit(c(0.5,1.5,1,1), "cm"))
 PCA_12
 
-PCA_13 <- ggplot(data = Aen_Ham_B_data, aes(x = PC1, y = PC3, color = Era, shape = Era)) + 
+PCA_13 <- ggplot(data = Aen_Ham_A_nohighhet_data, aes(x = PC1, y = PC3, color = Era, shape = Era)) + 
   geom_point(size = 16) + ggtitle("PC1 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Contemporary", "Historical")) + 
-  labs(x = "PC1 (explains 51.74% of total variance)", y = "PC3 (explains 8.68% of total variance)") + 
+  labs(x = "PC1 (explains 8.65% of total variance)", y = "PC3 (explains 6.47% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
@@ -1128,11 +1123,81 @@ PCA_13 <- ggplot(data = Aen_Ham_B_data, aes(x = PC1, y = PC3, color = Era, shape
   guides(color = guide_legend(override.aes = list(size = 16)))
 PCA_13
 
-PCA_23 <- ggplot(data = Aen_Ham_B_data, aes(x = PC2, y = PC3, color = Era, shape = Era)) + 
+PCA_23 <- ggplot(data = Aen_Ham_A_nohighhet_data, aes(x = PC2, y = PC3, color = Era, shape = Era)) + 
   geom_point(size = 16) + ggtitle("PC2 v. PC3") + 
   scale_color_manual(values = c("#000000", "#999999"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(16, 17), labels = c("Contemporary", "Historical")) + 
-  labs(x = "PC2 (explains 34.58% of total variance)", y = "PC3 (explains 8.68% of total variance)") + 
+  labs(x = "PC2 (explains 6.88% of total variance)", y = "PC3 (explains 6.45% of total variance)") + 
+  scale_size(guide = "none") + theme_bw() + 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
+        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
+        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
+        axis.title = element_text(size = 26)) + 
+  guides(color = guide_legend(override.aes = list(size = 16)))
+PCA_23
+
+#### pop A nohighhet unrelated PCA ####    
+#noLD
+
+#add columns for Location & Era
+Aen_Ham_A_nohighhet_unrelated_data <- Aen_Ham_A_nohighhet_unrelated_data %>%
+  mutate(Location =
+           case_when(endsWith(Population, "Ham") ~ "Hamilo",
+                     endsWith(Population, "bat") ~ "Hamilo")) %>% 
+  mutate(Era =
+           case_when(endsWith(Population, "AHam") ~ "Historical",
+                     endsWith(Population, "Cbat") ~ "Contemporary")) %>%
+  relocate(Location, .before = Population) %>%
+  relocate(Era, .before = Location)
+
+#calculate % variance each PC explains by adding up all eigenvalues in *.eigenval file
+varPC1 <- (Aen_Ham_A_nohighhet_unrelated_eigenval[1,1] / sum(Aen_Ham_A_nohighhet_unrelated_eigenval$V1))*100
+varPC2 <- (Aen_Ham_A_nohighhet_unrelated_eigenval[2,1] / sum(Aen_Ham_A_nohighhet_unrelated_eigenval$V1))*100
+varPC3 <- (Aen_Ham_A_nohighhet_unrelated_eigenval[3,1] / sum(Aen_Ham_A_nohighhet_unrelated_eigenval$V1))*100
+
+#PCA
+PCA_12 <- ggplot(data = Aen_Ham_A_nohighhet_unrelated_data, 
+                 aes(x = PC1, y = PC2, color = Era, shape = Era)) + 
+  geom_point(size = 18) +
+  scale_color_manual(values = c("#e3ccb4", "#a25505"), labels = c("Contemporary", "Historical")) + 
+  scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
+  labs(x = "PC1 (explains 8.58% of total variance)", y = "PC2 (explains 6.85% of total variance)") + 
+  scale_size(guide = "none") + 
+  theme_bw() + 
+  theme(panel.border = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(linewidth = 4), 
+        plot.title = element_blank(), 
+        axis.ticks = element_line(color = "black", linewidth = 4), 
+        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
+        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
+        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
+        axis.title.x = element_text(size = 55, color = "black", vjust = -1), 
+        legend.position = "none", 
+        plot.margin = unit(c(0.5,1.5,1,1), "cm"))
+PCA_12
+
+PCA_13 <- ggplot(data = Aen_Ham_A_nohighhet_unrelated_data, aes(x = PC1, y = PC3, color = Era, shape = Era)) + 
+  geom_point(size = 16) + ggtitle("PC1 v. PC3") + 
+  scale_color_manual(values = c("#000000", "#999999"), labels = c("Contemporary", "Historical")) + 
+  scale_shape_manual(values = c(16, 17), labels = c("Contemporary", "Historical")) + 
+  labs(x = "PC1 (explains 8.58% of total variance)", y = "PC3 (explains 6.45% of total variance)") + 
+  scale_size(guide = "none") + theme_bw() + 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+        legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 
+        legend.position = "top", legend.text = element_text(size = 26), legend.title = element_blank(), 
+        axis.ticks = element_line(color = "black", linewidth = 1), axis.text = element_text(size = 26, color = "black"), 
+        axis.title = element_text(size = 26)) + 
+  guides(color = guide_legend(override.aes = list(size = 16)))
+PCA_13
+
+PCA_23 <- ggplot(data = Aen_Ham_A_nohighhet_unrelated_data, aes(x = PC2, y = PC3, color = Era, shape = Era)) + 
+  geom_point(size = 16) + ggtitle("PC2 v. PC3") + 
+  scale_color_manual(values = c("#000000", "#999999"), labels = c("Contemporary", "Historical")) + 
+  scale_shape_manual(values = c(16, 17), labels = c("Contemporary", "Historical")) + 
+  labs(x = "PC2 (explains 6.85% of total variance)", y = "PC3 (explains 6.45% of total variance)") + 
   scale_size(guide = "none") + theme_bw() + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         legend.justification = "center", axis.line = element_line(linewidth = 1), plot.title = element_blank(), 

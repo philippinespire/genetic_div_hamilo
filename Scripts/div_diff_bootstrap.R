@@ -21,7 +21,7 @@ library(boot) #v.1.3.28
 library(vcfR) #v.1.14.0
 
 #read in data
-vcf <- read.vcfR("Data/Aen_Ham/Aen.rename.noLD.A.vcf")
+vcf <- read.vcfR("Data/Aen_Ham/Aen.renamed.noLD.A.nohighhet.vcf")
   genind <- vcfR2genind(vcf) #convert to genind object for analyses
 
 ################################################################################################################################################
@@ -30,7 +30,7 @@ vcf <- read.vcfR("Data/Aen_Ham/Aen.rename.noLD.A.vcf")
 
 #add population level data
 #will resample this to create simulated datasets
-pop <- c(rep(1, times = 55), rep(2, times = 92)) #1 = Albatross, 2 = Contemporary
+pop <- c(rep(1, times = 30), rep(2, times = 92)) #1 = Albatross, 2 = Contemporary
 
 #create vectors to populate
 permutation_Ho <- c()
