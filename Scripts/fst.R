@@ -30,17 +30,10 @@ Ela_vcf <- read.vcfR("Data/Ela_Ham/Ela.renamed.noLD.Ela.nohighhet.vcf")
   Ela_genind <- vcfR2genind(Ela_vcf)
 Ela_cryptic_vcf <- read.vcfR("Data/Ela_Ham/Ela.renamed.noLD.vcf")
   Ela_cryptic_genind <- vcfR2genind(Ela_cryptic_vcf)
-Aen_vcf <- read.vcfR("Data/Aen_Ham/Aen.renamed.noLD.A.nohighhet.vcf")
-  Aen_genind <- vcfR2genind(Aen_vcf) 
-Aen_unrelated_vcf <- read.vcfR("Data/Aen_Ham/Aen.renamed.noLD.A.nohighhet.unrelated.vcf")
-  Aen_unrelated_genind <- vcfR2genind(Aen_unrelated_vcf)
 
 #read in pixy fst windows 
 Gmi_fst <- read.table(here("Data/Gmi_Ham/pixy", "pixy_fst.txt"), header = TRUE)
 Ela_fst <- read.table(here("Data/Ela_Ham/pixy", "pixy_fst.txt"), header = TRUE)
-Aen_fst <- read.table(here("Data/Aen_Ham/pixy", "pixy_fst.txt"), header = TRUE)
-Aen_unrelated_fst <- read.table(here("Data/Aen_Ham/pixy", "pixy_unrelated_fst.txt"), 
-                                header = TRUE)
 
 #read in BayeScan
 Gmi_BayeScan <- read.csv(here("Data/Gmi_Ham", "Gmi_A_Ham_nohighhet_SNPs_pr10_fst.txt"), header = TRUE, sep = " ")
@@ -51,10 +44,6 @@ Ela_BayeScan <- read.csv(here("Data/Ela_Ham", "Ela_nohighhet_pr10_fst.txt"), hea
   Ela_BayeScan <- Ela_BayeScan[, -2]
   Ela_BayeScan <- Ela_BayeScan[, 1:6]
   colnames(Ela_BayeScan) <- c("index", "prob", "log10(PO)", "qval", "alpha", "fst")
-Aen_BayeScan <- read.csv(here("Data/Aen_Ham", "Aen_A_SNPs_pr10_fst.txt"), header = TRUE, sep = " ")
-  Aen_BayeScan <- Aen_BayeScan[, -2]
-  Aen_BayeScan <- Aen_BayeScan[, 1:6]
-  colnames(Aen_BayeScan) <- c("index", "prob", "log10(PO)", "qval", "alpha", "fst")
 
 #########################################################################################################################
 
@@ -232,153 +221,3 @@ Ela_pixy_fst_window_plot <- ggplot(data = Ela_fst, aes(x = NUM, y = avg_wc_fst))
         axis.ticks = element_line(color = "black", linewidth = 1), 
         axis.text = element_text(size = 28, color = "black"))
 Ela_pixy_fst_window_plot
-
-#############################################################################################################################
-
-######## Aen Fst #######
-
-#### BayeScan output ####
-
-## identify any outliers ##
-#qvalue < 0.05 --> FDR 5% (SNPs with this q-value have 5% prob of being a false positive)
-Aen_pot_outliers <- subset(Aen_BayeScan, qval <= 0.05) #0 outliers
-
-#plot
-Aen_BS_plot <- ggplot(data = Aen_BayeScan, aes(y = qval, x = fst)) + 
-  geom_point(color = "#a25505", alpha = 0.5, size = 16) + 
-  geom_hline(aes(yintercept = 0.05), color = "black", linewidth = 4, linetype = "dashed") + 
-  xlab(bquote(~F[sT])) + ylab("q-value") +
-  theme_bw() + 
-  theme(panel.border = element_rect(linewidth = 4), 
-        plot.title = element_blank(),
-        axis.ticks = element_line(color = "black", linewidth = 4), 
-        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
-        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 65, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1),
-        plot.margin = unit(c(0.5,0.5,1,1), "cm"),)
-Aen_BS_plot
-
-#### Calculate pairwise-Fst ####
-
-#add population level data
-pop <- c(rep(1, times = 30), rep(2, times = 92))
-  pop(Aen_genind) <- pop #1 = Albatross, 2 = Contemporary
-  Aen_genind
-
-Aen_hierf <- genind2hierfstat(Aen_genind) #convert to hierfstat db for pairwise analyses
-Aen_pairwise_fst <- genet.dist(Aen_hierf, method = "WC84") #calculates Weir & Cockerham's Fst
-#0.05743
-
-## bootstrap pairwise_fst for 95% CI ##
-
-#need to convert pop character to numeric for bootstrap to work
-Aen_hierf$pop <- as.numeric(Aen_hierf$pop)
-
-#bootstrap pairwise estimates
-Aen_pairwise_boot <- boot.ppfst(dat = Aen_hierf, nboot = 1000, 
-                                quant = c(0.025, 0.975), diploid = TRUE)
-
-#get 95% CI limits
-Aen_ci_upper <- Aen_pairwise_boot$ul #0.06508
-Aen_ci_lower <- Aen_pairwise_boot$ll #0.05020
-
-#### pixy fst windows ####
-
-#remove Na
-Aen_fst <- Aen_fst[!is.na(Aen_fst$avg_wc_fst), ] #lost 6 windows
-
-#pull out windows with fst > 0.15
-Aen_pixy_pot_outliers <- subset(Aen_fst, avg_wc_fst >= 0.15) #260
-  Aen_pixy_pot_outliers <- Aen_pixy_pot_outliers[order(Aen_pixy_pot_outliers$avg_wc_fst, 
-                                                     decreasing = TRUE),]
-
-#plot windows
-Aen_fst$NUM <- c(1:1065) #just assigning each window a number so can plot
-
-Aen_pixy_fst_window_plot <- ggplot(data = Aen_fst, aes(x = NUM, y = avg_wc_fst)) + 
-  geom_point(color = "#a25505", size = 10, alpha = 0.5) + 
-  geom_hline(yintercept = 0.15, color = "black", linewidth = 2, linetype = "dashed") + 
-  ggtitle("Aen pixy window outliers") + labs(y = "avg fst", x = "position") + 
-  theme_bw() + 
-  theme(panel.border = element_rect(linewidth = 1), 
-        plot.title = element_text(size = 30, color = "black", face = "bold"),
-        axis.title = element_text(size = 28, color = "black"), 
-        axis.ticks = element_line(color = "black", linewidth = 1), 
-        axis.text = element_text(size = 28, color = "black"))
-Aen_pixy_fst_window_plot
-
-#############################################################################################################################
-
-######## Aen unrelated Fst #######
-
-#### BayeScan output ####
-
-## identify any outliers ##
-#qvalue < 0.05 --> FDR 5% (SNPs with this q-value have 5% prob of being a false positive)
-Aen_pot_outliers <- subset(Aen_BayeScan, qval <= 0.05) #0 outliers
-
-#plot
-Aen_BS_plot <- ggplot(data = Aen_BayeScan, aes(y = qval, x = fst)) + 
-  geom_point(color = "#a25505", alpha = 0.5, size = 16) + 
-  geom_hline(aes(yintercept = 0.05), color = "black", linewidth = 4, linetype = "dashed") + 
-  xlab(bquote(~F[sT])) + ylab("q-value") +
-  theme_bw() + 
-  theme(panel.border = element_rect(linewidth = 4), 
-        plot.title = element_blank(),
-        axis.ticks = element_line(color = "black", linewidth = 4), 
-        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
-        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 65, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1),
-        plot.margin = unit(c(0.5,0.5,1,1), "cm"),)
-Aen_BS_plot
-
-#### Calculate pairwise-Fst ####
-
-#add population level data
-pop <- c(rep(1, times = 30), rep(2, times = 84))
-  pop(Aen_unrelated_genind) <- pop #1 = Albatross, 2 = Contemporary
-  Aen_unrelated_genind
-
-Aen_unrelated_hierf <- genind2hierfstat(Aen_unrelated_genind) #convert to hierfstat db for pairwise analyses
-Aen_unrelated_pairwise_fst <- genet.dist(Aen_unrelated_hierf, method = "WC84") #calculates Weir & Cockerham's Fst
-#0.05669
-
-## bootstrap pairwise_fst for 95% CI ##
-
-#need to convert pop character to numeric for bootstrap to work
-Aen_unrelated_hierf$pop <- as.numeric(Aen_unrelated_hierf$pop)
-
-#bootstrap pairwise estimates
-Aen_unrelated_pairwise_boot <- boot.ppfst(dat = Aen_unrelated_hierf, nboot = 1000, 
-                                          quant = c(0.025, 0.975), diploid = TRUE)
-
-#get 95% CI limits
-Aen_unrelated_ci_upper <- Aen_unrelated_pairwise_boot$ul #0.06532
-Aen_unrelated_ci_lower <- Aen_unrelated_pairwise_boot$ll #0.04896
-
-#### pixy fst windows ####
-
-#remove Na
-Aen_unrelated_fst <- Aen_unrelated_fst[!is.na(Aen_unrelated_fst$avg_wc_fst), ] #lost 6 windows
-
-#pull out windows with fst > 0.15
-Aen_unrelated_pixy_pot_outliers <- subset(Aen_unrelated_fst, avg_wc_fst >= 0.15) #260
-Aen_unrelated_pixy_pot_outliers <- Aen_unrelated_pixy_pot_outliers[order(Aen_unrelated_pixy_pot_outliers$avg_wc_fst, 
-                                                                         decreasing = TRUE),]
-
-#plot windows
-Aen_unrelated_fst$NUM <- c(1:1062) #just assigning each window a number so can plot
-
-Aen_pixy_fst_window_plot <- ggplot(data = Aen_unrelated_fst, aes(x = NUM, y = avg_wc_fst)) + 
-  geom_point(color = "#a25505", size = 10, alpha = 0.5) + 
-  geom_hline(yintercept = 0.15, color = "black", linewidth = 2, linetype = "dashed") + 
-  ggtitle("Aen unrelated pixy window outliers") + labs(y = "avg fst", x = "position") + 
-  theme_bw() + 
-  theme(panel.border = element_rect(linewidth = 1), 
-        plot.title = element_text(size = 30, color = "black", face = "bold"),
-        axis.title = element_text(size = 28, color = "black"), 
-        axis.ticks = element_line(color = "black", linewidth = 1), 
-        axis.text = element_text(size = 28, color = "black"))
-Aen_pixy_fst_window_plot

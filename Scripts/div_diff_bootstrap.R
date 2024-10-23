@@ -1,8 +1,8 @@
 ############################## Script for Diversity Diff Permutations  #######################################################
 
-#randomly assigns individuals to two time points (10,000X)
-#calculates difference in Ho & He
-#written for Aen
+#Randomly assigns individuals to two time points (10,000X)
+#Calculates difference in Ho & He
+#Written for Gmi
 
 #################################################################################################################################################
 
@@ -21,7 +21,7 @@ library(boot) #v.1.3.28
 library(vcfR) #v.1.14.0
 
 #read in data
-vcf <- read.vcfR("Data/Aen_Ham/Aen.renamed.noLD.A.nohighhet.vcf")
+vcf <- read.vcfR("Data/Gmi_Ham/Gmi.renamed.noLD.A.nohighhet.Ham.vcf")
   genind <- vcfR2genind(vcf) #convert to genind object for analyses
 
 ################################################################################################################################################
@@ -30,7 +30,7 @@ vcf <- read.vcfR("Data/Aen_Ham/Aen.renamed.noLD.A.nohighhet.vcf")
 
 #add population level data
 #will resample this to create simulated datasets
-pop <- c(rep(1, times = 30), rep(2, times = 92)) #1 = Albatross, 2 = Contemporary
+pop <- c(rep(1, times = 18), rep(2, times = 63)) #1 = Albatross, 2 = Contemporary
 
 #create vectors to populate
 permutation_Ho <- c()
@@ -77,4 +77,4 @@ permutation_diff_div <- as.data.frame(permutation_Ho)
   permutation_diff_div$iteration <- 1:10000
   colnames(permutation_diff_div) <- c("Ho", "He", "Fis", "iteration")
 
-write.csv(permutation_diff_div, "Data/Aen_Ham/Aen_permutation_div.csv")
+write.csv(permutation_diff_div, "Data/Gmi_Ham/GmiHam_permutation_div.csv")

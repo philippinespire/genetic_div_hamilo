@@ -1,7 +1,7 @@
 ######################################## Script for Creating ADMIXTURE Plots  ########################################################
 
-#using pophelper library as described in Francis 2016 - Molecular Ecology Resources
-#manual found at: royfrancis.github.io/pophelper/#1_introduction
+#Using pophelper library as described in Francis 2016 - Molecular Ecology Resources
+#Manual found at: royfrancis.github.io/pophelper/#1_introduction
 #ADMIXTURE plots with no missing data & LD-pruned
 
 #CVs: 1000 x 1000
@@ -81,7 +81,7 @@ CV_plot
 #for preHWE, only going up to K = 2 (to catch cryptic structure)
 
 K2 <- plotQ(preHWE_Gmi_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#FF9329", "#2121D9"),
+            clustercol = c("#1c3b0e", "#afc8a4"),
             showsp = TRUE, spbgcol = "white", splab = "K = 2", splabsize = 6, 
             showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
             grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
@@ -116,32 +116,10 @@ CV_plot <- ggplot(data = CV_df, aes(x=Ks, y = CVs)) +
 CV_plot
 
 ## ADMIXTURE plots ##
-#for postHWE, go up to K = 5
 
 K2 <- plotQ(Gmi_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#FF9329", "#2121D9"),
+            clustercol = c("#1c3b0e", "#afc8a4"),
             showsp = TRUE, spbgcol = "white", splab = "K = 2", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs")
-
-K3 <- plotQ(Gmi_alist[3], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#9999FF", "#FF9329", "#2121D9"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 3", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs")
-
-K4 <- plotQ(Gmi_alist[4], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 4", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs")
-
-K5 <- plotQ(Gmi_alist[5], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23", "#610B5E"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 5", splabsize = 6, 
             showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
             grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
             showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs")
@@ -152,7 +130,7 @@ grplab <- c(rep("Hist - Hamilo", 30), rep("Contemp - Hamilo", 94)) #creates grou
 
 #put group labels into meta.data for plots
 meta.data <- data.frame(loc = grplab)
-meta.data$loc <- as.character(meta.data$loc)
+  meta.data$loc <- as.character(meta.data$loc)
 
 ## ADMIXTURE cross-validation scores ##
 
@@ -181,7 +159,6 @@ CV_plot <- ggplot(data = CV_df, aes(x=Ks, y = CVs)) +
 CV_plot
 
 ## ADMIXTURE plots ##
-#for postHWE, go up to K = 5
 
 K2 <- plotQ(Gmi_Ham_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
             clustercol = c("#1c3b0e", "#afc8a4"),
@@ -189,28 +166,6 @@ K2 <- plotQ(Gmi_Ham_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot =
             showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
             grplab = meta.data, linesize = 1, pointsize = 2, showgrplab = FALSE, grplabspacer = 0.1, 
             showtitle = FALSE, titlelab = "ADMIXTURE plot", showsubtitle = FALSE, subtitlelab = "LD-pruned SNPs, Ham")
-
-K3 <- plotQ(Gmi_alist[3], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#9999FF", "#FF9329", "#2121D9"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 3", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, Ham")
-
-K4 <- plotQ(Gmi_alist[4], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 4", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, Ham")
-
-K5 <- plotQ(Gmi_alist[5], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23", "#610B5E"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 5", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, Ham")
-
 
 #### population A ####
 
@@ -241,32 +196,10 @@ CV_plot <- ggplot(data = CV_df, aes(x=Ks, y = CVs)) +
 CV_plot
 
 ## ADMIXTURE plots ##
-#for postHWE, go up to K = 5
 
 K2 <- plotQ(Gmi_A_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#FF9329", "#2121D9"),
+            clustercol = c("#1c3b0e", "#afc8a4"),
             showsp = TRUE, spbgcol = "white", splab = "K = 2", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, species A")
-
-K3 <- plotQ(Gmi_A_alist[3], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#9999FF", "#FF9329", "#2121D9"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 3", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, species A")
-
-K4 <- plotQ(Gmi_A_alist[4], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 4", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, species A")
-
-K5 <- plotQ(Gmi_A_alist[5], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23", "#610B5E"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 5", splabsize = 6, 
             showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
             grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
             showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, species A")
@@ -277,7 +210,7 @@ grplab <- c(rep("Hist - Hamilo", 11), rep("Contemp - Hamilo", 28)) #creates grou
 
 #put group labels into meta.data for plots
 meta.data <- data.frame(loc = grplab)
-meta.data$loc <- as.character(meta.data$loc)
+  meta.data$loc <- as.character(meta.data$loc)
 
 ## ADMIXTURE cross-validation scores ##
 
@@ -302,29 +235,8 @@ CV_plot
 #for postHWE, go up to K = 5
 
 K2 <- plotQ(Gmi_B_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#FF9329", "#2121D9"),
+            clustercol = c("#1c3b0e", "#afc8a4"),
             showsp = TRUE, spbgcol = "white", splab = "K = 2", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, species B")
-
-K3 <- plotQ(Gmi_B_alist[3], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#9999FF", "#FF9329", "#2121D9"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 3", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, species B")
-
-K4 <- plotQ(Gmi_B_alist[4], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 4", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, species B")
-
-K5 <- plotQ(Gmi_B_alist[5], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23", "#610B5E"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 5", splabsize = 6, 
             showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
             grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
             showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, species B")
@@ -361,29 +273,8 @@ CV_plot
 #for postHWE, go up to K = 5
 
 K2 <- plotQ(Gmi_A_nohighhet_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#FF9329", "#2121D9"),
+            clustercol = c("#1c3b0e", "#afc8a4"),
             showsp = TRUE, spbgcol = "white", splab = "K = 2", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, species A, nohighhet")
-
-K3 <- plotQ(Gmi_A_nohighhet_alist[3], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#9999FF", "#FF9329", "#2121D9"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 3", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, species A, nohighhet")
-
-K4 <- plotQ(Gmi_A_nohighhet_alist[4], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 4", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, species A, nohighhet")
-
-K5 <- plotQ(Gmi_A_nohighhet_alist[5], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23", "#610B5E"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 5", splabsize = 6, 
             showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
             grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
             showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, species A, nohighhet")
@@ -423,7 +314,7 @@ CV_plot <- ggplot(data = CV_df, aes(x=Ks, y = CVs)) +
 CV_plot
 
 ## ADMIXTURE plots ##
-#for postHWE, go up to K = 5
+#for final filtered dataset, go up to K = 5
 
 K2 <- plotQ(Gmi_A_Ham_nohighhet_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
             clustercol = c("#1c3b0e", "#afc8a4"),
@@ -488,7 +379,6 @@ CV_plot <- ggplot(data = CV_df, aes(x=Ks, y = CVs)) +
 CV_plot
 
 ## ADMIXTURE plots ##
-#for postHWE, go up to K = 5
 
 K2 <- plotQ(Gmi_A_Ham_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
             clustercol = c("#1c3b0e", "#afc8a4"),
@@ -544,7 +434,7 @@ CV_plot
 #for preHWE, only going up to K = 2 (to catch cryptic structure)
 
 K2 <- plotQ(preHWE_Ela_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#FF9329", "#2121D9"),
+            clustercol = c("#8aa9be", "#16537e"),
             showsp = TRUE, spbgcol = "white", splab = "K = 2", splabsize = 6, 
             showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
             grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
@@ -585,7 +475,6 @@ CV_plot <- ggplot(data = CV_df, aes(x=Ks, y = CVs)) +
 CV_plot
 
 ## ADMIXTURE plots ##
-#for postHWE, go up to K = 5
 
 K2 <- plotQ(Ela_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
             clustercol = c("#8aa9be", "#16537e"),
@@ -593,27 +482,6 @@ K2 <- plotQ(Ela_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRU
             showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
             grplab = meta.data, linesize = 1, pointsize = 2, showgrplab = FALSE, grplabspacer = 0.1, 
             showtitle = FALSE, titlelab = "ADMIXTURE plot", showsubtitle = FALSE, subtitlelab = "LD-pruned SNPs")
-
-K3 <- plotQ(Ela_alist[3], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#9999FF", "#FF9329", "#2121D9"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 3", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs")
-
-K4 <- plotQ(Ela_alist[4], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 4", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs")
-
-K5 <- plotQ(Ela_alist[5], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23", "#610B5E"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 5", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs")
 
 #### Ela species ####
 
@@ -650,7 +518,6 @@ CV_plot <- ggplot(data = CV_df, aes(x=Ks, y = CVs)) +
 CV_plot
 
 ## ADMIXTURE plots ##
-#for postHWE, go up to K = 5
 
 K2 <- plotQ(Ela_Ela_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
             clustercol = c("#16537e", "#8aa9be"),
@@ -659,34 +526,13 @@ K2 <- plotQ(Ela_Ela_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot =
             grplab = meta.data, linesize = 1, pointsize = 2, showgrplab = FALSE, grplabspacer = 0.1, 
             showtitle = FALSE, titlelab = "ADMIXTURE plot", showsubtitle = FALSE, subtitlelab = "LD-pruned SNPs, Ela species")
 
-K3 <- plotQ(Ela_Ela_alist[3], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#9999FF", "#FF9329", "#2121D9"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 3", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, Ela species")
-
-K4 <- plotQ(Ela_Ela_alist[4], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 4", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, Ela species")
-
-K5 <- plotQ(Ela_Ela_alist[5], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23", "#610B5E"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 5", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, Ela species")
-
 #### Lle species ####
 
 grplab <- c(rep("Hist - Hamilo", 19), rep("Contemp - Hamilo", 1)) #creates group label (# individuals in each population)
 
 #put group labels into meta.data for plots
 meta.data <- data.frame(loc = grplab)
-meta.data$loc <- as.character(meta.data$loc)
+  meta.data$loc <- as.character(meta.data$loc)
 
 ## ADMIXTURE cross-validation scores ##
 
@@ -708,32 +554,10 @@ CV_plot <- ggplot(data = CV_df, aes(x=Ks, y = CVs)) +
 CV_plot
 
 ## ADMIXTURE plots ##
-#for postHWE, go up to K = 5
 
 K2 <- plotQ(Ela_Lle_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#FF9329", "#2121D9"),
+            clustercol = c("#8aa9be", "#16537e"),
             showsp = TRUE, spbgcol = "white", splab = "K = 2", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, Lle species")
-
-K3 <- plotQ(Ela_Lle_alist[3], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#9999FF", "#FF9329", "#2121D9"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 3", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, Lle species")
-
-K4 <- plotQ(Ela_Lle_alist[4], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 4", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, Lle species")
-
-K5 <- plotQ(Ela_Lle_alist[5], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23", "#610B5E"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 5", splabsize = 6, 
             showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
             grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
             showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, Lle species")
@@ -773,7 +597,7 @@ CV_plot <- ggplot(data = CV_df, aes(x=Ks, y = CVs)) +
 CV_plot
 
 ## ADMIXTURE plots ##
-#for postHWE, go up to K = 5
+#for final filtered dataset, go up to K = 5
 
 K2 <- plotQ(Ela_Ela_nohighhet_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
             clustercol = c("#16537e", "#8aa9be"),
@@ -802,341 +626,3 @@ K5 <- plotQ(Ela_Ela_nohighhet_alist[5], imgoutput = "sep", returnplot = TRUE, ex
             showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
             grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
             showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, Ela species, nohighhet")
-
-###############################################################################################################################################################
-
-######## Aen ADMIXTURE plots ########
-
-#read in data
-preHWE_Aen_afiles <- list.files(path = "Data/Aen_Ham/ADMIXTURE/preHWE/", full.names = TRUE)
-  preHWE_Aen_alist <- readQ(files = preHWE_Aen_afiles)
-Aen_afiles <- list.files(path = "Data/Aen_Ham/ADMIXTURE/noLD/", full.names = TRUE)
-  Aen_alist <- readQ(files = Aen_afiles)
-Aen_A_afiles <- list.files(path = "Data/Aen_Ham/ADMIXTURE/noLD_A/", full.names = TRUE)
-  Aen_A_alist <- readQ(files = Aen_A_afiles)
-Aen_A_nohighhet_afiles <- list.files(path = "Data/Aen_Ham/ADMIXTURE/noLD_A_nohighhet/", full.names = TRUE)
-  Aen_A_nohighhet_alist <- readQ(files = Aen_A_nohighhet_afiles)
-Aen_A_nohighhet_unrelated_afiles <- list.files(path = "Data/Aen_Ham/ADMIXTURE/noLD_A_nohighhet_unrelated/", full.names = TRUE)
-  Aen_A_nohighhet_unrelated_alist <- readQ(files = Aen_A_nohighhet_unrelated_afiles)
-
-#### preHWE ####
-
-grplab <- c(rep("Hist - Hamilo", 36), rep("Contemp - Hamilo", 95)) #creates group label (# individuals in each population)
-
-#put group labels into meta.data for plots
-meta.data <- data.frame(loc = grplab)
-  meta.data$loc <- as.character(meta.data$loc)
-
-## ADMIXTURE cross-validation scores ##
-
-CVs <- c(0.29052, 0.24767, 0.24828, 0.24815, 0.22281)
-Ks <- c(1, 2, 3, 4, 5)
-
-CV_df <- as.data.frame(cbind(CVs, Ks))
-
-#CV plot
-CV_plot <- ggplot(data = CV_df, aes(x=Ks, y = CVs)) + 
-  geom_line() + 
-  geom_point() + 
-  theme_bw() + 
-  labs(title = "Cross-validation error plot", y = "Cross-validation error", x = "K") + 
-  theme(axis.ticks = element_line(color = "black", linewidth = 2), 
-        axis.text = element_text(size = 28, color = "black"), 
-        axis.title = element_text(size = 30), legend.position = "top",
-        plot.title = element_blank(), plot.margin = unit(c( .5, .5, .5, .5), "cm"))
-CV_plot
-
-## ADMIXTURE plots ##
-#going up to 5 here since the CV is weird
-
-K2 <- plotQ(preHWE_Aen_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#FF9329", "#2121D9"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 2", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "preHWE SNPs")
-
-K3 <- plotQ(preHWE_Aen_alist[3], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#9999FF", "#FF9329", "#2121D9"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 3", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "preHWE SNPs")
-
-K4 <- plotQ(preHWE_Aen_alist[4], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 4", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "preHWE SNPs")
-
-K5 <- plotQ(preHWE_Aen_alist[5], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23", "#610B5E"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 5", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "preHWE SNPs")
-
-#### postHWE ####
-#noLD
-
-grplab <- c(rep("Hist - Hamilo", 36), rep("Contemp - Hamilo", 95)) #creates group label (# individuals in each population)
-
-#put group labels into meta.data for plots
-meta.data <- data.frame(loc = grplab)
-  meta.data$loc <- as.character(meta.data$loc)
-
-## ADMIXTURE cross-validation scores ##
-
-CVs <- c(0.32776, 0.29598, 0.29932, 0.30312, 0.30789)
-Ks <- c(1, 2, 3, 4, 5)
-
-CV_df <- as.data.frame(cbind(CVs, Ks))
-
-#CV plot
-CV_plot <- ggplot(data = CV_df, aes(x=Ks, y = CVs)) + 
-  geom_line(linewidth = 2) + 
-  geom_point(size = 8) + 
-  theme_bw() + 
-  labs(y = "Cross-Validation Error", x = "K") + 
-  theme_bw() + 
-  theme(panel.border = element_blank(), 
-        axis.line = element_line(linewidth = 4), 
-        plot.title = element_blank(), 
-        axis.ticks = element_line(color = "black", linewidth = 4), 
-        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
-        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1), 
-        legend.position = "none", 
-        plot.margin = unit(c(0.5,1.5,1,1), "cm"))
-CV_plot
-
-## ADMIXTURE plots ##
-#for postHWE, go up to K = 5
-
-K2 <- plotQ(Aen_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#FF9329", "#2121D9"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 2", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 1, pointsize = 2, showgrplab = FALSE, grplabspacer = 0.1, 
-            showtitle = FALSE, titlelab = "ADMIXTURE plot", showsubtitle = FALSE, subtitlelab = "LD-pruned SNPs")
-
-K3 <- plotQ(Aen_alist[3], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#9999FF", "#FF9329", "#2121D9"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 3", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs")
-
-K4 <- plotQ(Aen_alist[4], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 4", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs")
-
-K5 <- plotQ(Aen_alist[5], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23", "#610B5E"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 5", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs")
-
-#### pop A ####
-#noLD
-
-grplab <- c(rep("Hist - Hamilo", 35), rep("Contemp - Hamilo", 92)) #creates group label (# individuals in each population)
-
-#put group labels into meta.data for plots
-meta.data <- data.frame(loc = grplab)
-  meta.data$loc <- as.character(meta.data$loc)
-
-## ADMIXTURE cross-validation scores ##
-
-CVs <- c(0.21527, 0.21202, 0.21492, 0.22741, 0.23155)
-Ks <- c(1, 2, 3, 4, 5)
-
-CV_df <- as.data.frame(cbind(CVs, Ks))
-
-#CV plot
-CV_plot <- ggplot(data = CV_df, aes(x=Ks, y = CVs)) + 
-  geom_line(linewidth = 2) + 
-  geom_point(size = 8) + 
-  theme_bw() + 
-  labs(y = "Cross-Validation Error", x = "K") + 
-  theme_bw() + 
-  theme(panel.border = element_blank(), 
-        axis.line = element_line(linewidth = 4), 
-        plot.title = element_blank(), 
-        axis.ticks = element_line(color = "black", linewidth = 4), 
-        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
-        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1), 
-        legend.position = "none", 
-        plot.margin = unit(c(0.5,1.5,1,1), "cm"))
-CV_plot
-
-## ADMIXTURE plots ##
-#for postHWE, go up to K = 5
-
-K2 <- plotQ(Aen_A_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#FF9329", "#2121D9"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 2", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 1, pointsize = 2, showgrplab = FALSE, grplabspacer = 0.1, 
-            showtitle = FALSE, titlelab = "ADMIXTURE plot", showsubtitle = FALSE, subtitlelab = "LD-pruned SNPs, pop A")
-
-K3 <- plotQ(Aen_A_alist[3], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#9999FF", "#FF9329", "#2121D9"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 3", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, pop A")
-
-K4 <- plotQ(Aen_A_alist[4], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 4", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, pop A")
-
-K5 <- plotQ(Aen_A_alist[5], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23", "#610B5E"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 5", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, pop A")
-
-#### pop A nohighhet ####
-#noLD
-
-grplab <- c(rep("Hist - Hamilo", 30), rep("Contemp - Hamilo", 92)) #creates group label (# individuals in each population)
-
-#put group labels into meta.data for plots
-meta.data <- data.frame(loc = grplab)
-meta.data$loc <- as.character(meta.data$loc)
-
-## ADMIXTURE cross-validation scores ##
-
-CVs <- c(0.21107, 0.20969, 0.21194, 0.22611, 0.21989)
-Ks <- c(1, 2, 3, 4, 5)
-
-CV_df <- as.data.frame(cbind(CVs, Ks))
-
-#CV plot
-CV_plot <- ggplot(data = CV_df, aes(x=Ks, y = CVs)) + 
-  geom_line(linewidth = 2) + 
-  geom_point(size = 8) + 
-  theme_bw() + 
-  labs(y = "Cross-Validation Error", x = "K") + 
-  theme_bw() + 
-  theme(panel.border = element_blank(), 
-        axis.line = element_line(linewidth = 4), 
-        plot.title = element_blank(), 
-        axis.ticks = element_line(color = "black", linewidth = 4), 
-        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
-        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1), 
-        legend.position = "none", 
-        plot.margin = unit(c(0.5,1.5,1,1), "cm"))
-CV_plot
-
-## ADMIXTURE plots ##
-#for postHWE, go up to K = 5
-
-K2 <- plotQ(Aen_A_nohighhet_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#e3ccb4", "#a25505"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 2", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 1, pointsize = 2, showgrplab = FALSE, grplabspacer = 0.1, 
-            showtitle = FALSE, titlelab = "ADMIXTURE plot", showsubtitle = FALSE, subtitlelab = "LD-pruned SNPs, pop A, nohighhet")
-
-K3 <- plotQ(Aen_A_nohighhet_alist[3], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#9999FF", "#FF9329", "#2121D9"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 3", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, pop A, nohighhet")
-
-K4 <- plotQ(Aen_A_nohighhet_alist[4], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 4", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, pop A, nohighhet")
-
-K5 <- plotQ(Aen_A_nohighhet_alist[5], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23", "#610B5E"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 5", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, pop A, nohighhet")
-
-#### pop A nohighhet unrelated ####
-#noLD
-
-grplab <- c(rep("Hist - Hamilo", 30), rep("Contemp - Hamilo", 84)) #creates group label (# individuals in each population)
-
-#put group labels into meta.data for plots
-meta.data <- data.frame(loc = grplab)
-meta.data$loc <- as.character(meta.data$loc)
-
-## ADMIXTURE cross-validation scores ##
-
-CVs <- c(0.21480, 0.21426, 0.21806, 0.23283, 0.25491)
-Ks <- c(1, 2, 3, 4, 5)
-
-CV_df <- as.data.frame(cbind(CVs, Ks))
-
-#CV plot
-CV_plot <- ggplot(data = CV_df, aes(x=Ks, y = CVs)) + 
-  geom_line(linewidth = 2) + 
-  geom_point(size = 8) + 
-  theme_bw() + 
-  labs(y = "Cross-Validation Error", x = "K") + 
-  theme_bw() + 
-  theme(panel.border = element_blank(), 
-        axis.line = element_line(linewidth = 4), 
-        plot.title = element_blank(), 
-        axis.ticks = element_line(color = "black", linewidth = 4), 
-        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
-        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1), 
-        legend.position = "none", 
-        plot.margin = unit(c(0.5,1.5,1,1), "cm"))
-CV_plot
-
-## ADMIXTURE plots ##
-#for postHWE, go up to K = 5
-
-K2 <- plotQ(Aen_A_nohighhet_unrelated_alist[2], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#e3ccb4", "#a25505"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 2", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 1, pointsize = 2, showgrplab = FALSE, grplabspacer = 0.1, 
-            showtitle = FALSE, titlelab = "ADMIXTURE plot", showsubtitle = FALSE, subtitlelab = "LD-pruned SNPs, pop A, nohighhet, unrelated individs")
-
-K3 <- plotQ(Aen_A_nohighhet_unrelated_alist[3], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#9999FF", "#FF9329", "#2121D9"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 3", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, pop A, nohighhet, unrelated individs")
-
-K4 <- plotQ(Aen_A_nohighhet_unrelated_alist[4], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 4", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, pop A, nohighhet, unrelated individs")
-
-K5 <- plotQ(Aen_A_nohighhet_unrelated_alist[5], imgoutput = "sep", returnplot = TRUE, exportplot = TRUE, exportpath = "Plots/PCAs_ADMIXTURE",
-            clustercol = c("#2121D9", "#9999FF", "#FF9329", "#FFFB23", "#610B5E"),
-            showsp = TRUE, spbgcol = "white", splab = "K = 5", splabsize = 6, 
-            showyaxis = TRUE, showticks = FALSE, indlabsize = 4, ticksize = 0.5, 
-            grplab = meta.data, linesize = 0.2, pointsize = 2, showgrplab = TRUE, grplabspacer = 0.1, 
-            showtitle = TRUE, titlelab = "ADMIXTURE plot", showsubtitle = TRUE, subtitlelab = "LD-pruned SNPs, pop A, nohighhet, unrelated individs")

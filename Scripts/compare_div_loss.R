@@ -112,7 +112,6 @@ Ho <- ggplot() +
   scale_size_manual(values = c(12, 14)) + 
   ylab(bquote("% Change in"~H[o])) + 
   xlab("Taxa") + 
-  #scale_y_continuous(limits = c(-40, 25)) + 
   theme_bw() + 
   coord_flip() + 
   theme(panel.border = element_rect(linewidth = 4), 
@@ -144,7 +143,6 @@ He <- ggplot() +
   scale_size_manual(values = c(12, 14)) + 
   ylab(bquote("% Change in"~H[e])) + 
   xlab("Taxa") + 
-  #scale_y_continuous(limits = c(-40, 25)) + 
   theme_bw() + 
   coord_flip() + 
   theme(panel.border = element_rect(linewidth = 4), 
