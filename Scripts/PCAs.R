@@ -166,7 +166,7 @@ varPC3 <- (Gmi_Ham_Ham_eigenval[3,1] / sum(Gmi_Ham_Ham_eigenval$V1))*100
 #PCA
 PCA_12 <- ggplot(data = Gmi_Ham_Ham_data, 
                  aes(x = PC1, y = PC2, color = Era, shape = Era)) + 
-  geom_point(size = 18) +
+  geom_point(size = 18, alpha = 0.5) +
   scale_color_manual(values = c("#afc8a4", "#1c3b0e"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
   labs(x = "PC1 (explains 61.17% of total variance)", y = "PC2 (explains 13.14% of total variance)") + 
@@ -433,7 +433,7 @@ varPC3 <- (Gmi_Ham_A_Ham_nohighhet_eigenval[3,1] / sum(Gmi_Ham_A_Ham_nohighhet_e
 #PCA
 PCA_12 <- ggplot(data = Gmi_Ham_A_Ham_nohighhet_data, 
                  aes(x = PC1, y = PC2, color = Era, shape = Era)) + 
-  geom_point(size = 18) +
+  geom_point(size = 18, alpha = 0.5) +
   scale_color_manual(values = c("#afc8a4", "#1c3b0e"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
   labs(x = "PC1 (explains 11.16% of total variance)", y = "PC2 (explains 7.17% of total variance)") + 
@@ -505,7 +505,7 @@ varPC3 <- (Gmi_Ham_A_Ham_eigenval[3,1] / sum(Gmi_Ham_A_Ham_eigenval$V1))*100
 #PCA
 PCA_12 <- ggplot(data = Gmi_Ham_A_Ham_data, 
                  aes(x = PC1, y = PC2, color = Era, shape = Era)) + 
-  geom_point(size = 18) +
+  geom_point(size = 18, alpha = 0.5) +
   scale_color_manual(values = c("#afc8a4", "#1c3b0e"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
   labs(x = "PC1 (explains 20.40% of total variance)", y = "PC2 (explains 5.76% of total variance)") + 
@@ -630,7 +630,7 @@ varPC3 <- (Ela_Ham_eigenval[3,1] / sum(Ela_Ham_eigenval$V1))*100
 #PCA
 PCA_12 <- ggplot(data = Ela_Ham_data, 
                  aes(x = PC1, y = PC2, color = Era, shape = Era)) + 
-  geom_point(size = 18) +
+  geom_point(size = 18, alpha = 0.5) +
   scale_color_manual(values = c("#8aa9be", "#16537e"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
   labs(x = "PC1 (explains 45.55% of total variance)", y = "PC2 (explains 4.44% of total variance)") + 
@@ -700,7 +700,7 @@ varPC3 <- (Ela_Ham_Ela_eigenval[3,1] / sum(Ela_Ham_Ela_eigenval$V1))*100
 #PCA
 PCA_12 <- ggplot(data = Ela_Ham_Ela_data, 
                  aes(x = PC1, y = PC2, color = Era, shape = Era)) + 
-  geom_point(size = 18) +
+  geom_point(size = 18, alpha = 0.5) +
   scale_color_manual(values = c("#8aa9be", "#16537e"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
   labs(x = "PC1 (explains 7.19% of total variance)", y = "PC2 (explains 6.11% of total variance)") + 
@@ -832,7 +832,7 @@ varPC3 <- (Ela_Ham_Ela_nohighhet_eigenval[3,1] / sum(Ela_Ham_Ela_nohighhet_eigen
 #PCA
 PCA_12 <- ggplot(data = Ela_Ham_Ela_nohighhet_data, 
                  aes(x = PC1, y = PC2, color = Era, shape = Era)) + 
-  geom_point(size = 18) +
+  geom_point(size = 18, alpha = 0.5) +
   scale_color_manual(values = c("#8aa9be", "#16537e"), labels = c("Contemporary", "Historical")) + 
   scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
   labs(x = "PC1 (explains 6.25% of total variance)", y = "PC2 (explains 6.11% of total variance)") + 
