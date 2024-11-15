@@ -18,9 +18,9 @@ Leighetal_df <- read.csv(here("Data", "Leigh_et.al.data_used_in_synthesis.csv"))
   Leighetal_df <- Leighetal_df[1:99, 1:30] #loaded a bunch of empty columns and rows, so trimming to actual data
 
 #################################################################################################################################################
-
-######## Calculate average diversity loss in Leigh et al ########
-
+  
+######## Clean up Leigh et al ########
+  
 #keep only classes that have >5 data points
 Leighetal_great5_df <- subset(Leighetal_df, Leighetal_df$Class..In.Species.2000...ITIS.Catalogue.of.Life. == "Actinopterygii" |
                                 Leighetal_df$Class..In.Species.2000...ITIS.Catalogue.of.Life. == "Aves" | 
@@ -36,7 +36,74 @@ Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_g
                                                                        "Insecta"] <- "Insects"
 Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life. == 
                                                                        "Mammalia"] <- "Mammals"
-  
+
+#split fish by freshwater/saltwater
+#done by study/site because some anadromous fish are resident (freshwater) pops and others are not
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Acheilognathus longipinnis"] <- "Freshwater" 
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Acipenser sturio "] <- "Anadromous" 
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Clupea harengus"] <- "Marine"
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Coregonus clupeaformis"] <- "Freshwater"
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Gadus morhua"] <- "Marine" 
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Gambusia holbrooki "] <- "Freshwater"
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Gila nigra"] <- "Freshwater" 
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Gobiocypris rarus"] <- "Freshwater"  
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Meda fulgida"] <- "Freshwater" 
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Merluccius capensis"] <- "Marine" 
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Micropterus dolomieu"] <- "Freshwater"
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Oncorhynchus mykiss"] <- "Anadromous" 
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Oncorhynchus nerka"] <- "Anadromous" 
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Oreochromis niloticus niloticus"] <- "Freshwater"
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Oncorhynchus tshawytscha"] <- "Anadromous" 
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Pagrus auratus "] <- "Marine"  
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Perca fluviatilis"] <- "Freshwater" 
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Pseudocrenilabrus multicolor victoriae"] <- "Freshwater" 
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Rhinichthys (Tiaroga) cobitis"] <- "Freshwater" 
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Rutilus rutilus"] <- "Freshwater" 
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == "Salmo salar " & 
+                                                                       Leighetal_great5_df$Modern.Sample.Size == 48] <- "Anadromous" 
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == "Salmo salar" & 
+                                                                       Leighetal_great5_df$Modern.Sample.Size == 121] <- "Anadromous" 
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == "Salmo salar" & 
+                                                                       Leighetal_great5_df$Modern.Sample.Size == 160] <- "Freshwater" #landlocked populations
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == "Salmo salar" & 
+                                                                       Leighetal_great5_df$Modern.Sample.Size == 182] <- "Anadromous" 
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == "Salmo salar" & 
+                                                                       Leighetal_great5_df$Modern.Sample.Size == 898] <- "Anadromous" 
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == "Salmo trutta" & 
+                                                                       Leighetal_great5_df$Modern.Sample.Size == 70] <- "Freshwater"  
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == "Salmo trutta" & 
+                                                                       Leighetal_great5_df$Modern.Sample.Size == 122] <- "Anadromous"  
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Salvelinus alpinus"] <- "Anadromous"  
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Sander vitreus"] <- "Freshwater" 
+Leighetal_great5_df$Class..In.Species.2000...ITIS.Catalogue.of.Life.[Leighetal_great5_df$Species == 
+                                                                       "Solea solea"] <- "Marine"  
+
+#################################################################################################################################################
+
+######## Calculate average diversity loss in Leigh et al ########
+
 ## calculate percent changes in mean Ho & He over time ##
 #positive values indicate a LOSS over time
 Leighetal_great5_df$PercChange_Ho <- ((Leighetal_great5_df$Modern.Observed.Heterozygosity.Mean - Leighetal_great5_df$Historial.Observed.Heterozygosity.Mean)/
@@ -97,17 +164,18 @@ combined_all_mean_df <- rbind(combined_nopoint_df, avg_Ho_He_loss_by_class)
 #violin plot of Ho loss by taxa
 Ho <- ggplot() + 
   geom_point(data = combined_all_mean_df, 
-             aes(x = factor(Species, levels = c("G. min", "E. lat", "Fish", "Mammals", "Birds", "Insects")), 
+             aes(x = factor(Species, levels = c("G. min", "E. lat", "Marine", "Freshwater", "Anadromous", "Mammals", "Birds", "Insects")), 
                  y = PercChange_Ho, color = Species), size = 0) + #setting this first to get right order on X-axis (but not really plotting anything)
   geom_violin(data = combined_all_raw_df[combined_all_raw_df$Dataset == "Leighetal", ], 
-              aes(x = factor(Species, levels = c("G. min", "E. lat", "Fish", "Mammals", "Birds", "Insects")), 
+              aes(x = factor(Species, levels = c("G. min", "E. lat", "Marine", "Freshwater", "Anadromous", "Mammals", "Birds", "Insects")), 
                   y = PercChange_Ho, fill = Species), color = NA, lwd = 2) + 
   geom_point(data = combined_all_mean_df, 
-             aes(x = factor(Species, c("G. min", "E. lat", "Fish", "Mammals", "Birds", "Insects")), 
+             aes(x = factor(Species, c("G. min", "E. lat", "Marine", "Freshwater", "Anadromous", "Mammals", "Birds", "Insects")), 
                  y = PercChange_Ho, color = Species, shape = Dataset, size = Dataset)) + 
   geom_hline(aes(yintercept = 0), linetype = "dashed", linewidth = 2, color = "black") +
-  scale_color_manual(values = c("#757677", "#16537e", "#757677", "#afc8a4", "#757677", "#757677")) + 
-  scale_fill_manual(values = c("#ada5d0", "#DDCC77", "#CC6677", "#B7E0F4")) +
+  annotate("rect", xmin = -Inf, xmax = 5.5, ymin = -Inf, ymax = Inf, fill = "#E0E7EE", alpha = 0.4) + 
+  scale_color_manual(values = c("#757677", "#757677", "#16537e", "#757677", "#afc8a4", "#757677", "#757677", "#757677")) + 
+  scale_fill_manual(values = c("#ada5d0", "#DDCC77", "#CC6677", "#B7E0F4", "#dda060", "#C999B3")) +
   scale_shape_manual(values = c(18, 17)) +
   scale_size_manual(values = c(12, 14)) + 
   ylab(bquote("% Change in"~H[o])) + 
@@ -128,17 +196,18 @@ Ho
 #violin plot of He loss by taxa
 He <- ggplot() + 
   geom_point(data = combined_all_mean_df, 
-             aes(x = factor(Species, levels = c("G. min", "E. lat", "Fish", "Mammals", "Birds", "Insects")), 
+             aes(x = factor(Species, levels = c("G. min", "E. lat", "Marine", "Freshwater", "Anadromous", "Mammals", "Birds", "Insects")), 
                  y = PercChange_He, color = Species), size = 0) + #setting this first to get right order on X-axis (but not really plotting anything)
   geom_violin(data = combined_all_raw_df[combined_all_raw_df$Dataset == "Leighetal", ], 
-              aes(x = factor(Species, levels = c("G. min", "E. lat", "Fish", "Mammals", "Birds", "Insects")), 
+              aes(x = factor(Species, levels = c("G. min", "E. lat", "Marine", "Freshwater", "Anadromous", "Mammals", "Birds", "Insects")), 
                   y = PercChange_He, fill = Species), color = NA, lwd = 2) + 
   geom_point(data = combined_all_mean_df, 
-             aes(x = factor(Species, c("G. min", "E. lat", "Fish", "Mammals", "Birds", "Insects")), 
+             aes(x = factor(Species, c("G. min", "E. lat", "Marine", "Freshwater", "Anadromous", "Mammals", "Birds", "Insects")), 
                  y = PercChange_He, color = Species, shape = Dataset, size = Dataset)) + 
   geom_hline(aes(yintercept = 0), linetype = "dashed", linewidth = 2, color = "black") +
-  scale_color_manual(values = c("#757677", "#16537e", "#757677", "#afc8a4", "#757677", "#757677")) + 
-  scale_fill_manual(values = c("#ada5d0", "#DDCC77", "#CC6677", "#B7E0F4")) +
+  annotate("rect", xmin = -Inf, xmax = 5.5, ymin = -Inf, ymax = Inf, fill = "#E0E7EE", alpha = 0.4) + 
+  scale_color_manual(values = c("#757677", "#757677", "#16537e", "#757677", "#afc8a4", "#757677", "#757677", "#757677")) + 
+  scale_fill_manual(values = c("#ada5d0", "#DDCC77", "#CC6677", "#B7E0F4", "#dda060", "#C999B3")) +
   scale_shape_manual(values = c(18, 17)) +
   scale_size_manual(values = c(12, 14)) + 
   ylab(bquote("% Change in"~H[e])) + 
