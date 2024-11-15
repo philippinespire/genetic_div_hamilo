@@ -6,6 +6,7 @@ Scripts/*.Rhistory
 *.Rhistory
 *.RData
 *.Ruserdata
+.Rproj.user
 *Rproj
 Scripts/*.Rhistory
 
@@ -13,9 +14,14 @@ Scripts/*.Rhistory
 Scripts/OutFLANK.R
 Scripts/WriteHetCI.R
 Scripts/pop_structure.R #for preHWE processing step in CSSL bioinformatics pipeline
-Scripts/diploid_filter.R #for polyploid filtering for Aen & already in CSSL repo 
+Scripts/allele_balance_filter.R #for polyploid filtering for Aen & already in CSSL repo 
+Scripts/plot_R.r #comes with BayeScan download
 
 #extra stuff to ignore
 PCA_ADMIXTURE_Plots.pptx
 sequencing_statistics.xlsx
+Robin_Presentation.pptx
 .Rproj.user
+
+#Manuscript folder to ignore
+Manuscript_Drafts/*
