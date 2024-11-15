@@ -26,7 +26,7 @@ Gmi_demo_contemp <- read.csv(here("Data/Gmi_Ham/momi2",
 Ela_demo_contemp <- read.csv(here("Data/Ela_Ham/momi2", 
                                   "Ela_contemp2changeexpg_bootstraps.csv"), 
                              header = FALSE)
-  Ela_demo_contemp <- as.data.frame(t(Ela_demo_temp))
+  Ela_demo_contemp <- as.data.frame(t(Ela_demo_contemp))
     colnames(Ela_demo_contemp) <- c("N_Hist", "N_Alb", "N_Cont", "T_Exp", "T_Bot")
     Ela_demo_contemp <- Ela_demo_contemp[-1,]
 
