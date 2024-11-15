@@ -43,6 +43,9 @@ Gmi_Ham_A_Ham_nohighhet_eigenval <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi
 Gmi_Ham_A_Ham_eigenval <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.Ham.eigenval"), header = FALSE, sep = " ")
   Gmi_Ham_A_Ham_data <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.Ham.eigenvec"), header = FALSE, sep = " ")
   colnames(Gmi_Ham_A_Ham_data) <- eigenvec_names
+Gmi_Ham_A_Ham_nohighhet_noPCAout_eigenval <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.nohighhet.Ham.noPCAout.eigenval"), header = FALSE, sep = " ")
+  Gmi_Ham_A_Ham_nohighhet_noPCAout_data <- read.csv(here("Data/Gmi_Ham/PCAs", "PIRE.Gmi.Ham.A.nohighhet.Ham.noPCAout.eigenvec"), header = FALSE, sep = " ")
+  colnames(Gmi_Ham_A_Ham_nohighhet_noPCAout_data) <- eigenvec_names
   
 #### preHWE PCA ####    
     
@@ -555,6 +558,48 @@ PCA_23 <- ggplot(data = Gmi_Ham_A_Ham_nohighhet_data,
   guides(color = guide_legend(override.aes = list(size = 16)))
 PCA_23
 
+#### Species A Ham nohighhet noPCAout PCA ####    
+#noLD
+
+#add columns for Location & Era
+Gmi_Ham_A_Ham_nohighhet_noPCAout_data <- Gmi_Ham_A_Ham_nohighhet_noPCAout_data %>%
+  mutate(Location =
+           case_when(endsWith(Population, "Ham") ~ "Hamilo",
+                     endsWith(Population, "Bat") ~ "Hamilo")) %>% 
+  mutate(Era =
+           case_when(endsWith(Population, "AHam") ~ "Historical",
+                     endsWith(Population,"CBat") ~ "Contemporary")) %>%
+  relocate(Location, .before = Population) %>%
+  relocate(Era, .before = Location)
+
+#calculate % variance each PC explains by adding up all eigenvalues in *.eigenval file
+varPC1 <- (Gmi_Ham_A_Ham_nohighhet_noPCAout_eigenval [1,1] / sum(Gmi_Ham_A_Ham_nohighhet_noPCAout_eigenval $V1))*100
+varPC2 <- (Gmi_Ham_A_Ham_nohighhet_noPCAout_eigenval [2,1] / sum(Gmi_Ham_A_Ham_nohighhet_noPCAout_eigenval $V1))*100
+varPC3 <- (Gmi_Ham_A_Ham_nohighhet_noPCAout_eigenval [3,1] / sum(Gmi_Ham_A_Ham_nohighhet_noPCAout_eigenval $V1))*100
+
+#PCA
+PCA_12 <- ggplot(data = Gmi_Ham_A_Ham_nohighhet_noPCAout_data, 
+                 aes(x = PC1, y = PC2, color = Era, shape = Era)) + 
+  geom_point(size = 18, alpha = 0.5) +
+  scale_color_manual(values = c("#afc8a4", "#1c3b0e"), labels = c("Contemporary", "Historical")) + 
+  scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
+  labs(x = "PC1 (explains 7.11 of total variance)", y = "PC2 (explains 6.12% of total variance)") + 
+  scale_size(guide = "none") + 
+  theme_bw() + 
+  theme(panel.border = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(linewidth = 4), 
+        plot.title = element_blank(), 
+        axis.ticks = element_line(color = "black", linewidth = 4), 
+        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
+        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
+        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
+        axis.title.x = element_text(size = 55, color = "black", vjust = -1), 
+        legend.position = "none", 
+        plot.margin = unit(c(0.5,1.5,1,1), "cm"))
+PCA_12
+
 ###############################################################################################################################################################
 
 ######## Ela PCAs ########
@@ -575,6 +620,9 @@ Ela_Ham_Lle_eigenval <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.Lle.eig
 Ela_Ham_Ela_nohighhet_eigenval <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.Ela.nohighhet.eigenval"), header = FALSE, sep = " ")
   Ela_Ham_Ela_nohighhet_data <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.Ela.nohighhet.eigenvec"), header = FALSE, sep = " ")
   colnames(Ela_Ham_Ela_nohighhet_data) <- eigenvec_names
+Ela_Ham_Ela_nohighhet_noPCAout_eigenval <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.Ela.nohighhet.noPCAout.eigenval"), header = FALSE, sep = " ")
+  Ela_Ham_Ela_nohighhet_noPCAout_data <- read.csv(here("Data/Ela_Ham/PCAs", "PIRE.Ela.Ham.Ela.nohighhet.noPCAout.eigenvec"), header = FALSE, sep = " ")
+  colnames(Ela_Ham_Ela_nohighhet_noPCAout_data) <- eigenvec_names
 
 #### preHWE PCA ####    
 
@@ -881,3 +929,45 @@ PCA_23 <- ggplot(data = Ela_Ham_Ela_nohighhet_data,
         axis.title = element_text(size = 26)) + 
   guides(color = guide_legend(override.aes = list(size = 16)))
 PCA_23
+
+#### Ela nohighhet noPCAout PCA ####    
+#noLD
+
+#add columns for Location & Era
+Ela_Ham_Ela_nohighhet_noPCAout_data <- Ela_Ham_Ela_nohighhet_noPCAout_data %>%
+  mutate(Location =
+           case_when(endsWith(Population, "Ham") ~ "Hamilo",
+                     endsWith(Population, "Nas") ~ "Hamilo")) %>% 
+  mutate(Era =
+           case_when(endsWith(Population, "AHam") ~ "Historical",
+                     endsWith(Population, "CNas") ~ "Contemporary")) %>%
+  relocate(Location, .before = Population) %>%
+  relocate(Era, .before = Location)
+
+#calculate % variance each PC explains by adding up all eigenvalues in *.eigenval file
+varPC1 <- (Ela_Ham_Ela_nohighhet_noPCAout_eigenval[1,1] / sum(Ela_Ham_Ela_nohighhet_noPCAout_eigenval$V1))*100
+varPC2 <- (Ela_Ham_Ela_nohighhet_noPCAout_eigenval[2,1] / sum(Ela_Ham_Ela_nohighhet_noPCAout_eigenval$V1))*100
+varPC3 <- (Ela_Ham_Ela_nohighhet_noPCAout_eigenval[3,1] / sum(Ela_Ham_Ela_nohighhet_noPCAout_eigenval$V1))*100
+
+#PCA
+PCA_12 <- ggplot(data = Ela_Ham_Ela_nohighhet_noPCAout_data, 
+                 aes(x = PC1, y = PC2, color = Era, shape = Era)) + 
+  geom_point(size = 18, alpha = 0.5) +
+  scale_color_manual(values = c("#8aa9be", "#16537e"), labels = c("Contemporary", "Historical")) + 
+  scale_shape_manual(values = c(19, 15), labels = c("Contemporary", "Historical")) + 
+  labs(x = "PC1 (explains 6.33% of total variance)", y = "PC2 (explains 5.85% of total variance)") + 
+  scale_size(guide = "none") + 
+  theme_bw() + 
+  theme(panel.border = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(linewidth = 4), 
+        plot.title = element_blank(), 
+        axis.ticks = element_line(color = "black", linewidth = 4), 
+        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
+        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
+        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
+        axis.title.x = element_text(size = 55, color = "black", vjust = -1), 
+        legend.position = "none", 
+        plot.margin = unit(c(0.5,1.5,1,1), "cm"))
+PCA_12
