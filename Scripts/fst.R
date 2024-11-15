@@ -2,6 +2,7 @@
 
 #Calculates pairwise Fst using the hierfstat package
 #Identifies high Fst windows from pixy output
+#Identifies candidate SNPs under selection from BayeScan output
 
 #pixy script
 #from https://pixy.readthedocs.io/en/latest/plotting.html
@@ -36,11 +37,11 @@ Gmi_fst <- read.table(here("Data/Gmi_Ham/pixy", "pixy_fst.txt"), header = TRUE)
 Ela_fst <- read.table(here("Data/Ela_Ham/pixy", "pixy_fst.txt"), header = TRUE)
 
 #read in BayeScan
-Gmi_BayeScan <- read.csv(here("Data/Gmi_Ham", "Gmi_A_Ham_nohighhet_SNPs_pr10_fst.txt"), header = TRUE, sep = " ")
+Gmi_BayeScan <- read.csv(here("Data/Gmi_Ham", "Gmi_A_nohighhet_Ham_SNPs_pr100_fst.txt"), header = TRUE, sep = " ")
   Gmi_BayeScan <- Gmi_BayeScan[, -2] #cleaning up bc didn't read columns in correctly
   Gmi_BayeScan <- Gmi_BayeScan[, 1:6]
   colnames(Gmi_BayeScan) <- c("index", "prob", "log10(PO)", "qval", "alpha", "fst")
-Ela_BayeScan <- read.csv(here("Data/Ela_Ham", "Ela_nohighhet_pr10_fst.txt"), header = TRUE, sep = " ")
+Ela_BayeScan <- read.csv(here("Data/Ela_Ham", "Ela_Ela_nohighhet_SNPs_pr100_fst.txt"), header = TRUE, sep = " ")
   Ela_BayeScan <- Ela_BayeScan[, -2]
   Ela_BayeScan <- Ela_BayeScan[, 1:6]
   colnames(Ela_BayeScan) <- c("index", "prob", "log10(PO)", "qval", "alpha", "fst")
@@ -53,13 +54,15 @@ Ela_BayeScan <- read.csv(here("Data/Ela_Ham", "Ela_nohighhet_pr10_fst.txt"), hea
   
 ## identify any outliers ##
 #qvalue < 0.05 --> FDR 5% (SNPs with this q-value have 5% prob of being a false positive)
-Gmi_pot_outliers <- subset(Gmi_BayeScan, qval <= 0.05) #3 outliers
+#log10BF > 1 --> "strong" evidence for selection
+Gmi_pot_outliers <- subset(Gmi_BayeScan, qval <= 0.05 & Gmi_BayeScan$`log10(PO)` > 1) #1 outlier
 
 #plot
-Gmi_BS_plot <- ggplot(data = Gmi_BayeScan, aes(y = qval, x = fst)) + 
+Gmi_BS_plot <- ggplot(data = Gmi_BayeScan, aes(y = qval, x = `log10(PO)`)) + 
   geom_point(color = "#1c3b0e", alpha = 0.5, size = 16) + 
   geom_hline(aes(yintercept = 0.05), color = "black", linewidth = 4, linetype = "dashed") + 
-  xlab(bquote(~F[sT])) + ylab("q-value") +
+  geom_vline(aes(xintercept = 1), color = "black", linewidth = 4, linetype = "dashed") + 
+  xlab(bquote(~log[10]~"PO")) + ylab("q-value") +
   theme_bw() + 
   theme(panel.border = element_rect(linewidth = 4), 
         plot.title = element_blank(),
@@ -124,7 +127,7 @@ Gmi_Ham_A_pixy_pot_outliers <- subset(Gmi_fst, avg_wc_fst >= 0.15) #10
 Gmi_fst$NUM <- c(1:2484) #just assigning each window a number so can plot
 
 Gmi_pixy_fst_window_plot <- ggplot(data = Gmi_fst, aes(x = NUM, y = avg_wc_fst)) + 
-  geom_point(color = "#134f5c", size = 10, alpha = 0.5) + 
+  geom_point(color = "#1c3b0e", size = 10, alpha = 0.5) + 
   geom_hline(yintercept = 0.15, color = "black", linewidth = 2, linetype = "dashed") + 
   ggtitle("Gmi pixy window outliers") + labs(y = "avg fst", x = "position") + 
   theme_bw() + 
@@ -143,13 +146,15 @@ Gmi_pixy_fst_window_plot
 
 ## identify any outliers ##
 #qvalue < 0.05 --> FDR 5% (SNPs with this q-value have 5% prob of being a false positive)
-Ela_pot_outliers <- subset(Ela_BayeScan, qval <= 0.05) #1 outlier
+#log10BF < 1 --> "strong" evidence for selection
+Ela_pot_outliers <- subset(Ela_BayeScan, qval <= 0.05 & Ela_BayeScan$`log10(PO)` > 1) #0 outliers
 
 #plot
-Ela_BS_plot <- ggplot(data = Ela_BayeScan, aes(y = qval, x = fst)) + 
+Ela_BS_plot <- ggplot(data = Ela_BayeScan, aes(y = qval, x = `log10(PO)`)) + 
   geom_point(color = "#16537e", alpha = 0.5, size = 16) + 
   geom_hline(aes(yintercept = 0.05), color = "black", linewidth = 4, linetype = "dashed") + 
-  xlab(bquote(~F[sT])) + ylab("q-value") +
+  geom_vline(aes(xintercept = 1), color = "black", linewidth = 4, linetype = "dashed") + 
+  xlab(bquote(~log[10]~"PO")) + ylab("q-value") +
   theme_bw() + 
   theme(panel.border = element_rect(linewidth = 4), 
         plot.title = element_blank(),
@@ -211,7 +216,7 @@ Ela_pixy_pot_outliers <- Ela_pixy_pot_outliers[order(Ela_pixy_pot_outliers$avg_w
 Ela_fst$NUM <- c(1:7972) #just assigning each window a number so can plot
 
 Ela_pixy_fst_window_plot <- ggplot(data = Ela_fst, aes(x = NUM, y = avg_wc_fst)) + 
-  geom_point(color = "#134f5c", size = 10, alpha = 0.5) + 
+  geom_point(color = "#16537e", size = 10, alpha = 0.5) + 
   geom_hline(yintercept = 0.15, color = "black", linewidth = 2, linetype = "dashed") + 
   ggtitle("Ela pixy window outliers") + labs(y = "avg fst", x = "position") + 
   theme_bw() + 
