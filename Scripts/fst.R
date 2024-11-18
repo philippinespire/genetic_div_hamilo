@@ -201,7 +201,6 @@ Ela_cryptic_hierf <- genind2hierfstat(Ela_cryptic_genind) #convert to hierfstat 
 Ela_cryptic_pairwise_fst <- genet.dist(Ela_cryptic_hierf, method = "WC84") #calculates Weir & Cockerham's Fst
 #1-2: 0.49223, 1-3: 0.00654, 1-4: 0.28935, 2-3: 0.43207, 2-4: 0.05352, 3-4: 0.31759
 
-
 #### pixy fst windows ####
 
 #remove Na
