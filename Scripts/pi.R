@@ -385,13 +385,10 @@ library(gridExtra) #v.2.3
 library(here) #v.1.0.1
 
 #read in data
-all_data <- read.csv(here("Data", "allsp_unrelated_div_cis.csv"), header = TRUE)
-
-#### Plots ####
-all_data_noAen <- subset(all_data, species != "Aen")
+all_data <- read.csv(here("Data", "2sp_div_cis.csv"), header = TRUE)
 
 #plot heterozygosity
-Het_plot <- ggplot(data = all_data_noAen[all_data_noAen$metric == "He" | all_data_noAen$metric == "Ho", ],
+Het_plot <- ggplot(data = all_data[all_data$metric == "He" | all_data$metric == "Ho", ],
                    aes(x = factor(era, levels = c("Hist", "Contemp")), y = mean, 
                        group = species_metric, color = species, shape = metric, linetype = metric)) + 
   geom_line(linewidth = 4) + 
@@ -416,7 +413,7 @@ Het_plot <- ggplot(data = all_data_noAen[all_data_noAen$metric == "He" | all_dat
 Het_plot
 
 #plot pi
-Pi_plot <- ggplot(data = all_data_noAen[all_data_noAen$metric == "pi", ],
+Pi_plot <- ggplot(data = all_data[all_data$metric == "pi", ],
                    aes(x = factor(era, levels = c("Hist", "Contemp")), y = mean, 
                        group = species_metric, color = species, shape = metric, linetype = metric)) + 
   geom_line(linewidth = 4) + 
@@ -441,7 +438,7 @@ Pi_plot <- ggplot(data = all_data_noAen[all_data_noAen$metric == "pi", ],
 Pi_plot
 
 #plot fis
-Fis_plot <- ggplot(data = all_data_noAen[all_data_noAen$metric == "Fis", ],
+Fis_plot <- ggplot(data = all_data[all_data$metric == "Fis", ],
                   aes(x = factor(era, levels = c("Hist", "Contemp")), y = mean, 
                       group = species_metric, color = species, shape = metric, linetype = metric)) + 
   geom_line(linewidth = 4) + 
