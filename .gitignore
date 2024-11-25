@@ -18,20 +18,50 @@ Scripts/plot_R.r
 
 #plots to ignore
 Plots/Aen_stuff/*
-momi2_plots/Aen_stuff/*
-PCAs_ADMIXTURE/Aen_stuff/*
-read_depth_plots/Aen_stuff/*
-2sp_Fis_plot_flipped.png
-2sp_He_plot_flipped.png
-2sp_Ho_plot_flipped.png
-2sp_Pi_plot_flipped.png
-*nohighhet_fis_plot.png
-*nohighhet_het_plot.png
-*nohighhet_pi_plot.png
-*nohighhet_mean_rel_plot.png
-*nohgighhet_TD_scatterplot.png
-*nohighhet_pi_diff_plot.png
-*nohighhet_fst_window_plot.png
+Plots/momi2_plots/Aen_stuff/*
+Plots/PCAs_ADMIXTURE/Aen_stuff/*
+Plots/read_depth_plots/Aen_stuff/*
+Plots/2sp_Fis_plot_flipped.png
+Plots/2sp_He_plot_flipped.png
+Plots/2sp_Ho_plot_flipped.png
+Plots/2sp_Pi_plot_flipped.png
+Plots/*nohighhet_fis_plot.png
+Plots/*nohighhet_het_plot.png
+Plots/*nohighhet_pi_plot.png
+Plots/*nohighhet_Ham_fis_plot.png
+Plots/*nohighhet_Ham_het_plot.png
+Plots/*nohighhet_Ham_pi_plot.png
+Plots/*mean_rel_plot.png
+Plots/*TD_scatterplot.png
+Plots/*pi_diff_plot.png
+Plots/*fst_window_plot.png
+Plots/Ho_Perc_Change_Plot.png
+
+#PCA & ADMIXTURE plots to ignore
+Plots/PCAs_ADMIXTURE/Aen_stuff/*
+Plots/PCAs_ADMIXTURE/*23.png
+Plots/PCAs_ADMIXTURE/*13.png
+Plots/PCAs_ADMIXTURE/Ela_Lle_CV.png
+Plots/PCAs_ADMIXTURE/Ela_Lle_PCA_12.png
+Plots/PCAs_ADMIXTURE/Gmi_A_CV.png
+Plots/PCAs_ADMIXTURE/Gmi_A_nohighhet_CV.png
+Plots/PCAs_ADMIXTURE/Gmi_A_PCA_12.png
+Plots/PCAs_ADMIXTURE/Gmi_B*
+Plots/PCAs_ADMIXTURE/Gmi_CV.png
+Plots/PCAs_ADMIXTURE/Gmi_PCA_12.png
+Plots/PCAs_ADMIXTURE/PIRE.Ela.Ham.Ela.nohighhet.3.Q.png
+Plots/PCAs_ADMIXTURE/PIRE.Ela.Ham.Ela.nohighhet.4.Q.png
+Plots/PCAs_ADMIXTURE/PIRE.Ela.Ham.Ela.nohighhet.5.Q.png
+Plots/PCAs_ADMIXTURE/PIRE.Ela.Ham.Lle.2.Q.png
+Plots/PCAs_ADMIXTURE/PIRE.Gmi.Bas.rescaled.preHWE.2.Q.png
+Plots/PCAs_ADMIXTURE/PIRE.Gmi.Ham.2.Q.png
+Plots/PCAs_ADMIXTURE/PIRE.Gmi.Ham.A.2.Q.png
+Plots/PCAs_ADMIXTURE/PIRE.Gmi.Ham.A.nohighhet.2.Q.png
+Plots/PCAs_ADMIXTURE/PIRE.Gmi.Ham.B.2.Q.png
+Plots/PCAs_ADMIXTURE/PIRE.Gmi.Ham.A.nohighhet.Ham.3.Q.png
+Plots/PCAs_ADMIXTURE/PIRE.Gmi.Ham.A.nohighhet.Ham.4.Q.png
+Plots/PCAs_ADMIXTURE/PIRE.Gmi.Ham.A.nohighhet.Ham.5.Q.png
+Plots/PCAs_ADMIXTURE/preHWE_Gmi*
 
 #data to ignore
 Data/Aen_Ham
