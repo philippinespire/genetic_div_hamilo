@@ -4,7 +4,6 @@
 #SBATCH -o pixy-%j.out
 #SBATCH -p main
 #SBATCH -c 4
-##SBATCH --time=96:00:00
 
 #to run use the following command:
 #sbatch pixy.sbatch
