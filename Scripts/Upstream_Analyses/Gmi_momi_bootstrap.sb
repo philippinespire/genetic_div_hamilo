@@ -1,0 +1,11 @@
+#!/bin/bash -l
+
+#SBATCH --job-name=momi2
+#SBATCH -o Gmi_momi_2changeexpg_C-%j.out
+#SBATCH -p main
+#SBATCH -c 4
+
+module load container_env python3
+bash
+
+crun.python3 -p ~/.conda/envs/momi-py36 python /home/rdclark/PIRE/gazza_minuta/momi2/Gmi_momi_bootstrap.py
