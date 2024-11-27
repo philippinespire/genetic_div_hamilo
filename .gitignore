@@ -15,6 +15,7 @@ Scripts/OutFLANK.R
 Scripts/pop_structure.R
 Scripts/allele_balance_filter.R 
 Scripts/plot_R.r
+Scripts/pop_structure.R
 
 #plots to ignore
 Plots/Aen_stuff/*
