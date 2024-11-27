@@ -10,9 +10,13 @@
 
 module load container_env python3
 
+#install pixy (if necessary)
+crun.python3 -c -s -p ~/.conda/envs/popgen #create popgen env if not already done
+crun.python3 -p ~/.conda/envs/popgen conda install -c conda-forge pixy
+crun.python3 -p ~/.conda/envs/popgen conda install -c bioconda htslib
+
 #code to run pixy
 bash
-export SINGULARITY_BIND=/home/r3clark/.conda
 
 crun.python3 -p ~/.conda/envs/popgen \
   pixy --stats pi fst \
