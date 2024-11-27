@@ -5,8 +5,18 @@
 #SBATCH -p main
 #SBATCH -c 4
 
+#to run use the following command:
+#sbatch momi_bootstrap.sb
+
 module load container_env python3
+
+#install momi2 (if necessary)
+crun.python3 -c -s -p ~/.conda/envs/momi-py36 #create popgen env if not already done
+crun.python3 -p ~/.conda/envs/momi-py36 conda install python=3.6
+crun.python3 -p ~/.conda/envs/momi-py36 conda install hdf5 gsl
+crun.python3 -p ~/.conda/envs/momi-py36 conda install pysam
 
 #code to run momi2 on Wahab
 bash
-crun.python3 -p ~/.conda/envs/momi-py36 python /home/rdclark/PIRE/gazza_minuta/momi2/Gmi_momi_bootstrap.py
+crun.python3 -p ~/.conda/envs/momi-py36 python \
+  /home/rdclark/PIRE/gazza_minuta/momi2/Gmi_momi_bootstrap.py
