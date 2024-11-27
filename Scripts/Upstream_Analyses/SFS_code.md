@@ -1,130 +1,23 @@
-#### PLOTTING 2D SFS ####
+# Plotting 2D SFS on Wahab
 
-### AEN
-##MAKE SFS IN EASYSFS
-salloc
-module load container_env python3
-cd easySFS
-crun.python3 -p ~/.conda/envs/easySFS ./easySFS.py -i ~/PIRE/atherinomorus_endrachtensis/aen.all.A.nohighhet.vcf -p Aen_popfile.txt --preview -a #sampling ALL SNPs
+## Gazza minuta
 
-#look at downsampling
-#want to maximize # segregating sites (2nd #) but also need to balance sample size (1st #, 2X popsize) in both pops/timepoints
-AHam
-(2, 364) (3, 484) (4, 594) (5, 603) (6, 667) (7, 620) (8, 664) (9, 602) 
-(10, 635) (11, 532) (12, 557) (13, 387) (14, 403)
+### Make SFS with EASYSFS
 
-CBat
-(2, 308) (3, 461) (4, 562) (5, 635) (6, 692) (7, 739) (8, 778) (9, 811)
-(10, 840) (11, 866) (12, 889) (13, 909) (14, 928) (15, 945) (16, 960) (17, 975)
-(18, 988) (19, 1001) (20, 1012) (21, 1023) (22, 1033) (23, 1043) (24, 1052)
-(25, 1061) (26, 1069) (27, 1077) (28, 1085) (29, 1092) (30, 1099) (31, 1105)
-(32, 1112) (33, 1118) (34, 1124) (35, 1129) (36, 1135) (37, 1140) (38, 1145) 
-(39, 1150) (40, 1155) (41, 1159) (42, 1164) (43, 1168) (44, 1172) (45, 1176)
-(46, 1180) (47, 1184) (48, 1188) (49, 1192) (50, 1195) (51, 1199) (52, 1202)
-(53, 1206) (54, 1209) (55, 1212) (56, 1215) (57, 1218) (58, 1221) (59, 1224)
-(60, 1227) (61, 1230) (62, 1233) (63, 1236) (64, 1238) (65, 1241) (66, 1243)
-(67, 1246) (68, 1249) (69, 1251) (70, 1253) (71, 1256) (72, 1258) (73, 1260)
-(74, 1263) (75, 1265) (76, 1267) (77, 1269) (78, 1271) (79, 1274) (80, 1276)
-(81, 1278) (82, 1280) (83, 1282) (84, 1284) (85, 1286) (86, 1288) (87, 1290)
-(88, 1291) (89, 1293) (90, 1295) (91, 1297) (92, 1299) (93, 1301) (94, 1302)
-(95, 1304) (96, 1306) (97, 1308) (98, 1309) (99, 1311) (100, 1313) (101, 1314)
-(102, 1316) (103, 1318) (104, 1319) (105, 1321) (106, 1322) (107, 1324) (108, 1325)
-(109, 1327) (110, 1328) (111, 1330) (112, 1331) (113, 1333) (114, 1334) (115, 1336)
-(116, 1337) (117, 1339) (118, 1340) (119, 1342) (120, 1343) (121, 1344) (122, 1346)
-(123, 1347) (124, 1349) (125, 1350) (126, 1351) (127, 1353) (128, 1354) (129, 1355)
-(130, 1357) (131, 1358) (132, 1359) (133, 1361) (134, 1362) (135, 1363) (136, 1364)
-(137, 1366) (138, 1367) (139, 1368) (140, 1369) (141, 1371) (142, 1372) (143, 1373)
-(144, 1374) (145, 1376) (146, 1377) (147, 1377) (148, 1378) (149, 1379) (150, 1380)
-(151, 1381) (152, 1382) (153, 1382) (154, 1383) (155, 1381) (156, 1382) (157, 1377)
-(158, 1378) (159, 1369) (160, 1370) (161, 1365) (162, 1366) (163, 1358) (164, 1359)
-(165, 1349) (166, 1350) (167, 1329) (168, 1330) (169, 1312) (170, 1313) (171, 1299)
-(172, 1300) (173, 1277) (174, 1278) (175, 1250) (176, 1251) (177, 1222) (178, 1223)
-(179, 1185) (180, 1186) (181, 1142) (182, 1142) (183, 1049) (184, 1050)
-
-crun.python3 -p ~/.conda/envs/easySFS ./easySFS.py -i ~/PIRE/atherinomorus_endrachtensis/aen.all.A.nohighhet.vcf -p Aen_popfile.txt --proj 10,156 -o Aen_output_10_156 -a -f
-
-##PLOT WITH DADI
-cd Aen_output_10_156/dadi
-crun.python3 -p ~/.conda/envs/dadi python
-import matplotlib.pyplot as pyplot
-import dadi
-data = dadi.Spectrum.from_file("AHam-CBat.sfs")
-data.sample_sizes #make sure read in right, should match what downsample projections were
-
-fig = pyplot.figure(219033)
-fig.clear()
-dadi.Plotting.plot_single_2d_sfs(data, vmin=0.01) #vmin means won't plot allele freqs <0.01 (bc log scale, would look funky)
-fig.savefig("Aen_2D_SFS_10_156.png")
-
-### AEN UNRELATED
-##MAKE SFS IN EASYSFS
-salloc
-module load container_env python3
-cd easySFS
-crun.python3 -p ~/.conda/envs/easySFS ./easySFS.py -i ~/PIRE/atherinomorus_endrachtensis/aen.all.A.nohighhet.unrelated.vcf -p Aen_unrelated_popfile.txt --preview -a #sampling ALL SNPs
-
-#look at downsampling
-#want to maximize # segregating sites (2nd #) but also need to balance sample size (1st #, 2X popsize) in both pops/timepoints
-AHam
-(2, 364) (3, 484) (4, 594) (5, 603) (6, 667) (7, 620) (8, 664) (9, 602) (10, 635)
-(11, 532) (12, 557) (13, 387) (14, 403)
-
-CBat
-(2, 308) (3, 462) (4, 563) (5, 636) (6, 694) (7, 740) (8, 779) (9, 813) (10, 842)
-(11, 868) (12, 891) (13, 911) (14, 930) (15, 947) (16, 963) (17, 977) (18, 991)
-(19, 1003) (20, 1015) (21, 1026) (22, 1036) (23, 1046) (24, 1055) (25, 1064) 
-(26, 1073) (27, 1080) (28, 1088) (29, 1095) (30, 1102) (31, 1109) (32, 1115)
-(33, 1121) (34, 1127) (35, 1133) (36, 1138) (37, 1144) (38, 1149) (39, 1154)
-(40, 1159) (41, 1163) (42, 1168) (43, 1172) (44, 1177) (45, 1181) (46, 1185)
-(47, 1189) (48, 1192) (49, 1196) (50, 1200) (51, 1203) (52, 1207) (53, 1210)
-(54, 1214) (55, 1217) (56, 1220) (57, 1223) (58, 1226) (59, 1229) (60, 1232)
-(61, 1235) (62, 1238) (63, 1241) (64, 1243) (65, 1246) (66, 1249) (67, 1251) 
-(68, 1254) (69, 1256) (70, 1259) (71, 1261) (72, 1263) (73, 1266) (74, 1268)
-(75, 1270) (76, 1273) (77, 1275) (78, 1277) (79, 1279) (80, 1281) (81, 1283)
-(82, 1285) (83, 1287) (84, 1290) (85, 1292) (86, 1293) (87, 1295) (88, 1297)
-(89, 1299) (90, 1301) (91, 1303) (92, 1305) (93, 1307) (94, 1308) (95, 1310)
-(96, 1312) (97, 1314) (98, 1316) (99, 1317) (100, 1319) (101, 1321) (102, 1322)
-(103, 1324) (104, 1326) (105, 1327) (106, 1329) (107, 1330) (108, 1332) (109, 1334) 
-(110, 1335) (111, 1337) (112, 1338) (113, 1340) (114, 1341) (115, 1343) (116, 1344)
-(117, 1346) (118, 1347) (119, 1349) (120, 1350) (121, 1351) (122, 1353) (123, 1354)
-(124, 1356) (125, 1357) (126, 1359) (127, 1360) (128, 1361) (129, 1363) (130, 1364)
-(131, 1365) (132, 1367) (133, 1368) (134, 1369) (135, 1371) (136, 1372) (137, 1371)
-(138, 1372) (139, 1372) (140, 1373) (141, 1372) (142, 1374) (143, 1369) (144, 1370)
-(145, 1363) (146, 1364) (147, 1358) (148, 1359) (149, 1350) (150, 1351) (151, 1332)
-(152, 1333) (153, 1319) (154, 1320) (155, 1302) (156, 1303) (157, 1281) (158, 1282)
-(159, 1255) (160, 1256) (161, 1222) (162, 1223) (163, 1186) (164, 1187) (165, 1143)
-(166, 1144) (167, 1050) (168, 1051)
-
-crun.python3 -p ~/.conda/envs/easySFS ./easySFS.py -i ~/PIRE/atherinomorus_endrachtensis/aen.all.A.nohighhet.unrelated.vcf -p Aen_unrelated_popfile.txt --proj 10,144 -o Aen_unrelated_output_10_144 -a -f
-
-##PLOT WITH DADI
-cd Aen_unrelated_output_10_144/dadi
-crun.python3 -p ~/.conda/envs/dadi python
-import matplotlib.pyplot as pyplot
-import dadi
-data = dadi.Spectrum.from_file("AHam-CBat.sfs")
-data.sample_sizes #make sure read in right, should match what downsample projections were
-
-fig = pyplot.figure(219033)
-fig.clear()
-dadi.Plotting.plot_single_2d_sfs(data, vmin=0.01) #vmin means won't plot allele freqs <0.01 (bc log scale, would look funky)
-fig.savefig("Aen_unrelated_2D_SFS_10_144.png")
-
-### GMI
-##MAKE SFS IN EASYSFS
+```sh
 salloc
 module load container_env python3
 cd easySFS
 crun.python3 -p ~/.conda/envs/easySFS ./easySFS.py -i ~/PIRE/gazza_minuta/gmi.all.A.nohighhet.Ham.vcf -p Gmi_popfile.txt --preview -a #sampling ALL SNPs
 
-AHam
+#AHam downsampling results
 (2, 756) (3, 1134) (4, 1421) (5, 1664) (6, 1877) (7, 2069) (8, 2245) (9, 2407)
 (10, 2558) (11, 2700) (12, 2833) (13, 2959) (14, 3079) (15, 3193) (16, 3302) 
 (17, 3405) (18, 3505) (19, 3599) (20, 3691) (21, 3775) (22, 3860) (23, 3936)
 (24, 4015) (25, 4048) (26, 4121) (27, 4079) (28, 4146) (29, 3908) (30, 3966)
 (31, 3417) (32, 3465) (33, 2616) (34, 2651) (35, 1563) (36, 1583)
 
-CBat
+#CBat downsampling results
 (2, 763) (3, 1144) (4, 1440) (5, 1693) (6, 1918) (7, 2123) (8, 2312) (9, 2488)
 (10, 2653) (11, 2809) (12, 2956) (13, 3096) (14, 3230) (15, 3358) (16, 3480)
 (17, 3597) (18, 3710) (19, 3818) (20, 3923) (21, 4023) (22, 4120) (23, 4214)
@@ -138,9 +31,15 @@ CBat
 (73, 6474) (74, 6501) (75, 6283) (76, 6308) (77, 5961) (78, 5984) (79, 5410)
 (80, 5430) (81, 4357) (82, 4373) (83, 2722) (84, 2732)
 
-crun.python3 -p ~/.conda/envs/easySFS ./easySFS.py -i ~/PIRE/gazza_minuta/gmi.all.A.nohighhet.Ham.vcf -p Gmi_popfile.txt --proj 28,72 -o Gmi_output_28_72 -a -f
+#AHam: 28 "individuals" (really 2x individuals) retains most sites
+#CBat: 72 retains most sites
 
-##PLOT WITH DADI
+crun.python3 -p ~/.conda/envs/easySFS ./easySFS.py -i ~/PIRE/gazza_minuta/gmi.all.A.nohighhet.Ham.vcf -p Gmi_popfile.txt --proj 28,72 -o Gmi_output_28_72 -a -f
+```
+
+### Plot with DADI
+
+```sh
 cd Gmi_output_28_72/dadi
 crun.python3 -p ~/.conda/envs/dadi python
 import matplotlib.pyplot as pyplot
@@ -152,20 +51,24 @@ fig = pyplot.figure(219033)
 fig.clear()
 dadi.Plotting.plot_single_2d_sfs(data, vmin=0.01) #vmin means won't plot allele freqs <0.01 (bc log scale, would look funky)
 fig.savefig("Gmi_2D_SFS_28_72.png")
+```
 
-### ELA
-##MAKE SFS IN EASYSFS
+## Equulites laterofenestra
+
+## Make SFS with EASYSFS
+
+```sh
 salloc
 module load container_env python3
 cd easySFS
 crun.python3 -p ~/.conda/envs/easySFS ./easySFS.py -i ~/PIRE/leiognathus_leuciscus/lle.all.ela.nohighhet.vcf -p Lle_popfile.txt --preview -a #sampling ALL SNPs
 
-AHam
+#AHam
 (2, 6262) (3, 9393) (4, 11662) (5, 13500) (6, 15069) (7, 16451) (8, 17693) 
 (9, 18824) (10, 19864) (11, 20619) (12, 21511) (13, 21782) (14, 22553) (15, 22539)
 (16, 23210) (17, 22637) (18, 23219) (19, 21186) (20, 21665)
 
-CNas
+#CNas
 (2, 5880) (3, 8821) (4, 10933) (5, 12631) (6, 14072) (7, 15335) (8, 16465)
 (9, 17491) (10, 18433) (11, 19305) (12, 20118) (13, 20879) (14, 21595) (15, 22271)
 (16, 22911) (17, 23520) (18, 24099) (19, 24652) (20, 25181) (21, 25688) (22, 26174)
@@ -196,9 +99,15 @@ CNas
 (178, 42976) (179, 42690) (180, 42712) (181, 42344) (182, 42365) (183, 41591)
 (184, 41612) (185, 39383) (186, 39402)
 
-crun.python3 -p ~/.conda/envs/easySFS ./easySFS.py -i ~/PIRE/leiognathus_leuciscus/lle.all.ela.nohighhet.vcf -p Lle_popfile.txt --proj 18,160 -o Lle_output_18_160 -a -f
+#AHam: 18 "individuals" (really 2x individuals) retains most sites
+#CBat: 160 retains most sites
 
-##PLOT WITH DADI
+crun.python3 -p ~/.conda/envs/easySFS ./easySFS.py -i ~/PIRE/leiognathus_leuciscus/lle.all.ela.nohighhet.vcf -p Lle_popfile.txt --proj 18,160 -o Lle_output_18_160 -a -f
+```
+
+### Plot with DADI
+
+```sh
 cd Lle_output_18_160/dadi
 crun.python3 -p ~/.conda/envs/dadi python
 import matplotlib.pyplot as pyplot
@@ -210,3 +119,4 @@ fig = pyplot.figure(219033)
 fig.clear()
 dadi.Plotting.plot_single_2d_sfs(data, vmin=0.01) #vmin means won't plot allele freqs <0.01 (bc log scale, would look funky)
 fig.savefig("Lle_2D_SFS_18_160.png")
+```

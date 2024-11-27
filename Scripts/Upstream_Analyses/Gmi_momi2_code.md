@@ -1,4 +1,10 @@
-#### RUNNING MOMI2 ON WAHAB ####
+# Running MOMI2 on Wahab
+
+Code for *Gazza minuta*.
+
+## Create input files for momi2
+
+```sh
 cd ~/PIRE/gazza_minuta/momi2
 salloc
 module load container_env python3
@@ -24,8 +30,11 @@ print("populations", sfs.populations)
 populations ('AHam', 'CBat')
 print("percent missing data per population", sfs.p_missing)
 percent missing data per population [0.08277804 0.03494044]
+```
 
-##Constant pop size, contemp only
+## Constant pop size, contemp only
+
+```bash
 #specify model
 model_inf_constant_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8) #this sets the model input
 #add data
@@ -48,7 +57,11 @@ model_inf_constant_contemp.optimize(method="TNC")
         success: True
               x: array([9.69061526])
 
-##Constant pop size, temporal only
+```
+
+## Constant pop size, temporal only
+
+```bash
 #specify model
 model_inf_constant_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8) #this sets the model input
 #add data
@@ -70,8 +83,11 @@ model_inf_constant_temponly.optimize(method="TNC")
          status: 0
         success: True
               x: array([9.68183901])
+```
 
-##Constant pop size, temp & contemp
+## Constant pop size, temp & contemp
+
+```bash
 #specify model 
 model_inf_constant_temporal =  momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -95,8 +111,11 @@ model_inf_constant_temporal.optimize(method="TNC")
          status: 0
         success: True
               x: array([9.6703564])
+```
 
-##Recent size change, contemp only
+## Recent size change, contemp only
+
+```bash
 #specify model
 model_inf_change_contemp =  momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -121,8 +140,11 @@ model_inf_change_contemp.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.62226633, 23.02585093, 10.07416018])
+```
 
-##Recent size change, temp and contemp
+## Recent size change, temp and contemp
+
+```bash
 #specify model
 model_inf_change_temporal =  momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -149,8 +171,11 @@ model_inf_change_temporal.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.64498705, 10.39424089,  4.76997751])
+```
 
-##Pre-Albatross size change, contemp only
+## Pre-Albatross size change, contemp only
+
+```bash
 #specify model
 model_inf_recchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -175,8 +200,11 @@ model_inf_recchange_contemp.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.47177259, 10.67137914,  8.60724724])
+```
 
-##Pre-Albatross size change, temporal only
+## Pre-Albatross size change, temporal only
+
+```bash
 #specify model
 model_inf_recchange_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -201,8 +229,11 @@ model_inf_recchange_temponly.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.44369395, 20.30378223,  9.34786177])
+```
 
-##Pre-Albatross size change, temp and contemp
+## Pre-Albatross size change, temp and contemp
+
+```bash
 #specify model
 model_inf_recchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -229,8 +260,11 @@ model_inf_recchange_temporal.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.641945  , 20.89951848, -1.57997783])
+```
 
-##Historic size change, contemp only
+## Historic size change, contemp only
+
+```bash
 #specify model
 model_inf_histchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -255,8 +289,11 @@ model_inf_histchange_contemp.optimize(method="TNC")
          status: 0
         success: True
               x: array([ 6.90884174,  9.69061539, -5.34618583])
+```
 
-##Historic size change, temporal only
+## Historic size change, temporal only
+
+```bash
 #specify model
 model_inf_histchange_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -281,8 +318,11 @@ model_inf_histchange_temponly.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.03024721, 10.88954032, -4.59401825])
+```
 
-##Historic size change, temp and contemp		  
+## Historic size change, temp and contemp		  
+
+```bash
 #specify model
 model_inf_histchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -309,8 +349,11 @@ model_inf_histchange_temporal.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 8.85759296, 10.88180835, -4.27891789])
+```
 			  
-##Recent and Pre-Albatross size change, contemp only
+## Recent and Pre-Albatross size change, contemp only
+
+```bash
 #specify model
 model_inf_2recchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -339,8 +382,11 @@ model_inf_2recchange_contemp.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.24196609, 23.02585093,  1.75995512, 32.96293489, -7.16411138])
+```
 
-##Recent and Pre-Albatross size change, temp and contemp
+## Recent and Pre-Albatross size change, temp and contemp
+
+```bash
 #specify model
 model_inf_2recchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -371,8 +417,11 @@ model_inf_2recchange_temporal.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.49227145, 10.45927654,  1.31548254, 70.02923745, -8.42859371])
+```
 			  
-##Recent and historic size change, contemp only
+## Recent and historic size change, contemp only
+
+```bash
 #specify model
 model_inf_2change_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -401,8 +450,12 @@ model_inf_2change_contemp.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.15809023, 13.55642866,  6.863869  , -5.29505126,  1.1191059 ])
+```
 
-##Recent and historic size change, temp and contemp
+## Recent and historic size change, temp and contemp
+
+```bash
+#specify model
 model_inf_2change_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2change_temporal.set_data(sfs, length=467359)
@@ -432,8 +485,11 @@ model_inf_2change_temporal.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 8.92099253, 10.96414976,  6.85000111, -4.35549169, -2.58271092])
+```
 
-##Pre-Albatross and historic size change, contemp only
+## Pre-Albatross and historic size change, contemp only
+
+```bash
 #specify model
 model_inf_2histchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -462,8 +518,11 @@ model_inf_2histchange_contemp.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.15867391, 23.02585093,  7.28507181, -5.3176531 , -3.03969711])
+```
 
-##Pre-Albatross and historic size change, temporal only
+## Pre-Albatross and historic size change, temporal only
+
+```bash
 #specify model
 model_inf_2histchange_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -492,8 +551,11 @@ model_inf_2histchange_temponly.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.09523648, 11.10124224,  9.16225476, -4.82340308, -1.45789576])
+```
 
-##Pre-Albatross and historic size change, temp and contemp
+## Pre-Albatross and historic size change, temp and contemp
+
+```bash
 #specify model
 model_inf_2histchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -524,8 +586,11 @@ model_inf_2histchange_temporal.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.10568528, 11.51849325,  9.38148152, -4.77363019, 10.64082484])
+```
 
-##Recent, Pre-Albatross and historic size change, contemp only
+## Recent, Pre-Albatross and historic size change, contemp only
+
+```bash
 #specify model
 model_inf_3change_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -558,8 +623,11 @@ model_inf_3change_contemp.optimize(method="TNC")
         success: True
               x: array([ 9.14769262, 12.59243995, 21.67206186,  6.59425991, -5.22561165,
         0.67636389, -0.06688479])
+```
 
-##Recent, Pre-Albatross and historic size change, temp and contemp
+## Recent, Pre-Albatross and historic size change, temp and contemp
+
+```bash
 #specify model
 model_inf_3change_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -594,9 +662,13 @@ model_inf_3change_temporal.optimize(method="TNC")
         success: True
               x: array([ 9.18395135, 17.337268  ,  8.34974425, 22.21081449, -5.30746594,
         6.51337598, 13.50102196])
+```
 
-##Recent exponential change, contemp only 
+## Recent exponential change, contemp only 
+
+```bash
 from autograd.numpy import log #otherwise won't recognize log function in model (can say np.log in growth function but that doesn't run right either??)
+#specify model
 model_inf_expg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_expg_contemp.set_data(sfs,length=467359)
@@ -620,9 +692,13 @@ model_inf_expg_contemp.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.62489451, 23.02585093,  7.24245278])
+```
 
-###Recent exponential change, temp and contemp
+## Recent exponential change, temp and contemp
+
+```bash
 from autograd.numpy import log
+#specify model
 model_inf_expg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data
 model_inf_expg_temporal.set_data(sfs,length=467359)
@@ -648,9 +724,13 @@ model_inf_expg_temporal.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.65232552, 20.61176886,  0.20941048])
-			  
-##Pre-Albatross exponential change, contemp only
+```
+		  
+## Pre-Albatross exponential change, contemp only
+
+```bash
 from autograd.numpy import log
+#specify model
 model_inf_recexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_recexpg_contemp.set_data(sfs, length=467359)
@@ -674,9 +754,13 @@ model_inf_recexpg_contemp.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.55980145, 12.06625268,  9.56585244])
+```
 
-##Pre-Albatross exponential change, temporal only
+## Pre-Albatross exponential change, temporal only
+
+```bash
 from autograd.numpy import log
+#specify model
 model_inf_recexpg_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_recexpg_temponly.set_data(sfs, length=467359)
@@ -700,9 +784,13 @@ model_inf_recexpg_temponly.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.4512123 , 23.02585093, 10.04189565])
+```
 
-##Pre-Albatross size change, temp and contemp
+## Pre-Albatross size change, temp and contemp
+
+```bash
 from autograd.numpy import log
+#specify model
 model_inf_recexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_recexpg_temporal.set_data(sfs, length=467359)
@@ -728,9 +816,13 @@ model_inf_recexpg_temporal.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.61088297, 10.3522551 ,  8.30078701])
+```
 			  
-##Historic exponential change, contemp only 
-from autograd.numpy import log #otherwise won't recognize log function in model (can say np.log in growth function but that doesn't run right either??)
+## Historic exponential change, contemp only 
+
+```bash
+from autograd.numpy import log
+#specify model
 model_inf_histexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_histexpg_contemp.set_data(sfs,length=467359)
@@ -754,9 +846,12 @@ model_inf_histexpg_contemp.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 7.10406705, 11.12346616, -2.69677368])
+```
+## Historic exponential change, temporal only 
 
-##Historic exponential change, temporal only 
-from autograd.numpy import log #otherwise won't recognize log function in model (can say np.log in growth function but that doesn't run right either??)
+```bash
+from autograd.numpy import log
+#specify model
 model_inf_histexpg_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_histexpg_temponly.set_data(sfs,length=467359)
@@ -780,9 +875,13 @@ model_inf_histexpg_temponly.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 7.33092468, 11.14533209, -2.80017284])
- 
-###Historic exponential change, temp and contemp
+ ```
+
+## Historic exponential change, temp and contemp
+
+```bash
 from autograd.numpy import log
+#specify model
 model_inf_histexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data
 model_inf_histexpg_temporal.set_data(sfs,length=467359)
@@ -808,8 +907,12 @@ model_inf_histexpg_temporal.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 6.81364349, 10.96289242, -2.47315091])
+```
 
-##Recent and Pre-Albatross exponential change, contemp only
+## Recent and Pre-Albatross exponential change, contemp only
+
+```bash
+from autograd.numpy import log
 #specify model
 model_inf_2recexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -837,8 +940,12 @@ model_inf_2recexpg_contemp.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 2.76706966, 23.02585093, 23.02585091, -2.85069706, -0.23059148])
+```
 
-##Recent and Pre-Albatross exponential change, temp and contemp
+## Recent and Pre-Albatross exponential change, temp and contemp
+
+```bash
+from autograd.numpy import log
 #specify model
 model_inf_2recexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -869,8 +976,12 @@ model_inf_2recexpg_temporal.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.59588901, 11.02224028,  1.8127744 , 44.23440042, -5.93915947])
+```
 
-##Recent and historic exponential size change, contemp only
+## Recent and historic exponential size change, contemp only
+
+```bash
+from autograd.numpy import log
 #specify model
 model_inf_2changeexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -899,9 +1010,13 @@ model_inf_2changeexpg_contemp.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.09069364, 14.85504038,  3.69256503, -4.67185333, -0.78058373])
+```
 
-###Recent and historic exponential change, temp and contemp
+## Recent and historic exponential change, temp and contemp
+
+```bash
 from autograd.numpy import log
+#specify model
 model_inf_2changeexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data
 model_inf_2changeexpg_temporal.set_data(sfs,length=467359)
@@ -931,8 +1046,12 @@ model_inf_2changeexpg_temporal.optimize(method="TNC")
          status: 1
         success: True
               x: array([11.11825113,  3.04324228,  1.73077356, -1.75748149, -5.38434112])
+```
 
-##Pre-Albatross and historic exponential change, contemp only
+## Pre-Albatross and historic exponential change, contemp only
+
+```bash
+from autograd.numpy import log
 #specify model
 model_inf_2histexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -961,8 +1080,12 @@ model_inf_2histexpg_contemp.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 9.03722731, 14.93009276,  5.79079487, -4.68656682, -1.03676616])
+```
 
-##Pre-Albatross and historic exponential change, temporal only
+## Pre-Albatross and historic exponential change, temporal only
+
+```bash
+from autograd.numpy import log
 #specify model
 model_inf_2histexpg_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -991,8 +1114,12 @@ model_inf_2histexpg_temponly.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 8.95657099, 11.89245299,  6.98083429, -4.03403841, -1.37889536])
+```
 
-##Pre-Albatross and historic exponential change, temp and contemp
+## Pre-Albatross and historic exponential change, temp and contemp
+
+```bash
+from autograd.numpy import log
 #specify model
 model_inf_2histexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -1023,8 +1150,12 @@ model_inf_2histexpg_temporal.optimize(method="TNC")
          status: 1
         success: True
               x: array([ 0.25001265, 11.41378481,  7.98172305, -1.70113355, 10.21616655])
+```
 
-##Recent, Pre-Albatross and historical exponential change, contemp only
+## Recent, Pre-Albatross and historical exponential change, contemp only
+
+```bash
+from autograd.numpy import log
 #specify model
 model_inf_3expg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -1057,8 +1188,12 @@ model_inf_3expg_contemp.optimize(method="TNC")
         success: True
               x: array([ 9.26537145, 15.04356189, 13.78835741,  3.46432201, -4.67331907,
        -2.50828256, -1.20022406])
+```
 
-##Recent, Pre-Albatross and historic exponential change, temp and contemp
+## Recent, Pre-Albatross and historic exponential change, temp and contemp
+
+```bash
+from autograd.numpy import log
 #specify model
 model_inf_3expg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
 #add data to model
@@ -1093,3 +1228,4 @@ model_inf_3expg_temporal.optimize(method="TNC")
         success: True
               x: array([ 1.20087467, 11.43993752,  8.14601041, 23.02585093, -1.76211419,
        16.07877294,  5.55603157])
+```
