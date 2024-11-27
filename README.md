@@ -7,7 +7,7 @@ This repository is organized into 3 folders:
 2. **/Plots:** Contains pngs of plots included in the manuscript.
 3. **/Scripts:** Contains R scripts and code for analyses included in the manuscript.
 
-*A record of the bioinformatics pipeline (from raw reads to filtered VCF files) for each species can be found in the relevant repository on the **philippinespire** GitHub organization page (either **gazza_minuta_cssl_processing** or **leiognathus_leuciscus_cssl_processing**).* 
+*A record of the bioinformatics pipeline (from raw reads to filtered VCF files) for each species can be found in the relevant repository on the philippinespire GitHub organization page: either [**pire_gazza_minuta_cssl**](https://github.com/philippinespire/pire_gazza_minuta_cssl) or [**pire_leiognathus_leuciscus_cssl**](https://github.com/philippinespire/pire_leiognathus_leuciscus_cssl).* 
 
 Please contact René Clark at rclark848[at]gmail.com with any questions.
 _______________________________________________________
