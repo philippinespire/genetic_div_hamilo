@@ -6,6 +6,9 @@
 #SBATCH -c 4
 ##SBATCH --time=48:00:00
 
+#to run use the following command:
+#sbatch BayeScan.sbatch
+
 #code to run BayeScan v.2.1 on Wahab
 /home/rdclark/PIRE/BayeScan2.1/BayeScan2.1/binaries/BayeScan2.1_linux64bits \
       /home/rdclark/PIRE/gazza_minuta/BayeScan/Gmi_SNPs.txt -n 5000 \
