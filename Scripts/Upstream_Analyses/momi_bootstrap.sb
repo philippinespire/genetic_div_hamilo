@@ -6,6 +6,7 @@
 #SBATCH -c 4
 
 module load container_env python3
-bash
 
+#code to run momi2 on Wahab
+bash
 crun.python3 -p ~/.conda/envs/momi-py36 python /home/rdclark/PIRE/gazza_minuta/momi2/Gmi_momi_bootstrap.py
