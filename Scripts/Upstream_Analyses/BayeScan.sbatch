@@ -4,7 +4,6 @@
 #SBATCH -o bayescan.%j.out
 #SBATCH -p main
 #SBATCH -c 4
-##SBATCH --time=48:00:00
 
 #to run use the following command:
 #sbatch BayeScan.sbatch
