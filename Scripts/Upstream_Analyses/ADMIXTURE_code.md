@@ -49,4 +49,4 @@ crun.python3 -p ~/.conda/envs/popgen admixture PIRE.SPECIES.LOC.bed 1 --cv > PIR
 #run from 1-5
 ```
 
-Copy `*.Q` files to local computer. Read into R for visualization (`popgen_analyses/pop_structure.R`).
+Copy `*.Q` files to local computer. Read into R for visualization (`Scripts/admixture.R`).
