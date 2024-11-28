@@ -10,7 +10,7 @@
 
 module load container_env python3
 
-#install momi2 (if necessary)
+#install momi2 v.2.1.19 (if necessary)
 crun.python3 -c -s -p ~/.conda/envs/momi-py36 #create momi env if not already done
 crun.python3 -p ~/.conda/envs/momi-py36 conda install python=3.6
 crun.python3 -p ~/.conda/envs/momi-py36 conda install hdf5 gsl
