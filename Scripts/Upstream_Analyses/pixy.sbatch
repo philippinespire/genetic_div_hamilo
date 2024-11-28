@@ -15,7 +15,7 @@ crun.python3 -c -s -p ~/.conda/envs/popgen #create popgen env if not already don
 crun.python3 -p ~/.conda/envs/popgen conda install -c conda-forge pixy
 crun.python3 -p ~/.conda/envs/popgen conda install -c bioconda htslib
 
-#code to run pixy
+#code to run pixy v.1.2.7 on Wahab
 bash
 
 crun.python3 -p ~/.conda/envs/popgen \
