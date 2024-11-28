@@ -1,6 +1,6 @@
 # PCA code
 
-Code for calculating eigenvalues & eigenvectors with the program `plink`.
+Code for calculating eigenvalues & eigenvectors with the program `plink`. Run on an HPC cluster (Wahab at ODU) before transferring output files to local computer for downstream analyses and visualization in R.
 
 ## Install plink
 
