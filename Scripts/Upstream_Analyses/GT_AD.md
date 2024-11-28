@@ -1,6 +1,6 @@
 # Genotype & Depth Information
 
-Code to pull genotype and depth information from VCF files.
+Code to pull genotype and depth information from VCF files. Run on an HPC cluster (Wahab at ODU) before transferring output files to local computer for downstream analyses and visualization in R.
 
 ```sh
 module load container_env ddocent
@@ -28,4 +28,5 @@ cat individuals.tsv <(crun vcf-query $VCFFILE -f '%CHROM\t%POS\t%REF\t%ALT\t%QUA
 cat individuals.tsv <(crun vcf-query $VCFFILE -f '%CHROM\t%POS\t%REF\t%ALT\t%QUAL[\t%GT]\n' | sed 's/\t$//' ) > ${FILE_PREFIX}GT.tsv #genotype info
 ```
 
+Copy `.tsv` files to local computer. Read into R for visualization (`Scripts/sequencing_stats.R`).
 Copied `*tsv` files to local computer and read into R for downstream analyses (`Scripts/sequencing_stats.R`).
