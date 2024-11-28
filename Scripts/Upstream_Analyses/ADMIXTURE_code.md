@@ -1,6 +1,6 @@
 # ADMIXTURE code
 
-Code for running `ADMIXTURE` to assess population structure. Requires input (`bim` & `bed` files) created with PLINK. Instructions for installing PLINK & ADMIXTURE can be found in `/popgen_analyses/README.md`.
+Code for running `ADMIXTURE` to assess population structure. Requires input (`bim` & `bed` files) created with `plink`. Run on an HPC cluster (Wahab at ODU) before transferring output files to local computer for downstream analyses and visualization in R.
 
 ## Install plink and admixture
 
