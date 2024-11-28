@@ -10,14 +10,13 @@
 
 module load container_env python3
 
-#install pixy (if necessary)
+#install pixy v.1.2.7 (if necessary)
 crun.python3 -c -s -p ~/.conda/envs/popgen #create popgen env if not already done
 crun.python3 -p ~/.conda/envs/popgen conda install -c conda-forge pixy
 crun.python3 -p ~/.conda/envs/popgen conda install -c bioconda htslib
 
-#code to run pixy v.1.2.7 on Wahab
+#code to run pixy on Wahab
 bash
-
 crun.python3 -p ~/.conda/envs/popgen \
   pixy --stats pi fst \
        --vcf ../gmi.all.A.nohighhet.Ham.vcf.gz \
