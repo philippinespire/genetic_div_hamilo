@@ -16,8 +16,6 @@ Calculated Tajima's D, both within each population and with the full dataset (al
 #NOTE: don't grab interactive node for VCFtools jobs bc run in seconds, BUT if is more data-intensive, should get off log-in node to do this.
 
 vcftools --vcf <VCF FILE> --TajimaD 10000 --out <OUT PREFIX>
-
-#used bins of 10,000 bp so would calculate across each transcript individually (largest transcript <7000 bp)
 ```
 
 Copied `*Tajima.D` files to local computer and read into R for downstream analyses (`Scripts/TajimasD.R`).
