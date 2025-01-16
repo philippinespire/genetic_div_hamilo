@@ -87,6 +87,7 @@ Data/Ela_Ham/Ela_nohighhet_TajimasD_combined_full.csv
 Data/Ela_Ham/Ela_nohighhet_TD_cis.csv
 Data/Ela_Ham/Ela_wang_relatedness_cis.csv
 Data/Ela_Ham/Ela_relatedness_raw.csv
+Data/Ela_Ham/Ela.relatedness.format.txt
 Data/Ela_Ham/*gen
 Data/Ela_Ham/Ela_Ela_individs_het.xlsx
 Data/Ela_Ham/Ela_seq_metadata.xlsx
@@ -107,6 +108,7 @@ Data/Gmi_Ham/Gmi_A_nohighhet_Ham_TajimasD_combined_full.csv
 Data/Gmi_Ham/Gmi_A_nohighhet_Ham_TD_cis.csv
 Data/Gmi_Ham/Gmi_wang_relatedness_cis.csv
 Data/Gmi_Ham/Gmi_relatedness_raw.csv
+Data/Gmi_Ham/Gmi.relatedness.format.txt
 Data/Gmi_Ham/*gen
 Data/Gmi_Ham/Gmi_A_individ_het.xlsx
 Data/Gmi_Ham/Gmi_seq_metadata.csv
