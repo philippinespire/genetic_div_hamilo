@@ -1,4 +1,4 @@
-**Scripts:**
+Scripts:
  * **admixture.R**: Reads in `ADMIXTURE` output files and creates output plots for visualization of `ADMIXTURE` results. Also creates CV plots to identify the "best" value of K.
  * **compare_div_loss.R**: Compares observed loss in genetic diversity in these species to other temporal losses (using supplemental material from [Leigh et al. (2019)](https://doi.org/10.1111/eva.12810).
  * **Demo_Bootstrap.R**: Reads in output from `momi2` and calculates 95% CIs for Ne estimates and timing of Ne size changes; creates plots of Ne change through time.
