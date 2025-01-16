@@ -22,6 +22,8 @@ Plots/Aen_stuff/*
 Plots/momi2_plots/Aen_stuff/*
 Plots/PCAs_ADMIXTURE/Aen_stuff/*
 Plots/read_depth_plots/Aen_stuff/*
+Plots/read_depth_plots/Meandepth*
+Plots/read_depth_plots/perchet_totreadcount*
 Plots/2sp_Fis_plot_flipped.png
 Plots/2sp_He_plot_flipped.png
 Plots/2sp_Ho_plot_flipped.png
