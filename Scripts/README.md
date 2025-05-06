@@ -10,6 +10,6 @@ Scripts:
  * **relatedness.R**: Calculates pairwise relatedness (point estimates for all possible pairs, mean within- and across-time point relatedness, and bootstrapped 95% CIs).
  * **sequencing_stats.R**: Calculates read depth v. heterozygosity stats to look for issues with reference bias and under-powered genotype calls. Also generates various plots to analyze sequencing quality (amount of missing data, etc.).
  * **TajimasD.R**: Reads in .csv files containing Tajima's D output from `VCFtools` and calculates the mean (+ SE) Tajima's D in each timepoint and with both timepoints pooled. Also analyzes change in the distribution of Tajima's D through time.
- * **tempNe_estimates.R**: Calculates harmonic mean of Ne (over time) based on heterozygosity loss equation.
+ * **tempNe_estimates.R**: Estimates generation length and calculates harmonic mean of Ne (over time) based on heterozygosity loss equation.
 
 *If input files for a script were created by running code and/or calling programs on a remote workstation, details on the code used can be found in /Scripts/Upstream_Analyses.*
