@@ -7,7 +7,7 @@ sfs = momi.Sfs.load(sfsfile)
 NeConstant=1e4
 
 #specify model
-model_inf_3change_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_3change_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_3change_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, alb size, pre-alb size, historic size, times of three size changes
