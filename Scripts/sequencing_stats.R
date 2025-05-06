@@ -17,6 +17,8 @@ library(tidyverse) #v.2.0.0
 library(magrittr) #v.2.0.3
 library(janitor) #v.2.2.0
 library(data.table) #v.1.14.8
+library(ggridges) #v.0.5.4
+library(purrr) #v.1.0.1
 
 #set user defined variables
 alleledepthFILE = 'Data/Gmi_Ham/Gmi.A.rad.RAW-10-10-rescaled.Fltr17.2.recode.renamed.AD.tsv'
@@ -186,7 +188,7 @@ test <- ggplot(all_data_order,
                    fill = era, alpha = genotype_call)) + 
   geom_tile() + 
   scale_alpha_identity(guide = "none") +
-  scale_fill_manual(values = c("#1c3b0e","#afc8a4")) + 
+  scale_fill_manual(values = c("#1c3b0e",  "#afc8a4")) + 
   xlab("Individual") + ylab("Locus") + 
   theme_classic() + 
   theme(panel.grid.major = element_blank(), 
@@ -205,8 +207,8 @@ test
 
 #read in if running separately
 all_data <- readRDS("Data/Gmi_Ham/all_data_diploid.rds")
-  all_data$era[all_data$era == "c"] <- "Contemp"
-  all_data$era[all_data$era == "a"] <- "Hist"
+  all_data$era[all_data$era == "c"] <- "Contemporary"
+  all_data$era[all_data$era == "a"] <- "Historical"
 
 #### Calculate average AB per locus by locus, genotype, era ####
 #calculate average AB by locus, era, genotype
@@ -309,21 +311,21 @@ num_reads_by_depth_era <- num_reads_by_depth_era[!is.na(num_reads_by_depth_era$h
 ## Albatross reads ##
 #identify only albatross het reads
 a_sum_het <- subset(num_reads_by_depth_era, 
-                    num_reads_by_depth_era$era == "Hist" & num_reads_by_depth_era$het_homo == "hetero")
+                    num_reads_by_depth_era$era == "Historical" & num_reads_by_depth_era$het_homo == "hetero")
   colnames(a_sum_het) <- c("num_reads", "het_homo", "era", "het_genotypes") #this count is now # het genotypes at X read depth across all alb individuals
   a_sum_het <- a_sum_het[, -2] #remove extra column
 
 #identify only albatross homo reads
 a_sum_homo <- subset(num_reads_by_depth_era, 
-                     num_reads_by_depth_era$era == "Hist" & num_reads_by_depth_era$het_homo == "homo")
+                     num_reads_by_depth_era$era == "Historical" & num_reads_by_depth_era$het_homo == "homo")
   colnames(a_sum_homo) <- c("num_reads", "het_homo", "era", "homo_genotypes") #this count is now # homo genotypes at X read depth across all alb individuals
   a_sum_homo <- a_sum_homo[, -2] #remove extra column
 
 #create missing rows for merging
 homo_nohet <- setdiff(a_sum_homo$num_reads, a_sum_het$num_reads) #in homo, not het
-  het_missing <- data.frame(num_reads = homo_nohet, era = "Hist", het_genotypes = 0)
+  het_missing <- data.frame(num_reads = homo_nohet, era = "Historical", het_genotypes = 0)
 het_nohomo <- setdiff(a_sum_het$num_reads, a_sum_homo$num_reads) #in het, not homo
-  homo_missing <- data.frame(num_reads = het_nohomo, era = "Hist", homo_genotypes = 0)
+  homo_missing <- data.frame(num_reads = het_nohomo, era = "Historical", homo_genotypes = 0)
 
 #merge albatross dataframes
 a_sum_het_full <- rbind(a_sum_het, het_missing)
@@ -334,20 +336,20 @@ a_genotypes <- merge(a_sum_het_full, a_sum_homo_full, by = c("num_reads", "era")
 ## Contemporary reads ##
 #identify only contemp het reads
 c_sum_het <- subset(num_reads_by_depth_era, 
-                    num_reads_by_depth_era$era == "Contemp" & num_reads_by_depth_era$het_homo == "hetero")
+                    num_reads_by_depth_era$era == "Contemporary" & num_reads_by_depth_era$het_homo == "hetero")
   colnames(c_sum_het) <- c("num_reads", "het_homo", "era", "het_genotypes") #this count is now # het genotypes at X read depth across all contemp individuals
   c_sum_het <- c_sum_het[, -2] #remove extra column
 
 c_sum_homo <- subset(num_reads_by_depth_era, 
-                     num_reads_by_depth_era$era == "Contemp" & num_reads_by_depth_era$het_homo == "homo")
+                     num_reads_by_depth_era$era == "Contemporary" & num_reads_by_depth_era$het_homo == "homo")
   colnames(c_sum_homo) <- c("num_reads", "het_homo", "era", "homo_genotypes") #this count is now # homo genotypes at X read depth across all contemp individuals
   c_sum_homo <- c_sum_homo[, -2] #remove extra column
 
 #create missing rows for merging
 homo_nohet <- setdiff(c_sum_homo$num_reads, c_sum_het$num_reads) #in homo, not het
-  het_missing <- data.frame(num_reads = homo_nohet, era = "Contemp", het_genotypes = 0)
+  het_missing <- data.frame(num_reads = homo_nohet, era = "Contemporary", het_genotypes = 0)
 het_nohomo <- setdiff(c_sum_het$num_reads, c_sum_homo$num_reads) #in het, not homo
-  homo_missing <- data.frame(num_reads = het_nohomo, era = "Contemp", homo_genotypes = 0)
+  homo_missing <- data.frame(num_reads = het_nohomo, era = "Contemporary", homo_genotypes = 0)
 
 #merge contemporary dataframes
 c_sum_het_full <- rbind(c_sum_het, het_missing)
@@ -358,10 +360,10 @@ c_genotypes <- merge(c_sum_het, c_sum_homo, by = c("num_reads", "era"))
 ## All reads together ##
 #check for missing rows before merging
 alb_nocontemp <- setdiff(a_genotypes$num_reads, c_genotypes$num_reads) #in alb, not contemp
-  contemp_missing <- data.frame(num_reads = alb_nocontemp, era = "Contemp", 
+  contemp_missing <- data.frame(num_reads = alb_nocontemp, era = "Contemporary", 
                                 het_genotypes = 0, homo_genotypes = 0)
 contemp_noalb <- setdiff(c_genotypes$num_reads, a_genotypes$num_reads) #in contemp, not alb
-  alb_missing <- data.frame(num_reads = contemp_noalb, era = "Hist", 
+  alb_missing <- data.frame(num_reads = contemp_noalb, era = "Historical", 
                            het_genotypes = 0, homo_genotypes = 0)
 
 #merge all dataframes
@@ -376,21 +378,7 @@ all_genotypes <- rbind(alb_genotypes_full, contemp_genotypes_full)
   
 ######## Visualize results ########
 
-#percent het genotypes by read depth --> at any given depth, what % of calls are het?
-all_genotypes %>% 
-  ggplot(aes(x=num_reads, y = perc_het, color = era)) + 
-  geom_point(size = 4) + 
-  labs(y = "% heterozygous genotypes", 
-       x = "read depth") + 
-  scale_x_continuous(limits = c(1, 100)) + 
-  scale_y_continuous(limits = c(0, 0.5)) + 
-  scale_color_manual(values = c("#afc8a4", "#1c3b0e")) +
-  theme_bw() + 
-  theme(axis.title = element_text(size = 28, color = "black"), 
-        axis.text = element_text(size = 20, color = "black"), 
-        legend.text = element_text(size = 28, color = "black"), 
-        legend.title = element_blank())
-
+#### read depth plots ####
 #tot num genotypes by read depth --> at any given depth, what is tot # genotypes?
 all_genotypes %>%
   ggplot(aes(x=num_reads,
@@ -401,7 +389,7 @@ all_genotypes %>%
   labs(y = "total # genotypes", 
        x = "read depth") + 
   scale_x_continuous(limits = c(1, 100)) +
-  scale_color_manual(values = c("#afc8a4", "#1c3b0e")) + 
+  scale_color_manual(values = c("#afc8a4", "#1c3b0e")) +
   scale_fill_manual(values = c("#afc8a4", "#1c3b0e")) + 
   theme_bw() +
   theme(legend.position = "none", 
@@ -412,7 +400,7 @@ all_genotypes %>%
              scales = "free")
 
 #histogram of average read depth --> does per locus mean read depth differ between het & homo genotypes?
-avg_read_depth_by_locus_era_genotype[avg_read_depth_by_locus_era_genotype$era == "Contemp", ] %>%
+avg_read_depth_by_locus_era_genotype[avg_read_depth_by_locus_era_genotype$era == "Contemporary", ] %>%
   ggplot(aes(x=mean_depth)) +
   geom_histogram(color = "#afc8a4", 
                  fill = "#afc8a4") + 
@@ -428,8 +416,28 @@ avg_read_depth_by_locus_era_genotype[avg_read_depth_by_locus_era_genotype$era ==
   facet_grid(het_homo ~ .,
              scales = "free")
 
+#### percent het plots ####
+#percent het genotypes by read depth --> at any given depth, what % of calls are het?
+all_genotypes %>% 
+  ggplot(aes(x=num_reads, y = perc_het, color = era)) + 
+  geom_point(size = 10) + 
+  labs(y = "% heterozygous genotypes", 
+       x = "read depth") + 
+  scale_x_continuous(limits = c(1, 100)) + 
+  scale_y_continuous(limits = c(0, 0.5)) + 
+  scale_color_manual(values = c("#afc8a4", "#1c3b0e")) +
+  theme_bw() + 
+  theme(panel.grid = element_blank(),
+        panel.border = element_blank(),
+        axis.line = element_line(linewidth = 2, color = "black"),
+        axis.title = element_text(size = 40, color = "black"), 
+        axis.text = element_text(size = 40, color = "black"), 
+        legend.text = element_text(size = 30, color = "black"), 
+        legend.title = element_blank(),
+        legend.position = c(0.85, 0.9))
+
 #percent het genotypes by tot reads at locus --> relationship between total # reads & percent heterozygote
-full_count_wtot[full_count_wtot$het_homo == "hetero" & full_count_wtot$era == "Contemp", ] %>% 
+full_count_wtot[full_count_wtot$het_homo == "hetero" & full_count_wtot$era == "Contemporary", ] %>% 
   ggplot(aes(x=tot_depth, y = perc_hethomo, color = era)) + 
   geom_point(size = 4) + 
   labs(y = "% heterozygous genotypes", 
@@ -441,38 +449,76 @@ full_count_wtot[full_count_wtot$het_homo == "hetero" & full_count_wtot$era == "C
         legend.text = element_text(size = 28, color = "black"), 
         legend.title = element_blank())
 
+#### read depth ratio plots ####
+#ordering x-axis
+avg_read_depth_combined$era <- factor(avg_read_depth_combined$era, levels = c("Historical", "Contemporary")) #ordering X-axis
+
+#first density plot to get coordinates
+RDR_density_plot_1 <- ggplot() + 
+  geom_density_ridges2(data = avg_read_depth_combined, 
+                       aes(x = read_ratio, y = era), scale = 1.2) 
+
+#pull out density plot information
+ingredients <- ggplot_build(RDR_density_plot_1) %>% purrr::pluck("data", 1)
+density_lines <- ingredients %>%
+  group_by(group) %>% filter(density == max(density)) %>% ungroup()
+
 #read depth ratio across eras --> avg read depth homo / avg read depth het --> do homozygous calls have ~half the depth of het?
-avg_read_depth_combined %>% 
-  ggplot(aes(x=read_ratio, color = era, fill = era)) + 
-  geom_density() + 
-  labs(y = "density", 
-       x = "read ratio (homozygous/heterozygous)") + 
-  scale_x_continuous(limits = c(0, 2)) +
-  scale_color_manual(values = c("#afc8a4", "#1c3b0e")) + 
-  scale_fill_manual(values = c("#afc8a4", "#1c3b0e")) +  
-  theme_bw() + 
-  theme(axis.title = element_text(size = 28, color = "black"), 
-        axis.text = element_text(size = 20, color = "black"), 
-        legend.text = element_text(size = 28, color = "black"), 
-        legend.title = element_blank()) + 
-  facet_grid(era ~ .,
-             scales = "free")
+RDR_density_plot <- ggplot() + 
+  geom_density_ridges2(data = avg_read_depth_combined, 
+                       aes(x = read_ratio, y = era, color = era, fill = era), 
+                       scale = 1.2) + 
+  geom_vline(aes(xintercept = 1), linewidth = 4, color = "black", linetype = "solid") + 
+  scale_color_manual(values = c("#1c3b0e", "#afc8a4")) +
+  scale_fill_manual(values = c("#1c3b0e", "#afc8a4")) + 
+  scale_y_discrete(expand = expansion(mult = c(0.01, 1))) + #bring y axis down x
+  scale_x_continuous(limits = c(0, 3)) + 
+  labs(x = "read ratio (homozygous/heterozygous)") +  
+  theme_ridges() + 
+  theme(plot.title = element_blank(),
+        axis.ticks = element_blank(), 
+        axis.text.y = element_text(size = 55, color = "black"), 
+        axis.text.x = element_text(size = 55, color = "black"), 
+        axis.title.y = element_blank(),
+        axis.title.x = element_text(size = 55, color = "black", vjust = -0.5, hjust = 0.5),
+        legend.position = "none", 
+        plot.margin = unit(c(0.5,0.5,1,0.5), "cm"))
+RDR_density_plot
+
+#### allele balance plots ####
+#ordering x-axis
+avg_AB_by_locus_era_hetero$era <- factor(avg_AB_by_locus_era_hetero$era, levels = c("Historical", "Contemporary")) #ordering X-axis
+
+#first density plot to get coordinates
+AB_density_plot_1 <- ggplot() + 
+  geom_density_ridges2(data = avg_AB_by_locus_era_hetero, 
+                       aes(x = mean_AB, y = era), scale = 1.2) 
+
+#pull out density plot information
+ingredients <- ggplot_build(AB_density_plot_1) %>% purrr::pluck("data", 1)
+density_lines <- ingredients %>%
+  group_by(group) %>% filter(density == max(density)) %>% ungroup()
 
 #allele balance
-avg_AB_by_locus_era_hetero %>% 
-  ggplot(aes(x=mean_AB, color = era, fill = era)) + 
-  geom_density() + 
+AB_density_plot <- ggplot() + 
+  geom_density_ridges2(data = avg_AB_by_locus_era_hetero, 
+                       aes(x = mean_AB, y = era, color = era, fill = era), 
+                       scale = 1.2) + 
+  geom_vline(aes(xintercept = 0.5), linewidth = 4, color = "black", linetype = "solid") + 
   geom_vline(aes(xintercept = 0.375), linetype = "dashed", linewidth = 1.5, color = "#666666") +
   geom_vline(aes(xintercept = 0.625), linetype = "dashed", linewidth = 1.5, color = "#666666") +
-  labs(y = "density", 
-       x = "mean allele balance") + 
-  scale_x_continuous(limits = c(0, 1)) +
-  scale_color_manual(values = c("#afc8a4", "#1c3b0e")) + 
-  scale_fill_manual(values = c("#afc8a4", "#1c3b0e")) +  
-  theme_bw() + 
-  theme(axis.title = element_text(size = 28, color = "black"), 
-        axis.text = element_text(size = 20, color = "black"), 
-        legend.text = element_text(size = 28, color = "black"), 
-        legend.title = element_blank()) + 
-  facet_grid(era ~ .,
-             scales = "free")
+  scale_color_manual(values = c("#1c3b0e", "#afc8a4")) +
+  scale_fill_manual(values = c("#1c3b0e", "#afc8a4")) + 
+  scale_y_discrete(expand = expansion(mult = c(0.01, .7))) + #bring y axis down x
+  scale_x_continuous(limits = c(0, 1)) + 
+  labs(x = "mean allele balance") +  
+  theme_ridges() + 
+  theme(plot.title = element_blank(),
+        axis.ticks = element_blank(), 
+        axis.text.y = element_text(size = 55, color = "black"), 
+        axis.text.x = element_text(size = 55, color = "black"), 
+        axis.title.y = element_blank(),
+        axis.title.x = element_text(size = 55, color = "black", vjust = -0.5, hjust = 0.5),
+        legend.position = "none", 
+        plot.margin = unit(c(0.5,0.5,1,0.5), "cm"))
+AB_density_plot
