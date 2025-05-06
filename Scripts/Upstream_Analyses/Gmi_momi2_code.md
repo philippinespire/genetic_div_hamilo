@@ -36,7 +36,7 @@ percent missing data per population [0.08277804 0.03494044]
 
 ```bash
 #specify model
-model_inf_constant_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8) #this sets the model input
+model_inf_constant_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8) #this sets the model input
 #add data
 model_inf_constant_contemp.set_data(sfs, length=467359) #gives the data to simulate and # of SNPs that go into it
 #set parameter to infer - contemp size
@@ -62,7 +62,7 @@ model_inf_constant_contemp.optimize(method="TNC")
 
 ```bash
 #specify model
-model_inf_constant_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8) #this sets the model input
+model_inf_constant_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8) #this sets the model input
 #add data
 model_inf_constant_temponly.set_data(sfs, length=467359) #gives the data to simulate and # of SNPs that go into it
 #set parameter to infer - contemp size
@@ -88,7 +88,7 @@ model_inf_constant_temponly.optimize(method="TNC")
 
 ```bash
 #specify model 
-model_inf_constant_temporal =  momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_constant_temporal =  momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_constant_temporal.set_data(sfs, length=467359)
 #set parameter to infer - contemp size
@@ -116,7 +116,7 @@ model_inf_constant_temporal.optimize(method="TNC")
 
 ```bash
 #specify model
-model_inf_change_contemp =  momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_change_contemp =  momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_change_contemp.set_data(sfs,length=467359)
 #set parameters to infer - contemp size, alb size, time of bottleneck
@@ -145,7 +145,7 @@ model_inf_change_contemp.optimize(method="TNC")
 
 ```bash
 #specify model
-model_inf_change_temporal =  momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_change_temporal =  momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_change_temporal.set_data(sfs,length=467359)
 #set parameters to infer - contemp size, alb size, time of bottleneck
@@ -176,7 +176,7 @@ model_inf_change_temporal.optimize(method="TNC")
 
 ```bash
 #specify model
-model_inf_recchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_recchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_recchange_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -205,7 +205,7 @@ model_inf_recchange_contemp.optimize(method="TNC")
 
 ```bash
 #specify model
-model_inf_recchange_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_recchange_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_recchange_temponly.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -234,7 +234,7 @@ model_inf_recchange_temponly.optimize(method="TNC")
 
 ```bash
 #specify model
-model_inf_recchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_recchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_recchange_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -265,7 +265,7 @@ model_inf_recchange_temporal.optimize(method="TNC")
 
 ```bash
 #specify model
-model_inf_histchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_histchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_histchange_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -294,7 +294,7 @@ model_inf_histchange_contemp.optimize(method="TNC")
 
 ```bash
 #specify model
-model_inf_histchange_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_histchange_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_histchange_temponly.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -323,7 +323,7 @@ model_inf_histchange_temponly.optimize(method="TNC")
 
 ```bash
 #specify model
-model_inf_histchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_histchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_histchange_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -354,7 +354,7 @@ model_inf_histchange_temporal.optimize(method="TNC")
 
 ```bash
 #specify model
-model_inf_2recchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_2recchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2recchange_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -387,7 +387,7 @@ model_inf_2recchange_contemp.optimize(method="TNC")
 
 ```bash
 #specify model
-model_inf_2recchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_2recchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2recchange_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -422,7 +422,7 @@ model_inf_2recchange_temporal.optimize(method="TNC")
 
 ```bash
 #specify model
-model_inf_2change_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_2change_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2change_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, alb size, historic size (pre-alb), times of two size changes
@@ -455,7 +455,7 @@ model_inf_2change_contemp.optimize(method="TNC")
 
 ```bash
 #specify model
-model_inf_2change_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_2change_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2change_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, alb size, historic size (pre-alb), times of two size changes
@@ -490,7 +490,7 @@ model_inf_2change_temporal.optimize(method="TNC")
 
 ```bash
 #specify model
-model_inf_2histchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_2histchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2histchange_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -524,7 +524,7 @@ model_inf_2histchange_contemp.optimize(method="TNC")
 
 ```bash
 #specify model
-model_inf_2histchange_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_2histchange_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2histchange_temponly.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -557,7 +557,7 @@ model_inf_2histchange_temponly.optimize(method="TNC")
 
 ```bash
 #specify model
-model_inf_2histchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_2histchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2histchange_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -592,7 +592,7 @@ model_inf_2histchange_temporal.optimize(method="TNC")
 
 ```bash
 #specify model
-model_inf_3change_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_3change_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_3change_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -629,7 +629,7 @@ model_inf_3change_contemp.optimize(method="TNC")
 
 ```bash
 #specify model
-model_inf_3change_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_3change_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_3change_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -669,7 +669,7 @@ model_inf_3change_temporal.optimize(method="TNC")
 ```bash
 from autograd.numpy import log #otherwise won't recognize log function in model (can say np.log in growth function but that doesn't run right either??)
 #specify model
-model_inf_expg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_expg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_expg_contemp.set_data(sfs,length=467359)
 #set parameters to infer - contemp size, alb size, time of bottleneck
@@ -699,7 +699,7 @@ model_inf_expg_contemp.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_expg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_expg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data
 model_inf_expg_temporal.set_data(sfs,length=467359)
 #set parameterss to infer - contemp size, alb size, time of bottleneck
@@ -731,7 +731,7 @@ model_inf_expg_temporal.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_recexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_recexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_recexpg_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -761,7 +761,7 @@ model_inf_recexpg_contemp.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_recexpg_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_recexpg_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_recexpg_temponly.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -791,7 +791,7 @@ model_inf_recexpg_temponly.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_recexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_recexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_recexpg_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -823,7 +823,7 @@ model_inf_recexpg_temporal.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_histexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_histexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_histexpg_contemp.set_data(sfs,length=467359)
 #set parameters to infer - contemp size, alb size, time of bottleneck
@@ -852,7 +852,7 @@ model_inf_histexpg_contemp.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_histexpg_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_histexpg_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_histexpg_temponly.set_data(sfs,length=467359)
 #set parameters to infer - contemp size, alb size, time of bottleneck
@@ -882,7 +882,7 @@ model_inf_histexpg_temponly.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_histexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_histexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data
 model_inf_histexpg_temporal.set_data(sfs,length=467359)
 #set parameterss to infer - contemp size, alb size, time of bottleneck
@@ -914,7 +914,7 @@ model_inf_histexpg_temporal.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_2recexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_2recexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2recexpg_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -948,7 +948,7 @@ model_inf_2recexpg_contemp.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_2recexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_2recexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2recexpg_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -984,7 +984,7 @@ model_inf_2recexpg_temporal.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_2changeexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_2changeexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2changeexpg_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, alb size, historic size (pre-alb), times of two size changes
@@ -1018,7 +1018,7 @@ model_inf_2changeexpg_contemp.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_2changeexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_2changeexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data
 model_inf_2changeexpg_temporal.set_data(sfs,length=467359)
 #set parameters to infer - contemp size, alb size, time of bottleneck
@@ -1054,7 +1054,7 @@ model_inf_2changeexpg_temporal.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_2histexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_2histexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2histexpg_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -1088,7 +1088,7 @@ model_inf_2histexpg_contemp.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_2histexpg_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_2histexpg_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2histexpg_temponly.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -1122,7 +1122,7 @@ model_inf_2histexpg_temponly.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_2histexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_2histexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2histexpg_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -1158,7 +1158,7 @@ model_inf_2histexpg_temporal.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_3expg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_3expg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_3expg_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -1196,7 +1196,7 @@ model_inf_3expg_contemp.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_3expg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
+model_inf_3expg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.394, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_3expg_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
