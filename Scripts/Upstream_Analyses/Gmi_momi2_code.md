@@ -36,7 +36,7 @@ percent missing data per population [0.08277804 0.03494044]
 
 ```bash
 #specify model
-model_inf_constant_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8) #this sets the model input
+model_inf_constant_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8) #this sets the model input
 #add data
 model_inf_constant_contemp.set_data(sfs, length=467359) #gives the data to simulate and # of SNPs that go into it
 #set parameter to infer - contemp size
@@ -45,51 +45,50 @@ model_inf_constant_contemp.add_leaf("CBat",N="n_constant") #wants to estimate n 
 #run model
 model_inf_constant_contemp.optimize(method="TNC")
 
-            fun: 0.2506224208032932
-            jac: array([1.75456524e-09])
-  kl_divergence: 0.2506224208032932
- log_likelihood: -18372.83344348638
+            fun: 0.2506224208032938
+            jac: array([1.56363903e-14])
+  kl_divergence: 0.2506224208032938
+ log_likelihood: -18372.833443486383
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 7
-            nit: 3
-     parameters: ParamsDict({'n_constant': 16165.187024312596})
+           nfev: 13
+            nit: 4
+     parameters: ParamsDict({'n_constant': 16165.186753328191})
          status: 1
         success: True
-              x: array([9.69061526])
-
+              x: array([9.69061524])
 ```
 
 ## Constant pop size, temporal only
 
 ```bash
 #specify model
-model_inf_constant_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8) #this sets the model input
+model_inf_constant_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8) #this sets the model input
 #add data
 model_inf_constant_temponly.set_data(sfs, length=467359) #gives the data to simulate and # of SNPs that go into it
 #set parameter to infer - contemp size
 model_inf_constant_temponly.add_size_param("n_constant") #says, want to estimate n
-model_inf_constant_tempnly.add_leaf("AHam",N="n_constant") #wants to estimate n in this leaf (population)
+model_inf_constant_temponly.add_leaf("AHam",N="n_constant") #wants to estimate n in this leaf (population)
 #run model
 model_inf_constant_temponly.optimize(method="TNC")
 
-            fun: 0.16220847010228948
-            jac: array([1.81722797e-08])
-  kl_divergence: 0.16220847010228948
- log_likelihood: -9636.23215911425
-        message: 'Local minimum reached (|pg| ~= 0)'
+            fun: 0.16220847010228867
+            jac: array([1.34123456e-11])
+  kl_divergence: 0.16220847010228867
+ log_likelihood: -9636.232159114246
+        message: 'Converged (|f_n-f_(n-1)| ~= 0)'
            nfev: 10
-            nit: 3
-     parameters: ParamsDict({'n_constant': 16023.938035203233})
-         status: 0
+            nit: 4
+     parameters: ParamsDict({'n_constant': 16023.936072205768})
+         status: 1
         success: True
-              x: array([9.68183901])
+              x: array([9.68183889])
 ```
 
 ## Constant pop size, temp & contemp
 
 ```bash
 #specify model 
-model_inf_constant_temporal =  momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_constant_temporal =  momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_constant_temporal.set_data(sfs, length=467359)
 #set parameter to infer - contemp size
@@ -100,24 +99,24 @@ model_inf_constant_temporal.move_lineages("CBat","AHam",t=110) #says move ALL in
 #run model
 model_inf_constant_temporal.optimize(method="TNC")
 
-            fun: 0.7696632421752071
-            jac: array([1.6781456e-08])
-  kl_divergence: 0.7696632421752071
- log_likelihood: -31097.921819451207
-        message: 'Local minimum reached (|pg| ~= 0)'
-           nfev: 9
+            fun: 0.7702807318652237
+            jac: array([4.70280014e-13])
+  kl_divergence: 0.7702807318652237
+ log_likelihood: -31102.53323245625
+        message: 'Converged (|f_n-f_(n-1)| ~= 0)'
+           nfev: 12
             nit: 4
-     parameters: ParamsDict({'n_constant': 15840.993766767238})
-         status: 0
+     parameters: ParamsDict({'n_constant': 15797.57240966082})
+         status: 1
         success: True
-              x: array([9.6703564])
+              x: array([9.66761156])
 ```
 
 ## Recent size change, contemp only
 
 ```bash
 #specify model
-model_inf_change_contemp =  momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_change_contemp =  momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_change_contemp.set_data(sfs,length=467359)
 #set parameters to infer - contemp size, alb size, time of bottleneck
@@ -129,24 +128,24 @@ model_inf_change_contemp.set_size("CBat", N="n_alb", t="t_bot") #says CBat pop c
 #run model
 model_inf_change_contemp.optimize(method="TNC")
 
-            fun: 0.2425199739037029
-            jac: array([-3.08523481e-07, -8.47790489e-09, -2.77818790e-07])
-  kl_divergence: 0.2425199739037029
- log_likelihood: -18316.391798383833
+            fun: 0.24450080626167342
+            jac: array([ 6.72152988e-10, -7.53868258e-09, -4.39117672e-07])
+  kl_divergence: 0.24450080626167342
+ log_likelihood: -18330.190276589456
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 32
+           nfev: 31
             nit: 11
-     parameters: ParamsDict({'n_alb': 15097.22655230098, 'n_bot': 10000000000.000004, 't_bot': 99.99578469002915})
+     parameters: ParamsDict({'n_alb': 15303.182266042042, 'n_bot': 10000000000.000004, 't_bot': 99.99179043069756})
          status: 1
         success: True
-              x: array([ 9.62226633, 23.02585093, 10.07416018])
+              x: array([ 9.63581608, 23.02585093,  9.4075429 ])
 ```
 
 ## Recent size change, temp and contemp
 
 ```bash
 #specify model
-model_inf_change_temporal =  momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_change_temporal =  momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_change_temporal.set_data(sfs,length=467359)
 #set parameters to infer - contemp size, alb size, time of bottleneck
@@ -160,24 +159,24 @@ model_inf_change_temporal.move_lineages("CBat","AHam",t=110)
 #run model
 model_inf_change_temporal.optimize(method="TNC")
 
-            fun: 0.7684898103203458
-            jac: array([-6.83794877e-06,  1.67297770e-05, -5.20990089e-06])
-  kl_divergence: 0.7684898103203458
- log_likelihood: -31089.158630359103
+            fun: 0.7699491955271237
+            jac: array([ 6.85826172e-06, -2.21925528e-06, -1.72950426e-04])
+  kl_divergence: 0.7699491955271237
+ log_likelihood: -31100.05731908332
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 31
-            nit: 9
-     parameters: ParamsDict({'n_alb': 15444.172798208174, 'n_bot': 32670.92731603795, 't_bot': 99.15907444075927})
+           nfev: 17
+            nit: 6
+     parameters: ParamsDict({'n_alb': 15686.130012185804, 'n_bot': 1372427.516387697, 't_bot': 24.199900882073898})
          status: 1
         success: True
-              x: array([ 9.64498705, 10.39424089,  4.76997751])
+              x: array([ 9.66053216, 14.13209164, -1.14175106])
 ```
 
 ## Pre-Albatross size change, contemp only
 
 ```bash
 #specify model
-model_inf_recchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_recchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_recchange_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -189,24 +188,24 @@ model_inf_recchange_contemp.set_size("CBat", N="n_rec", t="t_rec")
 #run model
 model_inf_recchange_contemp.optimize(method="TNC")
 
-            fun: 0.22654886185976097
-            jac: array([ 2.48961138e-05, -1.75049734e-05, -2.76545656e-06])
-  kl_divergence: 0.22654886185976097
- log_likelihood: -18205.137031885733
+            fun: 0.23184684488892954
+            jac: array([-1.76006065e-07, -2.87967495e-07, -4.10732147e-08])
+  kl_divergence: 0.23184684488892954
+ log_likelihood: -18242.04278166692
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 35
-            nit: 14
-     parameters: ParamsDict({'n_rec': 12987.889061408505, 'n_cont': 43104.34749502873, 't_rec': 499.9289129897196})
+           nfev: 51
+            nit: 18
+     parameters: ParamsDict({'n_rec': 14017.756483375073, 'n_cont': 65244.97555925329, 't_rec': 499.99841934225117})
          status: 1
         success: True
-              x: array([ 9.47177259, 10.67137914,  8.60724724])
+              x: array([ 9.54808013, 11.08590432, 12.4134895 ])
 ```
 
 ## Pre-Albatross size change, temporal only
 
 ```bash
 #specify model
-model_inf_recchange_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_recchange_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_recchange_temponly.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -218,24 +217,24 @@ model_inf_recchange_temponly.set_size("AHam", N="n_rec", t="t_rec")
 #run model
 model_inf_recchange_temponly.optimize(method="TNC")
 
-            fun: 0.12494447712486616
-            jac: array([-5.12761069e-08, -5.96396091e-07, -1.97279655e-06])
-  kl_divergence: 0.12494447712486616
- log_likelihood: -9463.55081565687
+            fun: 0.1338797011026867
+            jac: array([ 1.64004486e-08, -3.50646031e-08, -1.10798173e-05])
+  kl_divergence: 0.1338797011026867
+ log_likelihood: -9504.95664357009
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 24
-            nit: 9
-     parameters: ParamsDict({'n_rec': 12628.279029959891, 'n_cont': 657386203.2316313, 't_rec': 499.9661009936787})
+           nfev: 32
+            nit: 11
+     parameters: ParamsDict({'n_rec': 13195.300312442134, 'n_cont': 10000000000.000004, 't_rec': 499.7739173188368})
          status: 1
         success: True
-              x: array([ 9.44369395, 20.30378223,  9.34786177])
+              x: array([ 9.48761601, 23.02585093,  7.44985249])
 ```
 
 ## Pre-Albatross size change, temp and contemp
 
 ```bash
 #specify model
-model_inf_recchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_recchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_recchange_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -243,30 +242,30 @@ model_inf_recchange_temporal.add_size_param("n_rec")
 model_inf_recchange_temporal.add_size_param("n_cont")
 model_inf_recchange_temporal.add_time_param("t_rec",lower=111,upper=5e2)
 model_inf_recchange_temporal.add_leaf("CBat",N="n_cont")
-model_inf_recchange_temporal.add_leaf("AHam", N=n_cont", t=109)
+model_inf_recchange_temporal.add_leaf("AHam", N="n_cont", t=109)
 model_inf_recchange_temporal.set_size("AHam", N="n_rec", t="t_rec")
 model_inf_recchange_temporal.move_lineages("CBat","AHam",t=110)
 #run model
 model_inf_recchange_temporal.optimize(method="TNC")
 
-            fun: 0.767800084989135
-            jac: array([1.45082272e-07, 8.54720726e-09, 1.81240509e-07])
-  kl_divergence: 0.767800084989135
- log_likelihood: -31084.00776158562
+            fun: 0.7639513728921632
+            jac: array([-2.62128510e-07, -4.55627005e-07, -5.17893676e-06])
+  kl_divergence: 0.7639513728921632
+ log_likelihood: -31055.265579645435
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 38
-            nit: 13
-     parameters: ParamsDict({'n_rec': 15397.262350731062, 'n_cont': 1192739352.5015318, 't_rec': 177.4406641774952})
+           nfev: 21
+            nit: 9
+     parameters: ParamsDict({'n_rec': 14347.544833174676, 'n_cont': 26138.37828687529, 't_rec': 499.71566147393264})
          status: 1
         success: True
-              x: array([ 9.641945  , 20.89951848, -1.57997783])
+              x: array([ 9.57133411, 10.17115995,  7.22043789])
 ```
 
 ## Historic size change, contemp only
 
 ```bash
 #specify model
-model_inf_histchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_histchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_histchange_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -278,24 +277,24 @@ model_inf_histchange_contemp.set_size("CBat", N="n_hist", t="t_exp")
 #run model
 model_inf_histchange_contemp.optimize(method="TNC")
 			    
-            fun: 0.2506224208032948
-            jac: array([0.0000000e+00, 1.5014996e-08, 0.0000000e+00])
-  kl_divergence: 0.2506224208032948
- log_likelihood: -18372.83344348639
-        message: 'Local minimum reached (|pg| ~= 0)'
-           nfev: 14
-            nit: 4
-     parameters: ParamsDict({'n_hist': 1001.0870563875804, 'n_cont': 16165.189072342851, 't_exp': 14696.249163052715})
-         status: 0
+            fun: 0.07152124356863589
+            jac: array([-1.44818379e-07,  1.37754548e-07, -1.97577878e-07])
+  kl_divergence: 0.07152124356863589
+ log_likelihood: -17125.214642869756
+        message: 'Converged (|f_n-f_(n-1)| ~= 0)'
+           nfev: 36
+            nit: 12
+     parameters: ParamsDict({'n_hist': 7428.225014085398, 'n_cont': 58953.51133302024, 't_exp': 30517.659565273352})
+         status: 1
         success: True
-              x: array([ 6.90884174,  9.69061539, -5.34618583])
+              x: array([ 8.91304221, 10.98450447, -3.8554763 ])
 ```
 
 ## Historic size change, temporal only
 
 ```bash
 #specify model
-model_inf_histchange_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_histchange_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_histchange_temponly.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -307,24 +306,24 @@ model_inf_histchange_temponly.set_size("AHam", N="n_hist", t="t_exp")
 #run model
 model_inf_histchange_temponly.optimize(method="TNC")
 			    
-            fun: 0.015552432185710185
-            jac: array([-6.56902725e-07, -9.64603101e-07, -6.83699969e-06])
-  kl_divergence: 0.015552432185710185
- log_likelihood: -8956.628079408822
+            fun: 0.015552430033766038
+            jac: array([ 6.06585359e-07, -2.60913932e-06,  1.96970249e-06])
+  kl_divergence: 0.015552430033766038
+ log_likelihood: -8956.628069436712
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 26
-            nit: 9
-     parameters: ParamsDict({'n_hist': 8351.923956326065, 'n_cont': 53612.64977742627, 't_exp': 19910.802595319445})
+           nfev: 50
+            nit: 16
+     parameters: ParamsDict({'n_hist': 8350.7226662616, 'n_cont': 53614.480017999405, 't_exp': 27746.5696715168})
          status: 1
         success: True
-              x: array([ 9.03024721, 10.88954032, -4.59401825])
+              x: array([ 9.03010336, 10.88957446, -4.00342426])
 ```
 
 ## Historic size change, temp and contemp		  
 
 ```bash
 #specify model
-model_inf_histchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_histchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_histchange_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -338,24 +337,24 @@ model_inf_histchange_temporal.move_lineages("CBat","AHam",t=110)
 #run model
 model_inf_histchange_temporal.optimize(method="TNC")
 			    
-            fun: 0.616050475240657
-            jac: array([-3.57517511e-05,  1.65277726e-05,  7.31727008e-05])
-  kl_divergence: 0.616050475240657
- log_likelihood: -29950.741675983987
+            fun: 0.6160067286777614
+            jac: array([1.38551981e-07, 1.18583448e-07, 7.93490083e-06])
+  kl_divergence: 0.6160067286777614
+ log_likelihood: -29950.414976652282
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 24
-            nit: 8
-     parameters: ParamsDict({'n_hist': 7027.546799876036, 'n_cont': 53199.71664471141, 't_exp': 23531.55736417384})
+           nfev: 32
+            nit: 13
+     parameters: ParamsDict({'n_hist': 7038.525502277384, 'n_cont': 53151.65545163074, 't_exp': 32581.843532502986})
          status: 1
         success: True
-              x: array([ 8.85759296, 10.88180835, -4.27891789])
+              x: array([ 8.85915398, 10.88090453, -3.75748463])
 ```
 			  
 ## Recent and Pre-Albatross size change, contemp only
 
 ```bash
 #specify model
-model_inf_2recchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_2recchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2recchange_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -370,25 +369,25 @@ model_inf_2recchange_contemp.set_size("CBat", N="n_alb", t="t_bot")
 #run model
 model_inf_2recchange_contemp.optimize(method="TNC")
 
-            fun: 0.21835952900316113
-            jac: array([ 1.36615244e-06, -1.89179476e-08,  1.96080794e-06, -1.37952856e-16,
-       -7.67112434e-07])
-  kl_divergence: 0.21835952900316113
- log_likelihood: -18148.09013920666
+            fun: 0.22808909474166966
+            jac: array([ 3.33333058e-09, -1.43665061e-08,  2.22180589e-09, -1.04920279e-29,
+        3.93935841e-07])
+  kl_divergence: 0.22808909474166966
+ log_likelihood: -18215.86629414111
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
            nfev: 86
             nit: 19
-     parameters: ParamsDict({'n_rec': 10321.311278486823, 'n_alb': 10000000000.000004, 'n_cont': 5.8121765201238915, 't_rec': 499.9999999999981, 't_bot': 0.07732679401832793})
+     parameters: ParamsDict({'n_rec': 12472.287900375804, 'n_alb': 10000000000.000004, 'n_cont': 5.152213620183855, 't_rec': 500.0, 't_bot': 0.05301016451940768})
          status: 1
         success: True
-              x: array([ 9.24196609, 23.02585093,  1.75995512, 32.96293489, -7.16411138])
+              x: array([ 9.43126449, 23.02585093,  1.63942645, 62.70585525, -7.54191154])
 ```
 
 ## Recent and Pre-Albatross size change, temp and contemp
 
 ```bash
 #specify model
-model_inf_2recchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_2recchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2recchange_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -405,25 +404,25 @@ model_inf_2recchange_temporal.set_size("AHam", N="n_rec", t="t_rec")
 #run model
 model_inf_2recchange_temporal.optimize(method="TNC")
 
-            fun: 0.7572102743615556
-            jac: array([ 5.97514259e-08,  9.82667725e-08,  7.21539829e-08, -4.98858980e-33,
-        1.50638417e-07])
-  kl_divergence: 0.7572102743615556
- log_likelihood: -31004.923055818857
+            fun: 0.761772124860525
+            jac: array([ 6.81900333e-06, -3.03293166e-06,  6.23756628e-08, -1.22802079e-23,
+       -1.18934371e-08])
+  kl_divergence: 0.761772124860525
+ log_likelihood: -31038.99095534516
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 99
-            nit: 24
-     parameters: ParamsDict({'n_rec': 13256.873433905437, 'n_alb': 34866.31799275578, 'n_cont': 3.7265487518979814, 't_rec': 500.0, 't_bot': 0.02184808441553456})
+           nfev: 74
+            nit: 19
+     parameters: ParamsDict({'n_rec': 14123.790160607798, 'n_alb': 42204.47463679947, 'n_cont': 1.0, 't_rec': 500.0, 't_bot': 0.00757433491549252})
          status: 1
         success: True
-              x: array([ 9.49227145, 10.45927654,  1.31548254, 70.02923745, -8.42859371])
+              x: array([ 9.5556159 , 10.65028153,  0.        , 47.97644655, -9.48808417])
 ```
 			  
 ## Recent and historic size change, contemp only
 
 ```bash
 #specify model
-model_inf_2change_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_2change_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2change_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, alb size, historic size (pre-alb), times of two size changes
@@ -438,25 +437,25 @@ model_inf_2change_contemp.set_size("CBat", N="n_hist", t="t_exp")
 #run model
 model_inf_2change_contemp.optimize(method="TNC")
 
-            fun: 0.04903734535483152
-            jac: array([2.13010416e-05, 5.28465144e-06, 9.01765628e-06, 1.28374611e-05,
-       1.41348942e-05])
-  kl_divergence: 0.04903734535483152
- log_likelihood: -16968.591807912395
+            fun: 0.07155496869664156
+            jac: array([ 1.56511466e-05, -1.02625671e-06,  5.05112656e-07,  4.32911879e-05,
+        3.31095153e-05])
+  kl_divergence: 0.07155496869664156
+ log_likelihood: -17125.449572111444
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 29
-            nit: 7
-     parameters: ParamsDict({'n_hist': 9490.91434000129, 'n_alb': 771759.8181135856, 'n_cont': 957.0627868212428, 't_exp': 14941.405806292314, 't_bot': 75.38228319133373})
+           nfev: 87
+            nit: 19
+     parameters: ParamsDict({'n_hist': 7430.315413670844, 'n_alb': 59002.98378383065, 'n_cont': 3992782.33971139, 't_exp': 30571.856558195395, 't_bot': 1.6198173716462398})
          status: 1
         success: True
-              x: array([ 9.15809023, 13.55642866,  6.863869  , -5.29505126,  1.1191059 ])
+              x: array([ 8.91332359, 10.98534329, 15.19999887, -3.8527824 , -4.10652598])
 ```
 
 ## Recent and historic size change, temp and contemp
 
 ```bash
 #specify model
-model_inf_2change_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_2change_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2change_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, alb size, historic size (pre-alb), times of two size changes
@@ -473,25 +472,25 @@ model_inf_2change_temporal.set_size("AHam", N="n_hist", t="t_exp")
 #run model
 model_inf_2change_temporal.optimize(method="TNC")
 
-            fun: 0.6102557335010643
-            jac: array([-3.53774093e-06, -1.22418575e-06, -1.41995675e-06,  8.98593405e-06,
-        3.05384641e-05])
-  kl_divergence: 0.6102557335010643
- log_likelihood: -29907.46654467271
+            fun: 0.6098680176073412
+            jac: array([ 7.53811060e-06, -1.96090588e-05,  1.96743666e-07,  2.30811152e-06,
+        4.44461282e-08])
+  kl_divergence: 0.6098680176073412
+ log_likelihood: -29904.571082378385
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 92
-            nit: 21
-     parameters: ParamsDict({'n_hist': 7487.517117494892, 'n_alb': 57765.66012735797, 'n_cont': 943.8819573352519, 't_exp': 22546.714173565226, 't_bot': 7.0259438744215235})
+           nfev: 66
+            nit: 17
+     parameters: ParamsDict({'n_hist': 7470.72651001182, 'n_alb': 57600.18092916944, 'n_cont': 7.058370834976229, 't_exp': 31183.35057984658, 't_bot': 0.07369439268594485})
          status: 1
         success: True
-              x: array([ 8.92099253, 10.96414976,  6.85000111, -4.35549169, -2.58271092])
+              x: array([ 8.91874753, 10.96128099,  1.95421426, -3.82285985, -7.21226154])
 ```
 
 ## Pre-Albatross and historic size change, contemp only
 
 ```bash
 #specify model
-model_inf_2histchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_2histchange_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2histchange_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -506,25 +505,26 @@ model_inf_2histchange_contemp.set_size("CBat", N="n_hist", t="t_exp")
 #run model
 model_inf_2histchange_contemp.optimize(method="TNC")
 
-            fun: 0.049078560024754615
-            jac: array([ 3.31864455e-07, -8.46546855e-10,  2.81523259e-07,  4.41101284e-06,
-        1.34899236e-05])
-  kl_divergence: 0.049078560024754615
- log_likelihood: -16968.87890930308
+            fun: 0.04903809782126269
+            jac: array([-2.76091953e-08, -2.50565389e-07,  3.94514050e-08, -1.02442931e-06,
+        4.95677806e-11])
+  kl_divergence: 0.04903809782126269
+ log_likelihood: -16968.597049593554
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 66
-            nit: 16
-     parameters: ParamsDict({'n_hist': 9496.455552862495, 'n_rec': 10000000000.000004, 'n_cont': 1458.3658507256755, 't_exp': 14831.512561679683, 't_rec': 128.76343938974517})
+           nfev: 25
+            nit: 6
+     parameters: ParamsDict({'n_hist': 9440.17385285424, 'n_rec': 395397.4431814586, 'n_cont': 1126.2912424573221, 't_exp': 21086.151226208312, 't_rec': 111.00006610029787})
          status: 1
         success: True
-              x: array([ 9.15867391, 23.02585093,  7.28507181, -5.3176531 , -3.03969711])
+              x: array([  9.15272968,  12.88764672,   7.02668543,  -4.48074695,
+       -15.58791648])
 ```
 
 ## Pre-Albatross and historic size change, temporal only
 
 ```bash
 #specify model
-model_inf_2histchange_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_2histchange_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2histchange_temponly.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -539,25 +539,25 @@ model_inf_2histchange_temponly.set_size("AHam", N="n_hist", t="t_exp")
 #run model
 model_inf_2histchange_temponly.optimize(method="TNC")
 
-            fun: 0.014850762683237269
-            jac: array([-6.47945431e-07,  8.10223017e-07, -1.50499383e-06, -4.00304460e-06,
-        2.73576862e-06])
-  kl_divergence: 0.014850762683237269
- log_likelihood: -8953.376542934362
+            fun: 0.014848650092945205
+            jac: array([ 6.94627836e-08,  1.04348965e-07, -2.26065191e-07, -4.13375733e-07,
+        1.69782909e-06])
+  kl_divergence: 0.014848650092945205
+ log_likelihood: -8953.366753190949
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 66
-            nit: 15
-     parameters: ParamsDict({'n_hist': 8912.735465400281, 'n_rec': 66253.41178404902, 'n_cont': 9530.521868285698, 't_exp': 17895.513003662207, 't_rec': 184.43906682679813})
+           nfev: 44
+            nit: 11
+     parameters: ParamsDict({'n_hist': 8908.866377958599, 'n_rec': 66054.05161115069, 'n_cont': 7174.523044522323, 't_exp': 24952.429841077937, 't_rec': 182.22538086298738})
          status: 1
         success: True
-              x: array([ 9.09523648, 11.10124224,  9.16225476, -4.82340308, -1.45789576])
+              x: array([ 9.09480228, 11.09822865,  8.87829156, -4.17761244, -1.49549316])
 ```
 
 ## Pre-Albatross and historic size change, temp and contemp
 
 ```bash
 #specify model
-model_inf_2histchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_2histchange_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2histchange_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -574,25 +574,25 @@ model_inf_2histchange_temporal.set_size("AHam", N="n_hist", t="t_exp")
 #run model
 model_inf_2histchange_temporal.optimize(method="TNC")
 
-            fun: 0.5887142038624853
-            jac: array([-1.20814613e-07, -1.75552276e-06,  4.19191433e-06,  2.05196235e-07,
-       -1.27904379e-07])
-  kl_divergence: 0.5887142038624853
- log_likelihood: -29746.5944013318
+            fun: 0.5878142707574121
+            jac: array([ 3.50810121e-07, -1.96391560e-06,  3.73177667e-06, -2.11949530e-08,
+        6.26755333e-08])
+  kl_divergence: 0.5878142707574121
+ log_likelihood: -29739.873700903114
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 93
-            nit: 23
-     parameters: ParamsDict({'n_hist': 9006.351042039356, 'n_rec': 100558.33180281635, 'n_cont': 11866.582311396021, 't_exp': 18295.06367421879, 't_rec': 499.99069561436403})
+           nfev: 79
+            nit: 19
+     parameters: ParamsDict({'n_hist': 8933.336648711847, 'n_rec': 98376.30650448188, 'n_cont': 9080.811583025314, 't_rec': 499.998530931626, 't_exp': 25212.725105915804})
          status: 1
         success: True
-              x: array([ 9.10568528, 11.51849325,  9.38148152, -4.77363019, 10.64082484])
+              x: array([ 9.09754525, 11.49655527,  9.11391885, 12.48670241, -4.16008701])
 ```
 
 ## Recent, Pre-Albatross and historic size change, contemp only
 
 ```bash
 #specify model
-model_inf_3change_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_3change_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_3change_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -610,26 +610,26 @@ model_inf_3change_contemp.set_size("CBat", N="n_hist", t="t_exp")
 #run model
 model_inf_3change_contemp.optimize(method="TNC")
 
-            fun: 0.04900483811208187
-            jac: array([-3.99820794e-05,  3.27448695e-06,  2.24950412e-11,  8.28687278e-05,
-       -1.97520308e-07, -1.21004674e-08, -1.38108023e-05])
-  kl_divergence: 0.04900483811208187
- log_likelihood: -16968.3653624594
+            fun: 0.04897154741356404
+            jac: array([ 5.05592248e-06,  7.89478324e-06, -1.01691424e-10,  2.31889170e-05,
+       -1.55037042e-06, -1.64438288e-10, -1.56741448e-06])
+  kl_divergence: 0.04897154741356404
+ log_likelihood: -16968.133459453526
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 81
-            nit: 15
-     parameters: ParamsDict({'n_hist': 9392.74276820225, 'n_rec': 294325.0226077957, 'n_alb': 2582598395.3152575, 'n_cont': 730.887761602192, 't_exp': 15294.828691802155, 't_rec': 368.87847554106077, 't_bot': 48.328503366735085})
+           nfev: 19
+            nit: 4
+     parameters: ParamsDict({'n_hist': 9408.296548626979, 'n_rec': 304586.0299384168, 'n_alb': 5023167.796634158, 'n_cont': 285.03675539903486, 't_exp': 21246.924405844784, 't_rec': 112.5303930572937, 't_bot': 26.066053801840262})
          status: 1
         success: True
-              x: array([ 9.14769262, 12.59243995, 21.67206186,  6.59425991, -5.22561165,
-        0.67636389, -0.06688479])
+              x: array([ 9.14934719, 12.62670885, 15.42957133,  5.65261814, -4.46618468,
+       -5.53411281, -1.04253823])
 ```
 
 ## Recent, Pre-Albatross and historic size change, temp and contemp
 
 ```bash
 #specify model
-model_inf_3change_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_3change_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_3change_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -649,19 +649,19 @@ model_inf_3change_temporal.set_size("AHam", N="n_hist", t="t_exp")
 #run model
 model_inf_3change_temporal.optimize(method="TNC")
 
-			fun: 0.5809993684152883
-            jac: array([-3.50336185e-08, -1.25668741e-06, -1.04551347e-09, -4.44582607e-09,
-        2.78917334e-06,  8.12552982e-07, -7.89041400e-09])
-  kl_divergence: 0.5809993684152883
- log_likelihood: -29688.980010212133
+            fun: 0.5805378963305511
+            jac: array([ 3.69789803e-06, -4.61075157e-06,  1.36891349e-06, -1.08278281e-07,
+        4.46514099e-06,  3.57252805e-06, -1.33569786e-08])
+  kl_divergence: 0.5805378963305511
+ log_likelihood: -29685.533736683316
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 21
-            nit: 5
-     parameters: ParamsDict({'n_hist': 9739.561236742396, 'n_rec': 33843854.860583164, 'n_alb': 4229.099029186769, 'n_cont': 4426231959.381977, 't_exp': 14880.739632266565, 't_rec': 499.4237876392127, 't_bot': 99.99986304431384})
+           nfev: 46
+            nit: 9
+     parameters: ParamsDict({'n_hist': 9553.067461841363, 'n_rec': 229800.72793804668, 'n_alb': 2825.663566342768, 'n_cont': 190245720.69705817, 't_exp': 21434.724883204864, 't_rec': 356.56399042119176, 't_bot': 99.99983417065636})
          status: 1
         success: True
-              x: array([ 9.18395135, 17.337268  ,  8.34974425, 22.21081449, -5.30746594,
-        6.51337598, 13.50102196])
+              x: array([ 9.16461758, 12.34496781,  7.94649851, 19.06382706, -4.44943273,
+        0.53766856, 13.30971988])
 ```
 
 ## Recent exponential change, contemp only 
@@ -669,7 +669,7 @@ model_inf_3change_temporal.optimize(method="TNC")
 ```bash
 from autograd.numpy import log #otherwise won't recognize log function in model (can say np.log in growth function but that doesn't run right either??)
 #specify model
-model_inf_expg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_expg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_expg_contemp.set_data(sfs,length=467359)
 #set parameters to infer - contemp size, alb size, time of bottleneck
@@ -681,17 +681,17 @@ model_inf_expg_contemp.set_size("CBat",g=0, t="t_bot")
 #run model
 model_inf_expg_contemp.optimize(method="TNC")
 
-            fun: 0.24301935510238604
-            jac: array([-3.26432646e-09, -3.72113555e-05, -4.51973485e-06])
-  kl_divergence: 0.24301935510238604
- log_likelihood: -18319.87048781386
+            fun: 0.24490886991318164
+            jac: array([ 1.08661246e-08, -3.01576620e-05, -6.75259157e-06])
+  kl_divergence: 0.24490886991318164
+ log_likelihood: -18333.03284798586
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 24
-            nit: 8
-     parameters: ParamsDict({'n_alb': 15136.956876782267, 'n_bot': 10000000000.000004, 't_bot': 99.9284957147097})
+           nfev: 32
+            nit: 12
+     parameters: ParamsDict({'n_alb': 15345.839245197996, 'n_bot': 10000000000.000004, 't_bot': 99.86655348753256})
          status: 1
         success: True
-              x: array([ 9.62489451, 23.02585093,  7.24245278])
+              x: array([ 9.63859966, 23.02585093,  6.61788937])
 ```
 
 ## Recent exponential change, temp and contemp
@@ -699,7 +699,7 @@ model_inf_expg_contemp.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_expg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_expg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data
 model_inf_expg_temporal.set_data(sfs,length=467359)
 #set parameterss to infer - contemp size, alb size, time of bottleneck
@@ -713,17 +713,17 @@ model_inf_expg_temporal.move_lineages("CBat","AHam",t=110)
 #run model
 model_inf_expg_temporal.optimize(method="TNC")
 
-            fun: 0.7688111009232282
-            jac: array([-1.28216753e-07,  7.02812826e-07, -9.21253197e-07])
-  kl_divergence: 0.7688111009232282
- log_likelihood: -31091.55802858143
+            fun: 0.7702795401388605
+            jac: array([-1.31307495e-05, -2.43945987e-06, -1.18905632e-06])
+  kl_divergence: 0.7702795401388605
+ log_likelihood: -31102.52433264377
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 27
-            nit: 10
-     parameters: ParamsDict({'n_alb': 15557.926286891963, 'n_bot': 894494097.6003059, 't_bot': 55.21621377608118})
+           nfev: 18
+            nit: 7
+     parameters: ParamsDict({'n_alb': 15794.559120744812, 'n_bot': 24144.858091275506, 't_bot': 0.3552324987966256})
          status: 1
         success: True
-              x: array([ 9.65232552, 20.61176886,  0.20941048])
+              x: array([ 9.6674208 , 10.09182672, -5.63659431])
 ```
 		  
 ## Pre-Albatross exponential change, contemp only
@@ -731,7 +731,7 @@ model_inf_expg_temporal.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_recexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_recexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_recexpg_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -743,17 +743,17 @@ model_inf_recexpg_contemp.set_size("CBat", g=0, t="t_rec")
 #run model
 model_inf_recexpg_contemp.optimize(method="TNC")
 
-            fun: 0.23106195824597867
-            jac: array([ 4.35130216e-06, -1.11648354e-06, -6.44028809e-07])
-  kl_divergence: 0.23106195824597867
- log_likelihood: -18236.575261312126
+            fun: 0.2341330822113826
+            jac: array([ 5.16159524e-11, -5.07095183e-06, -2.11773060e-08])
+  kl_divergence: 0.2341330822113826
+ log_likelihood: -18257.96871085513
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 34
-            nit: 12
-     parameters: ParamsDict({'n_rec': 14183.029903121771, 'n_cont': 173902.95337906881, 't_rec': 499.97274022677465})
+           nfev: 47
+            nit: 16
+     parameters: ParamsDict({'n_rec': 15373.383935052241, 'n_cont': 10000000000.000004, 't_rec': 499.99738323812005})
          status: 1
         success: True
-              x: array([ 9.55980145, 12.06625268,  9.56585244])
+              x: array([ 9.64039298, 23.02585093, 11.90939027])
 ```
 
 ## Pre-Albatross exponential change, temporal only
@@ -761,7 +761,7 @@ model_inf_recexpg_contemp.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_recexpg_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_recexpg_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_recexpg_temponly.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -773,17 +773,17 @@ model_inf_recexpg_temponly.set_size("AHam", g=0, t="t_rec")
 #run model
 model_inf_recexpg_temponly.optimize(method="TNC")
 
-            fun: 0.12714954326387662
-            jac: array([ 3.51200971e-09, -1.67538607e-04, -9.55834371e-07])
-  kl_divergence: 0.12714954326387662
- log_likelihood: -9473.769092145045
+            fun: 0.13571769348901108
+            jac: array([ 3.76707350e-10, -1.39520679e-04, -4.36861448e-07])
+  kl_divergence: 0.13571769348901108
+ log_likelihood: -9513.473900288318
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 37
-            nit: 11
-     parameters: ParamsDict({'n_rec': 12723.580764438773, 'n_cont': 10000000000.000004, 't_rec': 499.98306478063813})
+           nfev: 38
+            nit: 14
+     parameters: ParamsDict({'n_rec': 13322.38780568862, 'n_cont': 10000000000.000004, 't_rec': 499.9906308651865})
          status: 1
         success: True
-              x: array([ 9.4512123 , 23.02585093, 10.04189565])
+              x: array([ 9.49720119, 23.02585093, 10.63388978])
 ```
 
 ## Pre-Albatross size change, temp and contemp
@@ -791,7 +791,7 @@ model_inf_recexpg_temponly.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_recexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_recexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_recexpg_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -805,17 +805,17 @@ model_inf_recexpg_temporal.move_lineages("CBat","AHam",t=110)
 #run model
 model_inf_recexpg_temporal.optimize(method="TNC")
 
-            fun: 0.7642337435428218
-            jac: array([ 1.36905706e-07,  3.45129155e-06, -1.33289123e-06])
-  kl_divergence: 0.7642337435428218
- log_likelihood: -31057.374323664553
+            fun: 0.7662874960762641
+            jac: array([ 2.40866197e-06, -9.80232072e-07, -2.85806499e-07])
+  kl_divergence: 0.7662874960762641
+ log_likelihood: -31072.7117475843
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 40
-            nit: 15
-     parameters: ParamsDict({'n_rec': 14926.343796826617, 'n_cont': 31327.609988315973, 't_rec': 499.90342698801373})
+           nfev: 56
+            nit: 16
+     parameters: ParamsDict({'n_rec': 15119.580090804253, 'n_cont': 30785.114992962892, 't_rec': 499.9690238296591})
          status: 1
         success: True
-              x: array([ 9.61088297, 10.3522551 ,  8.30078701])
+              x: array([ 9.62374588, 10.33478657,  9.43803678])
 ```
 			  
 ## Historic exponential change, contemp only 
@@ -823,7 +823,7 @@ model_inf_recexpg_temporal.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_histexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_histexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_histexpg_contemp.set_data(sfs,length=467359)
 #set parameters to infer - contemp size, alb size, time of bottleneck
@@ -835,24 +835,24 @@ model_inf_histexpg_contemp.set_size("CBat",g=0, t="t_exp")
 #run model
 model_inf_histexpg_contemp.optimize(method="TNC")
 
-            fun: 0.08419721015653103
-            jac: array([-6.02938695e-06,  1.57594618e-06, -2.55480808e-05])
-  kl_divergence: 0.08419721015653103
- log_likelihood: -17213.515426121034
+            fun: 0.08419708272069557
+            jac: array([-2.01759000e-07,  1.52776059e-06, -3.34660793e-06])
+  kl_divergence: 0.08419708272069557
+ log_likelihood: -17213.514538403004
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 30
-            nit: 14
-     parameters: ParamsDict({'n_hist': 1216.9062442341651, 'n_cont': 67742.30539432236, 't_exp': 72532.36255075423})
+           nfev: 45
+            nit: 17
+     parameters: ParamsDict({'n_hist': 1105.8097431892802, 'n_cont': 67757.4473181167, 't_exp': 103490.52764110279})
          status: 1
         success: True
-              x: array([ 7.10406705, 11.12346616, -2.69677368])
+              x: array([ 7.00833314, 11.12368966, -2.26064874])
 ```
 ## Historic exponential change, temporal only 
 
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_histexpg_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_histexpg_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_histexpg_temponly.set_data(sfs,length=467359)
 #set parameters to infer - contemp size, alb size, time of bottleneck
@@ -864,17 +864,17 @@ model_inf_histexpg_temponly.set_size("AHam",g=0, t="t_exp")
 #run model
 model_inf_histexpg_temponly.optimize(method="TNC")
 
-            fun: 0.017447309934639943
-            jac: array([-1.47567045e-06,  3.38609087e-06, -1.48392274e-05])
-  kl_divergence: 0.017447309934639943
- log_likelihood: -8965.408942897362
+            fun: 0.017447474709382457
+            jac: array([-3.99418586e-07, -1.60079045e-06, -1.50039822e-05])
+  kl_divergence: 0.017447474709382457
+ log_likelihood: -8965.409706463519
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
            nfev: 56
-            nit: 21
-     parameters: ParamsDict({'n_hist': 1526.7929179733308, 'n_cont': 69239.86701225713, 't_exp': 66741.68842100815})
+            nit: 17
+     parameters: ParamsDict({'n_hist': 1592.379310506907, 'n_cont': 69235.34856627553, 't_exp': 91942.05640388276})
          status: 1
         success: True
-              x: array([ 7.33092468, 11.14533209, -2.80017284])
+              x: array([ 7.3729846 , 11.14526683, -2.40529582])
  ```
 
 ## Historic exponential change, temp and contemp
@@ -882,7 +882,7 @@ model_inf_histexpg_temponly.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_histexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_histexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data
 model_inf_histexpg_temporal.set_data(sfs,length=467359)
 #set parameterss to infer - contemp size, alb size, time of bottleneck
@@ -896,17 +896,17 @@ model_inf_histexpg_temporal.move_lineages("CBat","AHam",t=110)
 #run model
 model_inf_histexpg_temporal.optimize(method="TNC")
 
-            fun: 0.6326068232396757
-            jac: array([ 4.29603488e-07, -9.54174317e-07,  1.35456896e-06])
-  kl_divergence: 0.6326068232396757
- log_likelihood: -30074.384482840658
+            fun: 0.6322492835526239
+            jac: array([ 1.35578631e-06, -4.80761182e-06, -1.28004297e-05])
+  kl_divergence: 0.6322492835526239
+ log_likelihood: -30071.714376457756
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 57
-            nit: 18
-     parameters: ParamsDict({'n_hist': 910.1810111082997, 'n_cont': 57693.07469830108, 't_exp': 86984.34703590035})
+           nfev: 55
+            nit: 19
+     parameters: ParamsDict({'n_hist': 1532.492452047867, 'n_cont': 57392.801170395054, 't_exp': 104906.50840292552})
          status: 1
         success: True
-              x: array([ 6.81364349, 10.96289242, -2.47315091])
+              x: array([ 7.33465074, 10.95767416, -2.24403589])
 ```
 
 ## Recent and Pre-Albatross exponential change, contemp only
@@ -914,7 +914,7 @@ model_inf_histexpg_temporal.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_2recexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_2recexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2recexpg_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -929,17 +929,18 @@ model_inf_2recexpg_contemp.set_size("CBat", g=0, t="t_rec")
 #run model
 model_inf_2recexpg_contemp.optimize(method="TNC")
 
-            fun: 0.24112521208547433
-            jac: array([-0.00403567, -0.01233989,  0.01028191,  0.00513463, -0.02302775])
-  kl_divergence: 0.24112521208547433
- log_likelihood: -18306.675887558053
+            fun: 0.2341283124129927
+            jac: array([-1.83920302e-06, -5.48357279e-06,  2.34146855e-09, -1.24230025e-06,
+       -5.18479330e-06])
+  kl_divergence: 0.2341283124129927
+ log_likelihood: -18257.935484439546
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 77
-            nit: 8
-     parameters: ParamsDict({'n_rec': 15.911938205751282, 'n_alb': 10000000000.000004, 'n_cont': 9999999809.07156, 't_rec': 132.2570204315168, 't_bot': 44.26062198357669})
+           nfev: 97
+            nit: 17
+     parameters: ParamsDict({'n_rec': 4606.3271955840955, 'n_alb': 10000000000.000004, 'n_cont': 9705700932.846136, 't_rec': 499.84110817558485, 't_bot': 41.32839890274925})
          status: 1
         success: True
-              x: array([ 2.76706966, 23.02585093, 23.02585091, -2.85069706, -0.23059148])
+              x: array([ 8.43518611, 23.02585093, 22.99597927,  7.80270246, -0.35040592])
 ```
 
 ## Recent and Pre-Albatross exponential change, temp and contemp
@@ -947,7 +948,7 @@ model_inf_2recexpg_contemp.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_2recexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_2recexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2recexpg_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -964,18 +965,18 @@ model_inf_2recexpg_temporal.move_lineages("CBat","AHam",t=110)
 #run model
 model_inf_2recexpg_temporal.optimize(method="TNC")
 
-            fun: 0.7632236379509274
-            jac: array([ 4.55052668e-09,  2.98617851e-08,  1.90472780e-08, -4.32340070e-22,
-        4.86232982e-07])
-  kl_divergence: 0.7632236379509274
- log_likelihood: -31049.830855104286
+            fun: 0.7662873084887306
+            jac: array([ 2.97013083e-10, -1.97368501e-09,  1.02790733e-09, -1.36186960e-08,
+        8.47039950e-08])
+  kl_divergence: 0.7662873084887306
+ log_likelihood: -31072.7103466806
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 97
-            nit: 22
-     parameters: ParamsDict({'n_rec': 14704.208216420157, 'n_alb': 61220.677402732, 'n_cont': 6.127423800517535, 't_rec': 500.0, 't_bot': 0.2627321881212179})
+           nfev: 49
+            nit: 12
+     parameters: ParamsDict({'n_rec': 15119.279427638154, 'n_alb': 30787.532142634274, 'n_cont': 449486024.11043656, 't_rec': 499.9985241585976, 't_bot': 0.01244351808789977})
          status: 1
         success: True
-              x: array([ 9.59588901, 11.02224028,  1.8127744 , 44.23440042, -5.93915947])
+              x: array([ 9.62372599, 10.33486509, 19.92361532, 12.48210256, -8.99160117])
 ```
 
 ## Recent and historic exponential size change, contemp only
@@ -983,7 +984,7 @@ model_inf_2recexpg_temporal.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_2changeexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_2changeexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2changeexpg_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, alb size, historic size (pre-alb), times of two size changes
@@ -998,18 +999,18 @@ model_inf_2changeexpg_contemp.set_size("CBat",g=0,t="t_exp")
 #run model
 model_inf_2changeexpg_contemp.optimize(method="TNC")
             
-            fun: 0.04869863747238678
-            jac: array([ 2.04965750e-07, -9.18906010e-07,  1.44008478e-07, -1.61801755e-06,
-        3.48207713e-06])
-  kl_divergence: 0.04869863747238678
- log_likelihood: -16966.232368803285
+            fun: 0.04870326458602142
+            jac: array([-1.08037568e-06, -2.39126804e-06,  1.78473769e-07,  2.02500697e-06,
+        1.94357373e-06])
+  kl_divergence: 0.04870326458602142
+ log_likelihood: -16966.264601276864
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 68
-            nit: 16
-     parameters: ParamsDict({'n_hist': 8872.338093070972, 'n_alb': 2827887.103759936, 'n_cont': 40.147695165238936, 't_exp': 19175.530252114644, 't_bot': 31.41940931901135})
+           nfev: 60
+            nit: 17
+     parameters: ParamsDict({'n_hist': 8800.361351926438, 'n_alb': 2797631.8179397783, 'n_cont': 79.01453077733078, 't_exp': 26724.918087998245, 't_bot': 80.86368910488369})
          status: 1
         success: True
-              x: array([ 9.09069364, 14.85504038,  3.69256503, -4.67185333, -0.78058373])
+              x: array([ 9.08254806, 14.84428384,  4.36963177, -4.06376705,  1.44117726])
 ```
 
 ## Recent and historic exponential change, temp and contemp
@@ -1017,7 +1018,7 @@ model_inf_2changeexpg_contemp.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_2changeexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_2changeexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data
 model_inf_2changeexpg_temporal.set_data(sfs,length=467359)
 #set parameters to infer - contemp size, alb size, time of bottleneck
@@ -1034,18 +1035,18 @@ model_inf_2changeexpg_temporal.move_lineages("CBat","AHam",t=110)
 #run model
 model_inf_2changeexpg_temporal.optimize(method="TNC")
 
-            fun: 0.6246235648226108
-            jac: array([-1.03384228e-07, -5.28548008e-08,  6.15486516e-07, -3.40628491e-07,
-       -1.12571203e-07])
-  kl_divergence: 0.6246235648226108
- log_likelihood: -30014.76550898202
+            fun: 0.6236917697992787
+            jac: array([2.50421056e-06, 6.43433732e-09, 4.77152186e-07, 4.80104663e-08,
+       1.58085691e-06])
+  kl_divergence: 0.6236917697992787
+ log_likelihood: -30007.806863747774
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 10
-            nit: 3
-     parameters: ParamsDict({'n_alb': 67389.94700510419, 'n_hist': 20.973133896042523, 'n_cont': 5.645018962046234, 't_exp': 155634.9858730654, 't_bot': 0.4566909819828753})
+           nfev: 49
+            nit: 13
+     parameters: ParamsDict({'n_alb': 66818.54173230584, 'n_hist': 1.5242387583720107, 'n_cont': 19.957993552171164, 't_exp': 283607.9583250005, 't_bot': 2.0028977039488485})
          status: 1
         success: True
-              x: array([11.11825113,  3.04324228,  1.73077356, -1.75748149, -5.38434112])
+              x: array([11.10973589,  0.42149511,  2.99362974, -0.96253129, -3.89034293])
 ```
 
 ## Pre-Albatross and historic exponential change, contemp only
@@ -1053,7 +1054,7 @@ model_inf_2changeexpg_temporal.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_2histexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_2histexpg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2histexpg_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -1068,18 +1069,18 @@ model_inf_2histexpg_contemp.set_size("CBat", g=0, t="t_exp")
 #run model
 model_inf_2histexpg_contemp.optimize(method="TNC")
 
-            fun: 0.04873334285223303
-            jac: array([-2.41416984e-07,  3.05645652e-07, -1.31995224e-07,  5.84964942e-08,
-        1.55092106e-05])
-  kl_divergence: 0.04873334285223303
- log_likelihood: -16966.474126479294
+            fun: 0.04875312527258749
+            jac: array([ 2.55170485e-06,  2.41148186e-06,  1.33422366e-06, -3.25887700e-06,
+        8.82532455e-06])
+  kl_divergence: 0.04875312527258749
+ log_likelihood: -16966.611930819483
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 59
-            nit: 14
-     parameters: ParamsDict({'n_hist': 8410.42522840673, 'n_rec': 3048294.347072656, 'n_cont': 327.2730616372988, 't_exp': 19042.738627432576, 't_rec': 212.83025965869498})
+           nfev: 57
+            nit: 15
+     parameters: ParamsDict({'n_hist': 8170.201048709391, 'n_rec': 3270213.957763446, 'n_cont': 484.29301428905535, 't_exp': 26381.285981877038, 't_rec': 427.43709199799594})
          status: 1
         success: True
-              x: array([ 9.03722731, 14.93009276,  5.79079487, -4.68656682, -1.03676616])
+              x: array([ 9.0082488 , 15.00036597,  6.18269012, -4.08488018,  1.47267058])
 ```
 
 ## Pre-Albatross and historic exponential change, temporal only
@@ -1087,7 +1088,7 @@ model_inf_2histexpg_contemp.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_2histexpg_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_2histexpg_temponly = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2histexpg_temponly.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -1102,18 +1103,18 @@ model_inf_2histexpg_temponly.set_size("AHam", g=0, t="t_exp")
 #run model
 model_inf_2histexpg_temponly.optimize(method="TNC")
 
-            fun: 0.014855925896606705
-            jac: array([-6.72245919e-07, -2.03270431e-06, -2.27019129e-07, -9.97924398e-06,
-       -1.68376574e-07])
-  kl_divergence: 0.014855925896606705
- log_likelihood: -8953.400469265116
+            fun: 0.014855546453198538
+            jac: array([ 8.63650788e-08,  1.03075734e-07, -3.23052083e-08, -1.82079037e-07,
+       -1.58294612e-07])
+  kl_divergence: 0.014855546453198538
+ log_likelihood: -8953.398710924363
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 53
-            nit: 14
-     parameters: ParamsDict({'n_hist': 7758.707099655648, 'n_rec': 146159.3861099045, 'n_cont': 1075.8155345954685, 't_exp': 27220.812970932537, 't_rec': 189.2615360839331})
+           nfev: 44
+            nit: 13
+     parameters: ParamsDict({'n_hist': 7674.72553618606, 'n_rec': 145347.22033216464, 'n_cont': 1815.4414903846935, 't_exp': 37874.53502194981, 't_rec': 411.28348551966764})
          status: 1
         success: True
-              x: array([ 8.95657099, 11.89245299,  6.98083429, -4.03403841, -1.37889536])
+              x: array([ 8.94568781, 11.88688078,  7.50408396, -3.54143131,  1.21928092])
 ```
 
 ## Pre-Albatross and historic exponential change, temp and contemp
@@ -1121,7 +1122,7 @@ model_inf_2histexpg_temponly.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_2histexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_2histexpg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_2histexpg_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -1138,18 +1139,18 @@ model_inf_2histexpg_temporal.move_lineages("CBat","AHam",t=110)
 #run model
 model_inf_2histexpg_temporal.optimize(method="TNC")
 
-            fun: 0.5924238885810141
-            jac: array([-5.82475277e-07, -2.68504110e-07,  6.28782572e-07, -5.16131485e-06,
-       -7.73787465e-07])
-  kl_divergence: 0.5924238885810141
- log_likelihood: -29774.298326809774
+            fun: 0.5929774794424969
+            jac: array([ 5.94083936e-07, -4.12913877e-07, -1.75634577e-06,  2.53313474e-06,
+       -1.15814202e-09])
+  kl_divergence: 0.5929774794424969
+ log_likelihood: -29778.432543363328
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 99
-            nit: 23
-     parameters: ParamsDict({'n_hist': 1.2840416566575636, 'n_rec': 90561.53208781501, 'n_cont': 2926.970031062013, 't_exp': 162774.10222560682, 't_rec': 499.9857731432342})
+           nfev: 60
+            nit: 17
+     parameters: ParamsDict({'n_hist': 471.49520161520456, 'n_rec': 86806.07892093407, 'n_cont': 2073.9298803753272, 't_exp': 106990.35375540002, 't_rec': 499.99997954233174})
          status: 1
         success: True
-              x: array([ 0.25001265, 11.41378481,  7.98172305, -1.70113355, 10.21616655])
+              x: array([ 6.15590893, 11.37143193,  7.63720058, -2.21998586, 16.76073206])
 ```
 
 ## Recent, Pre-Albatross and historical exponential change, contemp only
@@ -1157,7 +1158,7 @@ model_inf_2histexpg_temporal.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_3expg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_3expg_contemp = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_3expg_contemp.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -1175,19 +1176,19 @@ model_inf_3expg_contemp.set_size("CBat", g=0, t="t_exp")
 #run model
 model_inf_3expg_contemp.optimize(method="TNC")
 
-            fun: 0.04869768407579971
-            jac: array([ 6.85549746e-07,  1.77776374e-06,  6.47255256e-08, -9.27646744e-08,
-        5.20840822e-06,  1.43464917e-07,  2.82945822e-06])
-  kl_divergence: 0.04869768407579971
- log_likelihood: -16966.22572744266
+            fun: 0.048700818618524266
+            jac: array([ 2.61423254e-07, -2.13248281e-07, -6.05016562e-07,  4.38828835e-06,
+        2.24379117e-06,  1.12729465e-07,  1.91367079e-06])
+  kl_divergence: 0.048700818618524266
+ log_likelihood: -16966.24756266728
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 9
-            nit: 2
-     parameters: ParamsDict({'n_hist': 10565.734524957936, 'n_rec': 3414569.203428931, 'n_alb': 973212.1845126101, 'n_cont': 31.954787310107495, 't_exp': 19162.215528422676, 't_rec': 140.28375563332077, 't_bot': 23.14353595528605})
+           nfev: 36
+            nit: 9
+     parameters: ParamsDict({'n_hist': 16721.642016569283, 'n_rec': 5333933.921869299, 'n_alb': 27461.498991393968, 'n_cont': 57.46557302774521, 't_exp': 26716.255486020556, 't_rec': 263.7220099155648, 't_bot': 34.09573734933886})
          status: 1
         success: True
-              x: array([ 9.26537145, 15.04356189, 13.78835741,  3.46432201, -4.67331907,
-       -2.50828256, -1.20022406])
+              x: array([ 9.72445909, 15.4895996 , 10.22054027,  4.05118604, -4.06429403,
+       -0.4363897 , -0.65903075])
 ```
 
 ## Recent, Pre-Albatross and historic exponential change, temp and contemp
@@ -1195,7 +1196,7 @@ model_inf_3expg_contemp.optimize(method="TNC")
 ```bash
 from autograd.numpy import log
 #specify model
-model_inf_3expg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1, muts_per_gen=2.5e-8)
+model_inf_3expg_temporal = momi.DemographicModel(N_e=NeConstant, gen_time=1.393, muts_per_gen=2.5e-8)
 #add data to model
 model_inf_3expg_temporal.set_data(sfs, length=467359)
 #set parameters to infer - contemp size, historic size (pre-alb), time of size changes
@@ -1215,17 +1216,17 @@ model_inf_3expg_temporal.move_lineages("CBat","AHam",t=110)
 #run model
 model_inf_3expg_temporal.optimize(method="TNC")
 
-            fun: 0.5967828303899166
-            jac: array([ 1.77892796e-06,  4.42980033e-07, -9.70554885e-08, -5.41348884e-05,
-        1.45430997e-05, -2.05752830e-09, -4.41565619e-05])
-  kl_divergence: 0.5967828303899166
- log_likelihood: -29806.850904238658
+            fun: 0.5962904924878343
+            jac: array([ 1.51083588e-06, -3.11087504e-05, -5.11584109e-05, -1.13178972e-05,
+        1.15284536e-05, -9.59756616e-09, -3.79868961e-15])
+  kl_divergence: 0.5962904924878343
+ log_likelihood: -29803.174124785906
         message: 'Converged (|f_n-f_(n-1)| ~= 0)'
-           nfev: 69
-            nit: 15
-     parameters: ParamsDict({'n_hist': 3.3230222016211797, 'n_rec': 92961.20326399336, 'n_alb': 3449.589114381881, 'n_bot': 10000000000.000004, 't_exp': 155060.49285569612, 't_rec': 499.99995953987764, 't_bot': 99.61507933173557})
+           nfev: 25
+            nit: 5
+     parameters: ParamsDict({'n_hist': 3.8194796502711603, 'n_rec': 89138.70920662006, 'n_cont': 10000000000.000004, 'n_alb': 2446.3417067262058, 't_exp': 211682.4178762637, 't_rec': 499.99981425294624, 't_bot': 99.99999999996633})
          status: 1
         success: True
-              x: array([ 1.20087467, 11.43993752,  8.14601041, 23.02585093, -1.76211419,
-       16.07877294,  5.55603157])
+              x: array([ 1.3401142 , 11.39794897, 23.02585093,  7.80234901, -1.36320676,
+       14.5547036 , 28.71993117])
 ```
