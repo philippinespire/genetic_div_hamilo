@@ -54,10 +54,10 @@ Gmi_demo_contemptemp <- as.data.frame(t(Gmi_demo_contemptemp))
   Gmi_demo_contemptemp <- Gmi_demo_contemptemp[-1,]
 
 Ela_demo_contemptemp <- read.csv(here("Data/Ela_Ham/momi2", 
-                                      "Ela_temp2histchange_bootstraps.csv"), 
+                                      "Ela_temp3change_bootstraps.csv"), 
                                  header = FALSE)
   Ela_demo_contemptemp <- as.data.frame(t(Ela_demo_contemptemp))
-    colnames(Ela_demo_contemptemp) <- c("N_Hist", "N_Rec", "N_Cont", "T_Exp", "T_Rec")
+    colnames(Ela_demo_contemptemp) <- c("N_Hist", "N_Rec", "N_Alb", "N_Cont", "T_Exp", "T_Rec", "T_Bot")
     Ela_demo_contemptemp <- Ela_demo_contemptemp[-1,]
 
 #####################################################################################################
@@ -107,9 +107,11 @@ Gmi_T_Bot <- quantile(as.numeric(Gmi_demo_contemptemp$T_Bot), c(0.025, 0.975))
 #Ela
 Ela_N_Hist <- quantile(as.numeric(Ela_demo_contemptemp$N_Hist), c(0.025, 0.975))
 Ela_N_Rec <- quantile(as.numeric(Ela_demo_contemptemp$N_Rec), c(0.025, 0.975))
+Ela_N_Alb <- quantile(as.numeric(Ela_demo_contemptemp$N_Alb), c(0.025, 0.975))
 Ela_N_Cont <- quantile(as.numeric(Ela_demo_contemptemp$N_Cont), c(0.025, 0.975))
 Ela_T_Exp <- quantile(as.numeric(Ela_demo_contemptemp$T_Exp), c(0.025, 0.975))
 Ela_T_Rec <- quantile(as.numeric(Ela_demo_contemptemp$T_Rec), c(0.025, 0.975))
+Ela_T_Bot <- quantile(as.numeric(Ela_demo_contemptemp$T_Bot), c(0.025, 0.975))
 
 ################################################################################################
 
@@ -144,6 +146,16 @@ Gmi_Ne_contemp_boot_plot <- ggplot(data = Gmi_Ne_boot_contemp,
         legend.position = "none",
         plot.margin = unit(c(0.5,0.5,1,1), "cm"),)
 Gmi_Ne_contemp_boot_plot
+
+#testing code to plot with slope
+ggplot() + 
+  geom_curve(aes(x = 0, y = 40, xend = 32, yend = 2827887), curvature = 0) + 
+  geom_curve(aes(x = 32, y = 2827887, xend = 19176, yend = 2827887), curvature = 0) +
+  geom_curve(aes(x = 19176, y = 2827887, xend = 1000000, yend = 8872), curvature = -0.2) + 
+  scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x), 
+                labels = trans_format("log10", scales::math_format(10^.x))) +
+  scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x), 
+                labels = trans_format("log10", scales::math_format(10^.x))) 
 
 ## Historical plot ##
 Gmi_Ne_boot_temp <- read.csv(here("Data/Gmi_Ham/momi2", 
@@ -205,7 +217,7 @@ Gmi_Ne_contemp_temp_boot_plot
 
 #### Ela plots ####
 ## Contemporary plot ##
-Ela_Ne_boot_contemp <- read.csv(here("Data/Ela_Ham", 
+Ela_Ne_boot_contemp <- read.csv(here("Data/Ela_Ham/momi2", 
                                      "ela_momi2_contemp_boot_output_formatted.csv"), 
                                 header = TRUE)
 
