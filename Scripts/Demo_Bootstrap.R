@@ -147,16 +147,6 @@ Gmi_Ne_contemp_boot_plot <- ggplot(data = Gmi_Ne_boot_contemp,
         plot.margin = unit(c(0.5,0.5,1,1), "cm"),)
 Gmi_Ne_contemp_boot_plot
 
-#testing code to plot with slope
-ggplot() + 
-  geom_curve(aes(x = 0, y = 40, xend = 32, yend = 2827887), curvature = 0) + 
-  geom_curve(aes(x = 32, y = 2827887, xend = 19176, yend = 2827887), curvature = 0) +
-  geom_curve(aes(x = 19176, y = 2827887, xend = 1000000, yend = 8872), curvature = -0.2) + 
-  scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x), 
-                labels = trans_format("log10", scales::math_format(10^.x))) +
-  scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x), 
-                labels = trans_format("log10", scales::math_format(10^.x))) 
-
 ## Historical plot ##
 Gmi_Ne_boot_temp <- read.csv(here("Data/Gmi_Ham/momi2", 
                                   "gmi_momi2_temponly_boot_output_formatted.csv"), 
