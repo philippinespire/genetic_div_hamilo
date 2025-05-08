@@ -14,5 +14,4 @@ All other files:
  * **Gmi.A.rad.RAW-10-10-rescaled.Fltr17.2.recode.renamed.AD.tsv:** Allele depth information for all SNPs/individuals for *Gazza minuta*, pulled from raw VCF. Read into `sequencing_stats.R`.
  * **Gmi.A.rad.RAW-10-10-rescaled.Fltr17.2.recode.renamed.GT.tsv:** Genotype information for all SNPs/individuals for *Gazza minuta*, pulled from raw VCF. Read into `sequencing_stats.R`.
  * **Gmi.A.rad.RAW-10-10-rescaled.Fltr17.2.recode.renamed.vcf:** Raw VCF for *Gazza minuta*. Read into `diversity.R` & `fst.R`.
- * **Gmi_A_nohighhet_HamNe.txt:** NeEstimator output for *Gazza minuta*. Data from this incorporated into `tempNe_estimates.R`.
  * **Gmi_A_nohighhet_Ham_SNPs_pr100_fst.txt:** BayeScan output for *Gazza minuta*. Created by running `BayeScan`. Read into `fst.R`.
