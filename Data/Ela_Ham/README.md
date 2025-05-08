@@ -12,4 +12,4 @@ All other files:
  * **Ela.nohighhet.Contemp.Tajima.D:** Tajima's D estimates (10000 bp windows) for the *Equulites laterofenestra* contemporary population. Created by running `VCFtools`. Read into `TajimasD.R`.
  * **Ela_Ela_nohighhet_SNPs_pr100_fst.txt:** BayeScan output for *Equulites laterofenestra*. Created by running `BayeScan`. Read into `fst.R`.
  * **Lle.A.ssl.Lle-C-3NR-R1R2ORPH-contam-noIsolate-rescaled.Fltr17.2.recode.renamed.AD.tsv:** Allele depth information for all SNPs/individuals for *Equulites laterofenestra*, pulled from raw VCF. Read into `sequencing_stats.R`.
-   **Lle.A.ssl.Lle-C-3NR-R1R2ORPH-contam-noIsolate-rescaled.Fltr17.2.recode.renamed.GT.tsv:** Genotype information for all SNPs/individuals for *Equulites laterofenestra*, pulled from raw VCF. Read into `sequencing_stats.R`.
+ * **Lle.A.ssl.Lle-C-3NR-R1R2ORPH-contam-noIsolate-rescaled.Fltr17.2.recode.renamed.GT.tsv:** Genotype information for all SNPs/individuals for *Equulites laterofenestra*, pulled from raw VCF. Read into `sequencing_stats.R`.
