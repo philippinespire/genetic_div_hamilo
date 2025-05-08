@@ -10,8 +10,7 @@ All other files:
  * **Gmi.A.nohighhet.Ham.Alb.Tajima.D:** Tajima's D estimates (10000 bp windows) for the *Gazza minuta* historical population. Created by running `VCFtools`. Read into `TajimasD.R`.
  * **Gmi.A.nohighhet.Ham.All.Tajima.D:** Tajima's D estimates (10000 bp windows) for all *Gazza minuta* individuals pooled together. Created by running `VCFtools`. Read into `TajimasD.R`.
  * **Gmi.A.nohighhet.Ham.Contemp.Tajima.D:** Tajima's D estimates (10000 bp windows) for the *Gazza minuta* contemporary population. Created by running `VCFtools`. Read into `TajimasD.R`.
- * **Ela_Ela_nohighhet_SNPs_pr100_fst.txt:** BayeScan output for *Gazza minuta*. Created by running `BayeScan`. Read into `fst.R`.
+ * **Gmi_A_nohighhet_Ham_SNPs_pr100_fst.txt:** BayeScan output for *Gazza minuta*. Created by running `BayeScan`. Read into `fst.R`.
  * **Gmi.A.rad.RAW-10-10-rescaled.Fltr17.2.recode.renamed.AD.tsv:** Allele depth information for all SNPs/individuals for *Gazza minuta*, pulled from raw VCF. Read into `sequencing_stats.R`.
  * **Gmi.A.rad.RAW-10-10-rescaled.Fltr17.2.recode.renamed.GT.tsv:** Genotype information for all SNPs/individuals for *Gazza minuta*, pulled from raw VCF. Read into `sequencing_stats.R`.
  * **Gmi.A.rad.RAW-10-10-rescaled.Fltr17.2.recode.renamed.vcf:** Raw VCF for *Gazza minuta*. Read into `diversity.R` & `fst.R`.
- * **Gmi_A_nohighhet_Ham_SNPs_pr100_fst.txt:** BayeScan output for *Gazza minuta*. Created by running `BayeScan`. Read into `fst.R`.
