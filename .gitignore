@@ -112,7 +112,7 @@ Data/Gmi_Ham/Gmi.relatedness.format.txt
 Data/Gmi_Ham/*gen
 Data/Gmi_Ham/Gmi_A_individ_het.xlsx
 Data/Gmi_Ham/Gmi_seq_metadata.csv
-Data/Gmi_Ham/Gmi_A_nohighhetNe.txt
+Data/Gmi_Ham/Gmi_A_nohighhet_HamNe.txt
 Data/Gmi_Ham/Gmi.renamed.noLD.*vcf
 
 #extra stuff to ignore
