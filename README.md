@@ -26,7 +26,7 @@ _______________________________________________________
    * ***Gazza minuta***:
         * Historical samples: https://n2t.net/ark:/21547/FMB2
         * Contemporary samples: https://n2t.net/ark:/21547/FMH2
-  * ***Equulites laterofenestra***:
+   * ***Equulites laterofenestra***:
         * Historical samples: https://n2t.net/ark:/21547/FMR2
         * Contemporary samples: https://n2t.net/ark:/21547/FMX2
 3. genome assembly used for mapping & genotype calls (Figshare):
