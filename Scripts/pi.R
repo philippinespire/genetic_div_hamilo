@@ -161,10 +161,10 @@ pi_null_plot <- ggplot(permutation_diff_pi, aes(x = permutation_pi)) +
         axis.line = element_line(linewidth = 4), 
         plot.title = element_blank(), 
         axis.ticks = element_blank(), 
-        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
-        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
-        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)), 
+        axis.text.y = element_text(size = 75, color = "black", margin = margin(r = 20)), 
+        axis.text.x = element_text(size = 75, color = "black", margin = margin(t = 20)), 
+        axis.title.y = element_text(size = 75, color = "black", margin = margin(r = 10)),
+        axis.title.x = element_text(size = 75, color = "black", margin = margin(t = 30)), 
         legend.position = "none", 
         plot.margin = unit(c(1,1,1,1), "cm"))
 pi_null_plot
@@ -332,10 +332,10 @@ pi_null_plot <- ggplot(permutation_diff_pi, aes(x = permutation_pi)) +
         axis.line = element_line(linewidth = 4), 
         plot.title = element_blank(), 
         axis.ticks = element_blank(), 
-        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
-        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
-        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)), 
+        axis.text.y = element_text(size = 75, color = "black", margin = margin(r = 20)), 
+        axis.text.x = element_text(size = 75, color = "black", margin = margin(t = 20)), 
+        axis.title.y = element_text(size = 75, color = "black", margin = margin(r = 10)),
+        axis.title.x = element_text(size = 75, color = "black", margin = margin(t = 30)), 
         legend.position = "none", 
         plot.margin = unit(c(1,1,1,1), "cm"))
 pi_null_plot
