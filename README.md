@@ -14,6 +14,26 @@ This repository is organized into 3 folders:
 Please contact René Clark at rclark848[at]gmail.com with any questions.
 _______________________________________________________
 
+**Links to associated metadata:**
+1. raw sequences (NCBI GenBank):
+    * ***Gazza minuta***:
+        * Historical samples: [BioProject PRJNA998057](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA998057/)
+        * Contemporary samples: [BioProject PRJNA998814](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA998814/)
+    * ***Equulites laterofenestra***:
+        * Historical samples: [BioProject PRJNA998845](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA998845/)
+        * Contemporary samples: [BioProject PRJNA999299](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA999299/)
+2. metadata (GEOME):
+   * ***Gazza minuta***:
+        * Historical samples: https://n2t.net/ark:/21547/FMB2
+        * Contemporary samples: https://n2t.net/ark:/21547/FMH2
+  * ***Equulites laterofenestra***:
+        * Historical samples: https://n2t.net/ark:/21547/FMR2
+        * Contemporary samples: https://n2t.net/ark:/21547/FMX2
+3. genome assembly used for mapping & genotype calls (Figshare):
+    * ***Gazza minuta***: [DOI:10.6084/m9.figshare.29991607](https://doi.org/10.6084/m9.figshare.29991607.v1)
+    * ***Equulites laterofenestra***: [DOI:10.6084/m9.figshare.29991661](https://doi.org/10.6084/m9.figshare.29991661.v1)
+_______________________________________________________
+
 **Necessary Programs/Software for Data Analysis**   
 1. ADMIXTURE (v.1.3)
 2. BayeScan (v.2.1)
