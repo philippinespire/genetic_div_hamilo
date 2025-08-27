@@ -66,11 +66,12 @@ Gmi_BS_plot <- ggplot(data = Gmi_BayeScan, aes(y = qval, x = `log10(PO)`)) +
   theme_bw() + 
   theme(panel.border = element_rect(linewidth = 4), 
         plot.title = element_blank(),
-        axis.ticks = element_line(color = "black", linewidth = 4), 
+        panel.grid.minor = element_blank(),
+        axis.ticks = element_blank(), 
         axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
         axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 65, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1),
+        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
+        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)), 
         plot.margin = unit(c(0.5,0.5,1,1), "cm"),)
 Gmi_BS_plot
 
@@ -158,11 +159,12 @@ Ela_BS_plot <- ggplot(data = Ela_BayeScan, aes(y = qval, x = `log10(PO)`)) +
   theme_bw() + 
   theme(panel.border = element_rect(linewidth = 4), 
         plot.title = element_blank(),
-        axis.ticks = element_line(color = "black", linewidth = 4), 
+        panel.grid.minor = element_blank(),
+        axis.ticks = element_blank(), 
         axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
         axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 65, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1),
+        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
+        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)), 
         plot.margin = unit(c(0.5,0.5,1,1), "cm"),)
 Ela_BS_plot
 

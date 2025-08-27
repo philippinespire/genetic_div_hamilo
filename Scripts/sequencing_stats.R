@@ -183,20 +183,23 @@ all_data <- all_data[!grepl("^gmi_a_bas_*", all_data$id) &
 all_data_order <- all_data[order(all_data$id), ] #order by individual id
 
 #plot missing data as heatmap
-test <- ggplot(all_data_order, 
-               aes(x = id, y = chrom_pos, 
-                   fill = era, alpha = genotype_call)) + 
+missing_data_heatmap <- ggplot(all_data_order, 
+                               aes(x = id, y = chrom_pos, 
+                                   fill = era, alpha = genotype_call)) + 
   geom_tile() + 
   scale_alpha_identity(guide = "none") +
   scale_fill_manual(values = c("#1c3b0e",  "#afc8a4")) + 
   xlab("Individual") + ylab("Locus") + 
   theme_classic() + 
-  theme(panel.grid.major = element_blank(), 
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(), 
         axis.text = element_blank(), 
         axis.ticks = element_blank(),
-        axis.title = element_text(size = 55, color = "black"),
-        legend.position = "none")
-test
+        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
+        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)), 
+        legend.position = "none", 
+        plot.margin = unit(c(2,2,1,1), "cm"))
+missing_data_heatmap
 
 #####################################################################################################################
 
@@ -209,6 +212,10 @@ test
 all_data <- readRDS("Data/Gmi_Ham/all_data_diploid.rds")
   all_data$era[all_data$era == "c"] <- "Contemporary"
   all_data$era[all_data$era == "a"] <- "Historical"
+  
+#remove basud river individuals (only for Gmi)
+all_data <- all_data[!grepl("^gmi_a_bas_*", all_data$id) & 
+                       !grepl("^gmi_c_bas_*", all_data$id), ]
 
 #### Calculate average AB per locus by locus, genotype, era ####
 #calculate average AB by locus, era, genotype
@@ -421,7 +428,8 @@ avg_read_depth_by_locus_era_genotype[avg_read_depth_by_locus_era_genotype$era ==
 all_genotypes %>% 
   ggplot(aes(x=num_reads, y = perc_het, color = era)) + 
   geom_point(size = 10) + 
-  labs(y = "% heterozygous genotypes", 
+  geom_vline(aes(xintercept = 5), linetype = "dashed", linewidth = 1.5, color = "#666666") +
+  labs(y = "% heterozygous\ngenotypes", 
        x = "read depth") + 
   scale_x_continuous(limits = c(1, 100)) + 
   scale_y_continuous(limits = c(0, 0.5)) + 
@@ -430,17 +438,20 @@ all_genotypes %>%
   theme(panel.grid = element_blank(),
         panel.border = element_blank(),
         axis.line = element_line(linewidth = 2, color = "black"),
-        axis.title = element_text(size = 40, color = "black"), 
-        axis.text = element_text(size = 40, color = "black"), 
-        legend.text = element_text(size = 30, color = "black"), 
+        axis.text.y = element_text(size = 40, color = "black", margin = margin(r = 20)), 
+        axis.text.x = element_text(size = 40, color = "black", margin = margin(t = 20)), 
+        axis.title.y = element_text(size = 40, color = "black", margin = margin(r = 30)),
+        axis.title.x = element_text(size = 40, color = "black", margin = margin(t = 20)), 
+        legend.text = element_text(size = 35, color = "black"), 
         legend.title = element_blank(),
-        legend.position = c(0.85, 0.9))
+        legend.position = c(0.85, 0.93), 
+        plot.margin = unit(c(1,1,1,1), "cm"))
 
 #percent het genotypes by tot reads at locus --> relationship between total # reads & percent heterozygote
 full_count_wtot[full_count_wtot$het_homo == "hetero" & full_count_wtot$era == "Contemporary", ] %>% 
   ggplot(aes(x=tot_depth, y = perc_hethomo, color = era)) + 
   geom_point(size = 4) + 
-  labs(y = "% heterozygous genotypes", 
+  labs(y = "% heterozygous\ngenotypes", 
        x = "total read count") + 
   scale_color_manual(values = c("#afc8a4")) + 
   theme_bw() + 
@@ -477,8 +488,8 @@ RDR_density_plot <- ggplot() +
   theme_ridges() + 
   theme(plot.title = element_blank(),
         axis.ticks = element_blank(), 
-        axis.text.y = element_text(size = 55, color = "black"), 
-        axis.text.x = element_text(size = 55, color = "black"), 
+        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
+        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
         axis.title.y = element_blank(),
         axis.title.x = element_text(size = 55, color = "black", vjust = -0.5, hjust = 0.5),
         legend.position = "none", 
@@ -515,8 +526,8 @@ AB_density_plot <- ggplot() +
   theme_ridges() + 
   theme(plot.title = element_blank(),
         axis.ticks = element_blank(), 
-        axis.text.y = element_text(size = 55, color = "black"), 
-        axis.text.x = element_text(size = 55, color = "black"), 
+        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
+        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
         axis.title.y = element_blank(),
         axis.title.x = element_text(size = 55, color = "black", vjust = -0.5, hjust = 0.5),
         legend.position = "none", 

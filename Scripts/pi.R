@@ -155,14 +155,18 @@ pi_null_plot <- ggplot(permutation_diff_pi, aes(x = permutation_pi)) +
   scale_x_continuous(labels = scales::label_number()) + 
   xlab("Temporal Change in π") + ylab("Density") + 
   theme_classic() + 
-  theme(plot.title = element_blank(),
-        axis.ticks = element_line(color = "black", linewidth = 4), 
+  theme(panel.border = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(linewidth = 4), 
+        plot.title = element_blank(), 
+        axis.ticks = element_blank(), 
         axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
         axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1),
-        legend.position = "none", #not showing legend when putting all plots together
-        plot.margin = unit(c(1,1,1,1), "cm"),)
+        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
+        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)), 
+        legend.position = "none", 
+        plot.margin = unit(c(1,1,1,1), "cm"))
 pi_null_plot
 
 #### Calculate change through time ####
@@ -322,14 +326,18 @@ pi_null_plot <- ggplot(permutation_diff_pi, aes(x = permutation_pi)) +
   scale_x_continuous(labels = scales::label_number()) + 
   xlab("Temporal Change in π") + ylab("Density") + 
   theme_classic() + 
-  theme(plot.title = element_blank(),
-        axis.ticks = element_line(color = "black", linewidth = 4), 
+  theme(panel.border = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(linewidth = 4), 
+        plot.title = element_blank(), 
+        axis.ticks = element_blank(), 
         axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
         axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1),
-        legend.position = "none", #not showing legend when putting all plots together
-        plot.margin = unit(c(1,1,1,1), "cm"),)
+        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
+        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)), 
+        legend.position = "none", 
+        plot.margin = unit(c(1,1,1,1), "cm"))
 pi_null_plot
 
 #### Calculate change through time ####
@@ -402,14 +410,14 @@ Het_plot <- ggplot(data = all_data[all_data$metric == "He" | all_data$metric == 
   theme_bw() + 
   theme(panel.border = element_rect(linewidth = 4), 
         plot.title = element_blank(),
-        axis.ticks.y = element_line(color = "black", linewidth = 4), 
-        axis.ticks.x = element_blank(), 
+        panel.grid.minor = element_blank(),
+        axis.ticks = element_blank(), 
         axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
         axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 65, color = "black", vjust = 3),
+        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
         axis.title.x = element_blank(),
         legend.position = "none", #not showing legend when putting all plots together
-        plot.margin = unit(c(0.5,0.5,1,1), "cm"),)
+        plot.margin = unit(c(2,2,1,1), "cm"),)
 Het_plot
 
 #plot pi
@@ -427,14 +435,14 @@ Pi_plot <- ggplot(data = all_data[all_data$metric == "pi", ],
   ylim(0.0010, 0.0045) +
   theme(panel.border = element_rect(linewidth = 4), 
         plot.title = element_blank(),
-        axis.ticks.y = element_line(color = "black", linewidth = 4), 
-        axis.ticks.x = element_blank(), 
+        panel.grid.minor = element_blank(),
+        axis.ticks = element_blank(), 
         axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
         axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 65, color = "black", vjust = 3),
+        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
         axis.title.x = element_blank(),
         legend.position = "none", #not showing legend when putting all plots together
-        plot.margin = unit(c(0.5,0.5,1,1), "cm"),)
+        plot.margin = unit(c(2,2,1,1), "cm"),)
 Pi_plot
 
 #plot fis
@@ -449,15 +457,14 @@ Fis_plot <- ggplot(data = all_data[all_data$metric == "Fis", ],
   scale_x_discrete(labels = c("Hist.", "Contemp.")) + 
   ylab(bquote("Mean"~F[IS])) + 
   theme_bw() + 
-  #ylim(0.0010, 0.0045) +
   theme(panel.border = element_rect(linewidth = 4), 
         plot.title = element_blank(),
-        axis.ticks.y = element_line(color = "black", linewidth = 4), 
-        axis.ticks.x = element_blank(), 
+        panel.grid.minor = element_blank(),
+        axis.ticks = element_blank(), 
         axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
         axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 65, color = "black", vjust = 3),
+        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
         axis.title.x = element_blank(),
         legend.position = "none", #not showing legend when putting all plots together
-        plot.margin = unit(c(0.5,0.5,1,1), "cm"),)
+        plot.margin = unit(c(2,2,1,1), "cm"),)
 Fis_plot

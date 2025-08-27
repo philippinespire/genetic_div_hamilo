@@ -183,10 +183,10 @@ PCA_12 <- ggplot(data = Gmi_Ham_Ham_data,
         axis.ticks = element_line(color = "black", linewidth = 4), 
         axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
         axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1), 
+        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
+        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)), 
         legend.position = "none", 
-        plot.margin = unit(c(0.5,1.5,1,1), "cm"))
+        plot.margin = unit(c(2,2,1,1), "cm"))
 PCA_12
 
 PCA_13 <- ggplot(data = Gmi_Ham_Ham_data, 
@@ -450,10 +450,10 @@ PCA_12 <- ggplot(data = Gmi_Ham_A_Ham_nohighhet_data,
         axis.ticks = element_line(color = "black", linewidth = 4), 
         axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
         axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1), 
+        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
+        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)), 
         legend.position = "none", 
-        plot.margin = unit(c(0.5,1.5,1,1), "cm"))
+        plot.margin = unit(c(2,2,1,1), "cm"))
 PCA_12
 
 PCA_13 <- ggplot(data = Gmi_Ham_A_Ham_nohighhet_data, 
@@ -692,10 +692,10 @@ PCA_12 <- ggplot(data = Ela_Ham_data,
         axis.ticks = element_line(color = "black", linewidth = 4), 
         axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
         axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1), 
+        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
+        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)), 
         legend.position = "none", 
-        plot.margin = unit(c(0.5,1.5,1,1), "cm"))
+        plot.margin = unit(c(2,2,1,1), "cm"))
 PCA_12
 
 PCA_13 <- ggplot(data = Ela_Ham_data, aes(x = PC1, y = PC3, color = Era, shape = Era)) + 
@@ -894,10 +894,10 @@ PCA_12 <- ggplot(data = Ela_Ham_Ela_nohighhet_data,
         axis.ticks = element_line(color = "black", linewidth = 4), 
         axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
         axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1), 
+        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
+        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)), 
         legend.position = "none", 
-        plot.margin = unit(c(0.5,1.5,1,1), "cm"))
+        plot.margin = unit(c(2,2,1,1), "cm"))
 PCA_12
 
 PCA_13 <- ggplot(data = Ela_Ham_Ela_nohighhet_data, 

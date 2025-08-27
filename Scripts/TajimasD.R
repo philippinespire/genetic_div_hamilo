@@ -223,17 +223,16 @@ TD_density_plot <- ggplot() +
   geom_density_ridges2(data = TD_only_noall, 
                        aes(x = TajimaD, y = Pop, color = Pop, fill = Pop), 
                        alpha = 0.5, scale = 1.2) + 
-  geom_vline(aes(xintercept = 0), linewidth = 4, color = "black", linetype = "dotted") + 
+  geom_vline(aes(xintercept = 0), linewidth = 4, color = "black") + 
   geom_segment(data = density_lines, 
                aes(x = lower_ci, y = ymin, xend = lower_ci, yend = ymin+density*scale*iscale), 
-               color = "#607556", linewidth = 4, linetype = "solid") +
+               color = "#607556", linewidth = 4, linetype = "dashed") +
   geom_segment(data = density_lines, 
                aes(x = upper_ci, y = ymin, xend = upper_ci, yend = ymin+density*scale*iscale), 
-               color = "#607556", linewidth = 4, linetype = "solid") +
+               color = "#607556", linewidth = 4, linetype = "dashed") +
   geom_segment(data = density_lines, 
                aes(x = mean, y = ymin, xend = mean, yend = ymin+density*scale*iscale), 
-               color = "black", linewidth = 4) +
-  annotate("text", x = 3, y = 3, label = "A", size = 40) + 
+               color = "#1c3b0e", linewidth = 4) +
   scale_color_manual(values = c("#76896e", "#bac4b6")) +
   scale_fill_manual(values = c("#76896e", "#bac4b6")) + 
   scale_y_discrete(expand = expansion(mult = c(0.01, .7))) + #bring y axis down x
@@ -460,17 +459,16 @@ TD_density_plot <- ggplot() +
   geom_density_ridges2(data = TD_only_noall, 
                        aes(x = TajimaD, y = Pop, color = Pop, fill = Pop), 
                        alpha = 0.5, scale = 1.2) + 
-  geom_vline(aes(xintercept = 0), linewidth = 4, color = "black", linetype = "dotted") + 
+  geom_vline(aes(xintercept = 0), linewidth = 4, color = "black") + 
   geom_segment(data = density_lines, 
                aes(x = lower_ci, y = ymin, xend = lower_ci, yend = ymin+density*scale*iscale), 
-               color = "#607685", linewidth = 4, linetype = "solid") +
+               color = "#607685", linewidth = 4, linetype = "dashed") +
   geom_segment(data = density_lines, 
                aes(x = upper_ci, y = ymin, xend = upper_ci, yend = ymin+density*scale*iscale), 
-               color = "#607685", linewidth = 4, linetype = "solid") +
+               color = "#607685", linewidth = 4, linetype = "dashed") +
   geom_segment(data = density_lines, 
                aes(x = mean, y = ymin, xend = mean, yend = ymin+density*scale*iscale), 
-               color = "black", linewidth = 4) +
-  annotate("text", x = 3, y = 3, label = "B", size = 40) + 
+               color = "#16537e", linewidth = 4) +
   scale_color_manual(values = c("#7c98ab", "#b8cbd8")) +
   scale_fill_manual(values = c("#7c98ab", "#b8cbd8")) + 
   scale_y_discrete(expand = expansion(mult = c(0.01, .7))) + #bring y axis down x

@@ -164,15 +164,27 @@ combined_all_mean_df <- rbind(combined_nopoint_df, avg_Ho_He_loss_by_class)
 #violin plot of Ho loss by taxa
 Ho <- ggplot() + 
   geom_point(data = combined_all_mean_df, 
-             aes(x = factor(Species, levels = c("G. min", "E. lat", "Marine", "Freshwater", "Anadromous", "Mammals", "Birds", "Insects")), 
-                 y = PercChange_Ho, color = Species), size = 0) + #setting this first to get right order on X-axis (but not really plotting anything)
+             aes(x = factor(Species, levels = c("G. min", "E. lat", "Marine", "Freshwater", "Anadromous", 
+                                                "Mammals", "Birds", "Insects")), 
+                 y = PercChange_Ho, color = Species), 
+             size = 0) + #setting this first to get right order on X-axis (but not really plotting anything)
   geom_violin(data = combined_all_raw_df[combined_all_raw_df$Dataset == "Leighetal", ], 
-              aes(x = factor(Species, levels = c("G. min", "E. lat", "Marine", "Freshwater", "Anadromous", "Mammals", "Birds", "Insects")), 
-                  y = PercChange_Ho, fill = Species), color = NA, lwd = 2) + 
+              aes(x = factor(Species, levels = c("G. min", "E. lat", "Marine", "Freshwater", "Anadromous", 
+                                                 "Mammals", "Birds", "Insects")), 
+                  y = PercChange_Ho, fill = Species), 
+              color = NA, 
+              lwd = 2) + 
   geom_point(data = combined_all_mean_df, 
-             aes(x = factor(Species, c("G. min", "E. lat", "Marine", "Freshwater", "Anadromous", "Mammals", "Birds", "Insects")), 
-                 y = PercChange_Ho, color = Species, shape = Dataset, size = Dataset)) + 
-  geom_hline(aes(yintercept = 0), linetype = "dashed", linewidth = 2, color = "black") +
+             aes(x = factor(Species, c("G. min", "E. lat", "Marine", "Freshwater", "Anadromous", 
+                                       "Mammals", "Birds", "Insects")), 
+                 y = PercChange_Ho, 
+                 color = Species, 
+                 shape = Dataset, 
+                 size = Dataset)) + 
+  geom_hline(aes(yintercept = 0), 
+             linetype = "dashed", 
+             linewidth = 2, 
+             color = "black") +
   annotate("rect", xmin = -Inf, xmax = 5.5, ymin = -Inf, ymax = Inf, fill = "#E0E7EE", alpha = 0.4) + 
   scale_color_manual(values = c("#757677", "#757677", "#16537e", "#757677", "#afc8a4", "#757677", "#757677", "#757677")) + 
   scale_fill_manual(values = c("#ada5d0", "#DDCC77", "#CC6677", "#B7E0F4", "#dda060", "#C999B3")) +
@@ -184,13 +196,14 @@ Ho <- ggplot() +
   coord_flip() + 
   theme(panel.border = element_rect(linewidth = 4), 
         plot.title = element_blank(),
+        panel.grid.minor = element_blank(),
         axis.ticks = element_blank(), 
-        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 10)), 
-        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 10)), 
-        axis.title.x = element_text(size = 65, color = "black", vjust = -1),
+        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
+        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
+        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)),
         axis.title.y = element_blank(),
-        legend.position = "none", 
-        plot.margin = unit(c(0.5,0.5,1,1), "cm"),)
+        legend.position = "none", #not showing legend when putting all plots together
+        plot.margin = unit(c(2,2,1,1), "cm"),)
 Ho
 
 #violin plot of He loss by taxa
@@ -210,17 +223,18 @@ He <- ggplot() +
   scale_fill_manual(values = c("#ada5d0", "#DDCC77", "#CC6677", "#B7E0F4", "#dda060", "#C999B3")) +
   scale_shape_manual(values = c(18, 17)) +
   scale_size_manual(values = c(12, 14)) + 
-  ylab(bquote("% Change in"~H[e])) + 
+  ylab(bquote("% Change in"~H[E])) + 
   xlab("Taxa") + 
   theme_bw() + 
   coord_flip() + 
   theme(panel.border = element_rect(linewidth = 4), 
         plot.title = element_blank(),
+        panel.grid.minor = element_blank(),
         axis.ticks = element_blank(), 
-        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 10)), 
-        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 10)), 
-        axis.title.x = element_text(size = 65, color = "black", vjust = -1),
+        axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
+        axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
+        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)),
         axis.title.y = element_blank(),
-        legend.position = "none", 
-        plot.margin = unit(c(0.5,0.5,1,1), "cm"),)
+        legend.position = "none", #not showing legend when putting all plots together
+        plot.margin = unit(c(2,2,1,1), "cm"),)
 He

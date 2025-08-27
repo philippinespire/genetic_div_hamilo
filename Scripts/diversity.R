@@ -31,7 +31,7 @@ Ela_vcf <- read.vcfR("Data/Ela_Ham/Ela.renamed.noLD.Ela.nohighhet.vcf")
   
 #read in permutation data
 Gmi_Ham_permutation <- read.csv(here("Data/Gmi_Ham", "GmiHam_permutation_div.csv"))
-Ela_permutation <- read.csv(here("Data/Ela_Ham", "Ela_permutation_div.csv")) #using w highhet for now, since w/o still running
+Ela_permutation <- read.csv(here("Data/Ela_Ham", "Ela_permutation_div.csv"))
 
 ################################################################################################################################################
   
@@ -273,14 +273,18 @@ Ho_null_plot <- ggplot(Gmi_Ham_permutation, aes(x = Ho)) +
   scale_x_continuous(labels = scales::label_number()) + 
   xlab(bquote("Temporal Change in"~H[o])) + ylab("Density") + 
   theme_classic() + 
-  theme(plot.title = element_blank(),
-        axis.ticks = element_line(color = "black", linewidth = 4), 
+  theme(panel.border = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(linewidth = 4), 
+        plot.title = element_blank(), 
+        axis.ticks = element_blank(), 
         axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
         axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1),
-        legend.position = "none", #not showing legend when putting all plots together
-        plot.margin = unit(c(1,1,1,1), "cm"),)
+        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
+        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)), 
+        legend.position = "none", 
+        plot.margin = unit(c(1,1,1,1), "cm"))
 Ho_null_plot
 
 #plot of null He diff distribution
@@ -294,14 +298,18 @@ He_null_plot <- ggplot(Gmi_Ham_permutation, aes(x = He)) +
   scale_x_continuous(labels = scales::label_number()) + 
   xlab(bquote("Temporal Change in"~H[e])) + ylab("Density") + 
   theme_classic() + 
-  theme(plot.title = element_blank(),
-        axis.ticks = element_line(color = "black", linewidth = 4), 
+  theme(panel.border = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(linewidth = 4), 
+        plot.title = element_blank(), 
+        axis.ticks = element_blank(), 
         axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
         axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1),
-        legend.position = "none", #not showing legend when putting all plots together
-        plot.margin = unit(c(1,1,1,1), "cm"),)
+        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
+        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)), 
+        legend.position = "none", 
+        plot.margin = unit(c(1,1,1,1), "cm"))
 He_null_plot
 
 #plot of null Fis diff distribution
@@ -315,14 +323,18 @@ Fis_null_plot <- ggplot(Gmi_Ham_permutation, aes(x = Fis)) +
   scale_x_continuous(labels = scales::label_number()) + 
   xlab(bquote("Temporal Change in"~F[IS])) + ylab("Density") + 
   theme_classic() + 
-  theme(plot.title = element_blank(),
-        axis.ticks = element_line(color = "black", linewidth = 4), 
+  theme(panel.border = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(linewidth = 4), 
+        plot.title = element_blank(), 
+        axis.ticks = element_blank(), 
         axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
         axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1),
-        legend.position = "none", #not showing legend when putting all plots together
-        plot.margin = unit(c(1,1,1,1), "cm"),)
+        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
+        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)), 
+        legend.position = "none", 
+        plot.margin = unit(c(1,1,1,1), "cm"))
 Fis_null_plot
   
 ################################################################################################################################################
@@ -566,14 +578,18 @@ Ho_null_plot <- ggplot(Ela_permutation, aes(x = Ho)) +
   scale_x_continuous(labels = scales::label_number()) + 
   xlab(bquote("Temporal Change in"~H[o])) + ylab("Density") + 
   theme_classic() + 
-  theme(plot.title = element_blank(),
-        axis.ticks = element_line(color = "black", linewidth = 4), 
+  theme(panel.border = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(linewidth = 4), 
+        plot.title = element_blank(), 
+        axis.ticks = element_blank(), 
         axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
         axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1),
-        legend.position = "none", #not showing legend when putting all plots together
-        plot.margin = unit(c(1,1,1,1), "cm"),)
+        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
+        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)), 
+        legend.position = "none", 
+        plot.margin = unit(c(1,1,1,1), "cm"))
 Ho_null_plot
 
 #plot of null He diff distribution
@@ -587,14 +603,18 @@ He_null_plot <- ggplot(Ela_permutation, aes(x = He)) +
   scale_x_continuous(labels = scales::label_number()) + 
   xlab(bquote("Temporal Change in"~H[e])) + ylab("Density") + 
   theme_classic() + 
-  theme(plot.title = element_blank(),
-        axis.ticks = element_line(color = "black", linewidth = 4), 
+  theme(panel.border = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(linewidth = 4), 
+        plot.title = element_blank(), 
+        axis.ticks = element_blank(), 
         axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
         axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1),
-        legend.position = "none", #not showing legend when putting all plots together
-        plot.margin = unit(c(1,1,1,1), "cm"),)
+        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
+        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)), 
+        legend.position = "none", 
+        plot.margin = unit(c(1,1,1,1), "cm"))
 He_null_plot
 
 #plot of null Fis diff distribution
@@ -608,12 +628,16 @@ Fis_null_plot <- ggplot(Ela_permutation, aes(x = Fis)) +
   scale_x_continuous(labels = scales::label_number()) + 
   xlab(bquote("Temporal Change in"~F[IS])) + ylab("Density") + 
   theme_classic() + 
-  theme(plot.title = element_blank(),
-        axis.ticks = element_line(color = "black", linewidth = 4), 
+  theme(panel.border = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(linewidth = 4), 
+        plot.title = element_blank(), 
+        axis.ticks = element_blank(), 
         axis.text.y = element_text(size = 55, color = "black", margin = margin(r = 20)), 
         axis.text.x = element_text(size = 55, color = "black", margin = margin(t = 20)), 
-        axis.title.y = element_text(size = 55, color = "black", vjust = 3),
-        axis.title.x = element_text(size = 55, color = "black", vjust = -1),
-        legend.position = "none", #not showing legend when putting all plots together
-        plot.margin = unit(c(1,1,1,1), "cm"),)
+        axis.title.y = element_text(size = 55, color = "black", margin = margin(r = 10)),
+        axis.title.x = element_text(size = 55, color = "black", margin = margin(t = 30)), 
+        legend.position = "none", 
+        plot.margin = unit(c(1,1,1,1), "cm"))
 Fis_null_plot
