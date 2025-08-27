@@ -117,6 +117,7 @@ Data/Gmi_Ham/Gmi.renamed.noLD.*vcf
 
 #extra stuff to ignore
 PCA_ADMIXTURE_Plots.pptx
+DemoModeling_Figures.pptx
 sequencing_statistics.xlsx
 Robin_Presentation.pptx
 .Rproj.user
