@@ -1,6 +1,8 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15085163.svg)](https://zenodo.org/doi/10.5281/zenodo.15085163)
 
-This repository provides the data, scripts, and figures for the analyses in "Anthropocene genetic diversity loss in the marine tropics", which trackes genetic diversity loss in, and the demographic history of, populations of two tropical ponyfish from Hamilo Cove, Philippines (*Gazza minuta* and *Equulites laterofenestra*).
+This repository provides the data, scripts, and figures for the analyses in "Anthropocene genetic diversity loss in the marine tropics", which tracks genetic diversity loss in, and the demographic history of, populations of two tropical ponyfish from Hamilo Cove, Philippines (*Gazza minuta* and *Equulites laterofenestra*).
+
+**Citation:** Clark RD, Reid BN, Garcia E, Malabag M, Waples RS, Abesamis RA, Baldisimo JGP, Bucol AA, Fitz KS, Magnuson SF, Muallil RN, Nanola Jr. CL, Roberts R, Whalen JC, Bird CE, Carpenter KE, Pinsky ML (2025) Anthropocene genetic diversity loss in the marine tropics. *PNAS*, **122**(46):e2513012122. [DOI:10.1073/pnas.2513012122](https://www.pnas.org/doi/abs/10.1073/pnas.2513012122)
 
 A complete list of all necessary software and packages (with version numbers) can be found at the bottom of this README.
 
